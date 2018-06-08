@@ -160,6 +160,16 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
       'title' => $data['ref'],
       'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
     ));
+
+    // Document type.
+    if (strpos($parts[0], '/RES/') !== FALSE) {
+      $term = pocam_extract_create_terms('Resolution', 'type');
+      $node_wrapper->field_document_type->set($term->tid);
+    }
+    else {
+      $term = pocam_extract_create_terms('Statement', 'type');
+      $node_wrapper->field_document_type->set($term->tid);
+    }
   }
 
   $node_wrapper->save();
@@ -185,48 +195,33 @@ function pocam_extract_import_extract_finished($success, $results, $operations) 
 /**
  * Recursively create terms.
  */
-function pocam_extract_create_terms_location($terms, $voc) {
-  $parent = 0;
-  foreach ($terms as $term_info) {
-    if (!empty($term_info['name'])) {
-      $q = db_select('taxonomy_term_data', 't')->fields('t', array('tid'));
-      $q->join('taxonomy_term_hierarchy', 'hierarchy', 't.tid = hierarchy.tid');
-      $q->join('field_data_field_pcode', 'pcode', 't.tid = pcode.entity_id');
-      $existing = $q->condition('pcode.field_pcode_value', $term_info['pcode'])
-        ->condition('vid', $voc->vid)
-        ->condition('parent', $parent)
-        ->range(0, 1)
-        ->execute()
-        ->fetchField();
+function pocam_extract_create_terms($terms, $voc) {
+  $vocabularies = taxonomy_vocabulary_get_names();
 
-      if ($existing) {
-        // Check if we need to update.
-        $term = taxonomy_term_load($existing);
-        if ($term->name != $term_info['name']) {
-          $term->name = $term_info['name'];
-          $term->name_field['en'][0]['value'] = $term_info['name'];
-          $wrapped = entity_metadata_wrapper('taxonomy_term', $term);
-          taxonomy_term_save($term);
-        }
-        $parent = $existing;
-        continue;
-      }
-
-      $term = new stdClass();
-      $term->language = 'en';
-      $term->name = $term_info['name'];
-      $term->name_field['en'][0]['value'] = $term_info['name'];
-      $term->field_pcode['und'][0]['value'] = $term_info['pcode'];
-      $term->field_loc_admin_level['und'][0]['value'] = $term_info['admin'];
-      $term->vid = $voc->vid;
-      $term->parent = $parent;
-      $term->vocabulary_machine_name = $voc->machine_name;
-      $wrapped = entity_metadata_wrapper('taxonomy_term', $term);
-      taxonomy_term_save($term);
-      $parent = $term->tid;
-    }
+  // Make sure we have an array.
+  if (is_string($terms)) {
+    $terms = array($terms);
   }
-  return $parent;
+
+  $parent = 0;
+  foreach ($terms as $term_name) {
+    $existing = taxonomy_get_term_by_name($term_name, $voc);
+    if (!empty($existing)) {
+      $term = reset($existing);
+      $parent = $term;
+      continue;
+    }
+
+    $term = new stdClass();
+    $term->vid = $vocabularies[$voc]->vid;
+    $term->name = $term_name;
+    if (isset($parent) && isset($parent->tid)) {
+      $term->parent = $parent;
+    }
+    taxonomy_term_save($term);
+  }
+
+  return $term;
 }
 
 /**
