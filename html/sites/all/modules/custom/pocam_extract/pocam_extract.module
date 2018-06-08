@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Code for the pocam_extract feature.
+ */
+
+include_once 'pocam_extract.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function pocam_extract_menu() {
+  $items = array();
+
+  $items['admin/config/pocam'] = array(
+    'title' => 'POCAM',
+    'description' => 'POCAM.',
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'weight' => 50,
+    'file path' => drupal_get_path('module', 'system'),
+    'file' => 'system.admin.inc',
+  );
+
+  $items['admin/config/pocam/import-extracts'] = array(
+    'title' => 'Import extracts',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pocam_extract_import_extract'),
+    'access arguments' => array('administer site configuration'),
+    'description' => 'Import extracts from csv',
+    'file' => 'pocam_extract.import.inc',
+  );
+
+  return $items;
+}
