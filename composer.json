@@ -28,6 +28,7 @@
         "drupal/hybridauth": "^2.15",
         "drupal/jquery_update": "^2.7",
         "drupal/libraries": "^2.3",
+        "drupal/link": "^1.5",
         "drupal/markdown": "^1.5",
         "drupal/redis": "^3.17",
         "drupal/search_api": "^1.22",
