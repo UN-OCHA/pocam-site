@@ -36,8 +36,8 @@
   -->
 
   <!-- Code Size -->
-  <rule ref="rulesets/codesize.xml/CyclomaticComplexity"/>
-  <rule ref="rulesets/codesize.xml/NPathComplexity"/>
+  <rule ref="rulesets/codesize.xml/CyclomaticComplexity" reportLevel="20">
+  <rule ref="rulesets/codesize.xml/NPathComplexity" minimum="400"/>
   <rule ref="rulesets/codesize.xml/ExcessiveMethodLength"/>
   <rule ref="rulesets/codesize.xml/ExcessiveClassLength"/>
   <rule ref="rulesets/codesize.xml/ExcessiveParameterList"/>
