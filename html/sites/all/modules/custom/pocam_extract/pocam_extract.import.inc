@@ -136,6 +136,8 @@ function pocam_extract_import_extract_populate_queue($csv_file, $strategy, $csv_
 
 /**
  * Import node data.
+ * *
+ * @SuppressWarnings(PHPMD)
  */
 function pocam_extract_import_extract_line($data, $strategy, &$context) {
   if (!isset($data['text']) || empty($data['text'])) {
