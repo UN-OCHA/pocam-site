@@ -38,8 +38,8 @@ function pocam_extract_import_extract($form, &$form_state) {
       '#title' => t('Import strategy'),
       '#required' => TRUE,
       '#options' => array(
-        'overwrite' => 'Overwrite all extracts',
-        'append' => 'Append extracts defined in csv',
+        'overwrite' => 'Remove all extracts and themes first',
+        'append' => 'Append extracts and themes',
       ),
       '#default_value' => 'append',
     );
@@ -73,6 +73,10 @@ function pocam_extract_import_extract_validate($form, &$form_state) {
  * Form submit callback.
  */
 function pocam_extract_import_extract_submit($form, $form_state) {
+  if ($form_state['values']['strategy'] === 'overwrite') {
+    pocam_extract_delete_content();
+  }
+
   $file = $form_state['values']['csv'];
   pocam_extract_import_extract_populate_queue($file->uri, $form_state['values']['strategy'], $form_state['values']['csv_separator']);
 }
@@ -191,6 +195,27 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
     if (!empty($themes)) {
       $term = pocam_extract_create_terms($themes, 'theme', $data['_id']);
       $node_wrapper->field_theme->set($term->tid);
+
+      // Update see also fields on term.
+      if (isset($data['see also']) && !empty($data['see also'])) {
+        // Only update if it's empty.
+        if (!isset($term->field_see_also['und']) || empty($term->field_see_also['und'])) {
+          $see_also = $data['see also'];
+          $see_also = str_replace('See also, for example, ', '', $see_also);
+          $see_alsos = explode(';', $see_also);
+
+          $links = array();
+          foreach ($see_alsos as $item) {
+            $parts = explode(' ', trim($item));
+            $links[] = array(
+              'title' => trim($item),
+              'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
+            );
+          }
+          $term->field_see_also['und'] = $links;
+          taxonomy_term_save($term);
+        }
+      }
     }
   }
 
@@ -267,5 +292,26 @@ function pocam_extract_check_csv_file_utf8_bom($csv_file) {
   if (strncmp($contents, $bom, 3) === 0) {
     $contents = substr($contents, 3);
     file_put_contents($csv_file, $contents);
+  }
+}
+
+function pocam_extract_delete_content() {
+  $results = db_select('node', 'n')
+    ->fields('n', array('nid'))
+    ->condition('type', 'pocam_extract')
+    ->execute();
+
+  foreach ($results as $result) {
+    $nids[] = $result->nid;
+  }
+
+  if (!empty($nids)) {
+    node_delete_multiple($nids);
+    drupal_set_message(t('Deleted %count nodes.', array('%count' => count($nids))));
+  }
+
+  $vid = taxonomy_vocabulary_machine_name_load('theme')->vid;
+  foreach (taxonomy_get_tree($vid) as $term) {
+    taxonomy_term_delete($term->tid);
   }
 }
