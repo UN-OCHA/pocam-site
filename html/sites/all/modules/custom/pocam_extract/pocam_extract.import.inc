@@ -102,6 +102,7 @@ function pocam_extract_import_extract_populate_queue($csv_file, $strategy, $csv_
   $header = fgetcsv($handle, 0, $csv_separator, '"');
   $header_lowercase = array_map('drupal_strtolower', $header);
 
+  $id = 1;
   while ($row = fgetcsv($handle, 0, $csv_separator, '"')) {
     $data = array();
     for ($i = 0; $i < count($row); $i++) {
@@ -117,6 +118,7 @@ function pocam_extract_import_extract_populate_queue($csv_file, $strategy, $csv_
       }
       $data[$header_lowercase[$i]] = $row[$i];
     }
+    $data['_id'] = $id++;
 
     $batch['operations'][] = array(
       'pocam_extract_import_extract_line',
@@ -149,7 +151,10 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
 
   $node_wrapper = entity_metadata_wrapper('node', $entity);
 
-  $node_wrapper->title->set(substr($data['text'], 0, 54) . ' ...');
+  // Ellipsis break drupal_write_record.
+  $data['text'] = str_replace('…', '...', $data['text']);
+
+  $node_wrapper->title->set(substr($data['text'], 0, 76) . ' ...');
   $node_wrapper->field_text->set(array(
     'value' => $data['text'],
   ));
@@ -169,6 +174,23 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
     else {
       $term = pocam_extract_create_terms('Statement', 'type');
       $node_wrapper->field_document_type->set($term->tid);
+    }
+
+    // Theme.
+    $themes = array();
+    if (isset($data['level 0']) && !empty($data['level 0'])) {
+      $themes[] = $data['level 0'];
+    }
+    if (isset($data['level 1']) && !empty($data['level 1'])) {
+      $themes[] = $data['level 1'];
+    }
+    if (isset($data['level 2']) && !empty($data['level 2'])) {
+      $themes[] = $data['level 2'];
+    }
+
+    if (!empty($themes)) {
+      $term = pocam_extract_create_terms($themes, 'theme', $data['_id']);
+      $node_wrapper->field_theme->set($term->tid);
     }
   }
 
@@ -195,7 +217,7 @@ function pocam_extract_import_extract_finished($success, $results, $operations) 
 /**
  * Recursively create terms.
  */
-function pocam_extract_create_terms($terms, $voc) {
+function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
   $vocabularies = taxonomy_vocabulary_get_names();
 
   // Make sure we have an array.
@@ -203,7 +225,7 @@ function pocam_extract_create_terms($terms, $voc) {
     $terms = array($terms);
   }
 
-  $parent = 0;
+  $parent = FALSE;
   foreach ($terms as $term_name) {
     $existing = taxonomy_get_term_by_name($term_name, $voc);
     if (!empty($existing)) {
@@ -215,10 +237,12 @@ function pocam_extract_create_terms($terms, $voc) {
     $term = new stdClass();
     $term->vid = $vocabularies[$voc]->vid;
     $term->name = $term_name;
+    $term->weight = $term_weight;
     if (isset($parent) && isset($parent->tid)) {
-      $term->parent = $parent;
+      $term->parent = $parent->tid;
     }
     taxonomy_term_save($term);
+    $parent = $term;
   }
 
   return $term;
