@@ -1,7 +1,7 @@
 name = POCAM General
+description = POCAM General
 core = 7.x
-package = Features
-version = 7.x-1.0
+package = POCAM
 dependencies[] = admin_menu
 dependencies[] = ctools
 dependencies[] = entity

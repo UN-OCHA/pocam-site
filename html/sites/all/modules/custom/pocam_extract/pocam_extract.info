@@ -1,7 +1,7 @@
 name = pocam_extract
 description = Pocam Extract
 core = 7.x
-package = Features
+package = POCAM
 dependencies[] = ds
 dependencies[] = facetapi
 dependencies[] = facetapi_pretty_paths
