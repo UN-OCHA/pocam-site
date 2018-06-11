@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbd39113a3144cb442b43330765ea296",
+    "content-hash": "3340100abdb5190c4e76d884f2276707",
     "packages": [
         {
             "name": "drupal/admin_denied",
@@ -992,6 +992,118 @@
             "homepage": "https://www.drupal.org/project/facetapi",
             "support": {
                 "source": "http://cgit.drupalcode.org/facetapi"
+            }
+        },
+        {
+            "name": "drupal/facetapi_pretty_paths",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/facetapi_pretty_paths",
+                "reference": "7.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/facetapi_pretty_paths-7.x-1.4.zip",
+                "reference": "7.x-1.4",
+                "shasum": "17fe4d187a436a7a78e73686b3bed2722f4e10ce"
+            },
+            "require": {
+                "drupal/drupal": "~7.0",
+                "drupal/facetapi": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-1.4",
+                    "datestamp": "1427560981",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Nick_vh",
+                    "homepage": "https://www.drupal.org/user/122682"
+                },
+                {
+                    "name": "dasjo",
+                    "homepage": "https://www.drupal.org/user/228295"
+                },
+                {
+                    "name": "voidberg",
+                    "homepage": "https://www.drupal.org/user/8662"
+                }
+            ],
+            "description": "Enables pretty paths for searches with Facet API.",
+            "homepage": "https://www.drupal.org/project/facetapi_pretty_paths",
+            "support": {
+                "source": "http://cgit.drupalcode.org/facetapi_pretty_paths"
+            }
+        },
+        {
+            "name": "drupal/facetapi_select",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/facetapi_select",
+                "reference": "7.x-1.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/facetapi_select-7.x-1.3.zip",
+                "reference": "7.x-1.3",
+                "shasum": "5797daa9faa96080d05b81a151ebd08bd0d79bd6"
+            },
+            "require": {
+                "drupal/drupal": "~7.0",
+                "drupal/facetapi": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-1.3",
+                    "datestamp": "1484683683",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jody Lynn",
+                    "homepage": "https://www.drupal.org/user/112500"
+                },
+                {
+                    "name": "barancekk",
+                    "homepage": "https://www.drupal.org/user/2397750"
+                },
+                {
+                    "name": "grndlvl",
+                    "homepage": "https://www.drupal.org/user/103553"
+                }
+            ],
+            "description": "Display search facets as select dropdowns",
+            "homepage": "https://www.drupal.org/project/facetapi_select",
+            "support": {
+                "source": "http://cgit.drupalcode.org/facetapi_select"
             }
         },
         {
