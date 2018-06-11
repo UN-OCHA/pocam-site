@@ -35,3 +35,202 @@ function pocam_extract_menu() {
 
   return $items;
 }
+
+/**
+ * Implements hook_field_extra_fields().
+ */
+function pocam_extract_field_extra_fields() {
+  $extra['node']['pocam_extract']['display']['theme_see_also'] = array(
+    'label' => t('See also from theme', array(), array('context' => 'pocam')),
+    'description' => t('See also links from theme.', array(), array('context' => 'pocam')),
+    'weight' => 2,
+  );
+
+  $extra['node']['pocam_extract']['display']['theme_full_tree'] = array(
+    'label' => t('Theme including parents', array(), array('context' => 'pocam')),
+    'description' => t('Theme including parents.', array(), array('context' => 'pocam')),
+    'weight' => 2,
+  );
+
+  return $extra;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function pocam_extract_node_view($node, $view_mode, $langcode) {
+  $extrafields = field_extra_fields_get_display('node', $node->type, $view_mode);
+
+  $extrafield_name = 'theme_see_also';
+  if (isset($extrafields[$extrafield_name])
+      && isset($extrafields[$extrafield_name]['visible'])
+      && $extrafields[$extrafield_name]['visible']) {
+    $node->content[$extrafield_name] = pocam_extract_theme_see_also($node, $view_mode, $langcode);
+  }
+
+  $extrafield_name = 'theme_full_tree';
+  if (isset($extrafields[$extrafield_name])
+      && isset($extrafields[$extrafield_name]['visible'])
+      && $extrafields[$extrafield_name]['visible']) {
+    $node->content[$extrafield_name] = pocam_extract_theme_full_tree($node, $view_mode, $langcode);
+  }
+}
+
+/**
+ * Output see also from theme term.
+ */
+function pocam_extract_theme_see_also($node, $view_mode, $langcode) {
+  if (!isset($node->field_theme[LANGUAGE_NONE][0]['tid'])) {
+    return;
+  }
+
+  $theme = taxonomy_term_load($node->field_theme[LANGUAGE_NONE][0]['tid']);
+  if (!$theme) {
+    return;
+  }
+
+  return field_view_field('taxonomy_term', $theme, 'field_see_also', $view_mode, $langcode);
+}
+
+/**
+ * Output theme including parents.
+ */
+function pocam_extract_theme_full_tree($node, $view_mode, $langcode) {
+  if (!isset($node->field_theme[LANGUAGE_NONE][0]['tid'])) {
+    return;
+  }
+
+  $theme = taxonomy_term_load($node->field_theme[LANGUAGE_NONE][0]['tid']);
+  if (!$theme) {
+    return;
+  }
+
+  return field_view_field('taxonomy_term', $theme, 'field_long_name', $view_mode, $langcode);
+}
+
+/**
+ * Implements hook_taxonomy_term_presave().
+ */
+function pocam_extract_taxonomy_term_presave($term) {
+  if (isset($term->vocabulary_machine_name) && $term->vocabulary_machine_name == 'theme') {
+    // Get original parent for existing terms.
+    if (isset($term->tid)) {
+      $query = db_select('taxonomy_term_data', 't');
+      $query->join('taxonomy_term_hierarchy', 'h', 'h.parent = t.tid');
+      $query->addField('t', 'tid');
+      $query->condition('h.tid', $term->tid);
+      $query->orderBy('t.weight');
+      $query->orderBy('t.name');
+      $tids = $query->execute()->fetchCol();
+
+      $parent_ids = taxonomy_term_load_multiple($tids);
+      $parent_ids = array_keys($parent_ids);
+      $parent_id = reset($parent_ids);
+    }
+    else {
+      $parent_id = 0;
+    }
+
+    // Make sure we have a parent.
+    if (!isset($term->parent)) {
+      $term_parent_id = $parent_id;
+    }
+    else {
+      if (is_array($term->parent)) {
+        $term_parent_id = reset($term->parent);
+      }
+      else {
+        $term_parent_id = $term->parent;
+      }
+    }
+
+    // Update long name based on direct child if needed.
+    if (!isset($term->field_long_name[LANGUAGE_NONE][0]['value']) || empty($term->field_long_name[LANGUAGE_NONE][0]['value']) || $parent_id != $term_parent_id) {
+      if ($term_parent_id == 0) {
+        $term->field_long_name[LANGUAGE_NONE][0]['value'] = $term->name;
+      }
+      else {
+        if ($parent_id) {
+          $parent = taxonomy_term_load($parent_id);
+        }
+        elseif ($term_parent_id) {
+          $parent = taxonomy_term_load($term_parent_id);
+        }
+        if (isset($parent->field_long_name[LANGUAGE_NONE][0]['value'])) {
+          $term->field_long_name[LANGUAGE_NONE][0]['value'] = $parent->field_long_name[LANGUAGE_NONE][0]['value'] . ' > ' . $term->name;
+        }
+        else {
+          $term->field_long_name[LANGUAGE_NONE][0]['value'] = '... > ' . $term->name;
+        }
+      }
+    }
+
+    // Update parent tids based on direct child if needed.
+    if (!empty($term->tid)) {
+      if (!isset($term->field_parent_tids[LANGUAGE_NONE][0]['value']) || empty($term->field_parent_tids[LANGUAGE_NONE][0]['value']) || $parent_id != $term_parent_id) {
+        if ($term_parent_id == 0) {
+          $term->field_parent_tids[LANGUAGE_NONE][0]['value'] = $term->tid;
+        }
+        else {
+          $parent = FALSE;
+          if ($parent_id && $parent_id != $term->tid) {
+            $parent = taxonomy_term_load($parent_id);
+          }
+          elseif ($term_parent_id && $term_parent_id != $term->tid) {
+            $parent = taxonomy_term_load($term_parent_id);
+          }
+
+          if ($parent) {
+            if (isset($parent->field_parent_tids[LANGUAGE_NONE][0]['value'])) {
+              $term->field_parent_tids[LANGUAGE_NONE][0]['value'] = $parent->field_parent_tids[LANGUAGE_NONE][0]['value'] . '|' . $term->tid;
+            }
+            else {
+              $term->field_parent_tids[LANGUAGE_NONE][0]['value'] = $term->tid;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_taxonomy_term_insert().
+ */
+function pocam_extract_taxonomy_term_insert($term) {
+  // Update parent tids based on direct child if needed.
+  if (isset($term->vocabulary_machine_name) && $term->vocabulary_machine_name == 'theme') {
+    if (!isset($term->field_parent_tids[LANGUAGE_NONE][0]['value']) || empty($term->field_parent_tids[LANGUAGE_NONE][0]['value'])) {
+      // Trigger an update.
+      taxonomy_term_save($term);
+      return;
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function pocam_extract_field_widget_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['#options']) && $element['#field_name'] == 'field_theme') {
+    $cache_key = 'pocam_extract:edit-theme';
+
+    $cache = cache_get($cache_key);
+    if ($cache && !empty($cache->data)) {
+      $element['#options'] = $cache->data;
+      return;
+    }
+
+    $ids = array_keys($element['#options']);
+    $terms = taxonomy_term_load_multiple($ids);
+
+    foreach ($element['#options'] as $tid => &$option) {
+      if (is_numeric($tid)) {
+        if (isset($terms[$tid]->field_long_name[LANGUAGE_NONE][0]['value'])) {
+          $option = $terms[$tid]->field_long_name[LANGUAGE_NONE][0]['value'];
+        }
+      }
+    }
+    cache_set($cache_key, $element['#options']);
+  }
+}

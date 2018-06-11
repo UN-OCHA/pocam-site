@@ -199,7 +199,7 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
       // Update see also fields on term.
       if (isset($data['see also']) && !empty($data['see also'])) {
         // Only update if it's empty.
-        if (!isset($term->field_see_also['und']) || empty($term->field_see_also['und'])) {
+        if (!isset($term->field_see_also[LANGUAGE_NONE]) || empty($term->field_see_also[LANGUAGE_NONE])) {
           $see_also = $data['see also'];
           $see_also = str_replace('See also, for example, ', '', $see_also);
           $see_alsos = explode(';', $see_also);
@@ -212,7 +212,7 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
               'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
             );
           }
-          $term->field_see_also['und'] = $links;
+          $term->field_see_also[LANGUAGE_NONE] = $links;
           taxonomy_term_save($term);
         }
       }
