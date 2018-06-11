@@ -8,6 +8,9 @@
  * Implements hook_install().
  */
 function pocam_install() {
+  // Do not rebuild features during install.
+  variable_set('features_rebuild_on_module_install', FALSE);
+
   // Add text formats.
   $filtered_html_format = array(
     'format' => 'filtered_html',
@@ -154,8 +157,56 @@ function pocam_install() {
     ->execute();
   variable_set('admin_theme', 'seven');
   variable_set('node_admin_theme', '1');
+}
+
+/**
+ * Implements hook_install_tasks_alter().
+ */
+function pocam_install_tasks_alter(&$tasks, $install_state) {
+  $tasks['install_finished']['function'] = 'pocam_install_finished';
+}
+
+/**
+ * Perform final steps.
+ */
+function pocam_install_finished(&$install_state) {
+  module_enable(array(
+    'pocam_general',
+    'pocam_extract',
+  ));
+
+  drupal_set_title(st('@drupal installation complete', array('@drupal' => drupal_install_profile_distribution_name())), PASS_THROUGH);
+  $messages = drupal_set_message();
+
+  // Remember the profile which was used.
+  variable_set('install_profile', drupal_get_profile());
+  variable_set('install_task', 'done');
+
+  // Restore features behavior.
+  variable_set('features_rebuild_on_module_install', TRUE);
+
+  // Flush all caches.
+  drupal_flush_all_caches();
+
+  // Install profiles are always loaded last
+  db_update('system')
+    ->fields(array('weight' => 1000))
+    ->condition('type', 'module')
+    ->condition('name', drupal_get_profile())
+    ->execute();
+
+  // Cache a fully-built schema.
+  drupal_get_schema(NULL, TRUE);
+
+  // Run cron to populate update status tables (if available) so that users
+  // will be warned if they've installed an out of date Drupal version.
+  // Will also trigger indexing of profile-supplied content or feeds.
+  drupal_cron_run();
 
   // Revert features.
   features_revert_module('pocam_general');
   features_revert_module('pocam_extract');
+
+  // Flush all caches.
+  drupal_flush_all_caches();
 }
