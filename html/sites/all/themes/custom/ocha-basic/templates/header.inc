@@ -44,13 +44,13 @@
     <div class="container cd-site-header__inner">
       <?php if($is_front): ?>
         <h1>
-          <a href="<?php print $front_page; ?>" class="cd-site-header__logo">
-            <span class="sr-only"><?php print t('Humanitarian Events') ?></span>
+          <a href="<?php print $front_page; ?>">
+            <?php print t('Aide Memoire') ?>
           </a>
         </h1>
       <?php else: ?>
-        <a href="<?php print $front_page; ?>" class="cd-site-header__logo">
-          <span class="sr-only"><?php print t('Humanitarian Events') ?></span>
+        <a href="<?php print $front_page; ?>">
+          <?php print t('Aide Memoire') ?>
         </a>
       <?php endif; ?>
     </div>
