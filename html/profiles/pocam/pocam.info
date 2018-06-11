@@ -38,3 +38,5 @@ dependencies[] = facetapi
 dependencies[] = facetapi_pretty_paths
 dependencies[] = facetapi_select
 dependencies[] = views
+dependencies[] = fe_block
+dependencies[] = context

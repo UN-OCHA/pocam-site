@@ -154,4 +154,8 @@ function pocam_install() {
     ->execute();
   variable_set('admin_theme', 'seven');
   variable_set('node_admin_theme', '1');
+
+  // Revert features.
+  features_revert_module('pocam_general');
+  features_revert_module('pocam_extract');
 }
