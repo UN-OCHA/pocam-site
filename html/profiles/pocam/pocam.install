@@ -68,7 +68,7 @@ function pocam_install() {
   filter_format_save($full_html_format);
 
   // Enable some standard blocks.
-  $default_theme = variable_get('theme_default', 'ocha-basic');
+  $default_theme = variable_get('theme_default', 'ochabasic');
   $admin_theme = 'seven';
   $blocks = array(
     array(
