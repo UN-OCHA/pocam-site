@@ -24,6 +24,7 @@ function pocam_extract_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -34,6 +35,7 @@ function pocam_extract_facetapi_default_facet_settings() {
     'default_true' => '1',
     'facet_search_ids' => array(),
     'exclude' => 0,
+    'pretty_paths_alias' => 'type',
   );
   $export['search_api@pocam_extracts::field_document_type:name'] = $facet;
 
@@ -51,6 +53,7 @@ function pocam_extract_facetapi_default_facet_settings() {
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
+      'roles' => array(),
     ),
     'facet_mincount' => '1',
     'facet_missing' => '0',
@@ -61,6 +64,7 @@ function pocam_extract_facetapi_default_facet_settings() {
     'default_true' => '1',
     'facet_search_ids' => array(),
     'exclude' => 0,
+    'pretty_paths_alias' => 'theme',
   );
   $export['search_api@pocam_extracts::field_theme:name'] = $facet;
 

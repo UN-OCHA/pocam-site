@@ -166,3 +166,68 @@ function pocam_extract_default_search_api_index() {
   }');
   return $items;
 }
+
+/**
+ * Implements hook_default_search_api_server().
+ */
+function pocam_extract_default_search_api_server() {
+  $items = array();
+  $items['local'] = entity_import('search_api_server', '{
+    "name" : "local",
+    "machine_name" : "local",
+    "description" : "",
+    "class" : "search_api_db_service",
+    "options" : {
+      "database" : "default:default",
+      "min_chars" : "1",
+      "partial_matches" : 1,
+      "indexes" : { "pocam_extracts" : {
+          "search_api_language" : {
+            "table" : "search_api_db_pocam_extracts",
+            "column" : "search_api_language",
+            "type" : "string",
+            "boost" : "1.0"
+          },
+          "field_text:value" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "text",
+            "boost" : "2.0"
+          },
+          "field_link:title" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_see_also:title" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "list\\u003Ctext\\u003E",
+            "boost" : "1.0"
+          },
+          "field_document_type:name" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "list\\u003Ctext\\u003E",
+            "boost" : "1.0"
+          },
+          "field_theme:name" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_theme:field_long_name" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "text",
+            "boost" : "1.0"
+          },
+          "field_theme:field_see_also:title" : {
+            "table" : "search_api_db_pocam_extracts_text",
+            "type" : "list\\u003Ctext\\u003E",
+            "boost" : "1.0"
+          }
+        }
+      }
+    },
+    "enabled" : "1",
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
