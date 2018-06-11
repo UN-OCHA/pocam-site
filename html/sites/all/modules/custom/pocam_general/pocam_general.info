@@ -1,0 +1,13 @@
+name = POCAM General
+core = 7.x
+package = Features
+version = 7.x-1.0
+dependencies[] = admin_menu
+dependencies[] = ctools
+dependencies[] = entity
+dependencies[] = environment_indicator
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[variable][] = site_frontpage
+features[variable][] = site_name
