@@ -174,47 +174,57 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
     if (strpos($parts[0], '/RES/') !== FALSE) {
       $term = pocam_extract_create_terms('Resolution', 'type');
       $node_wrapper->field_document_type->set($term->tid);
+
+      // Year.
+      $year = str_replace(array('(', ')', ','), '', $parts[1]);
+      $year = (int) trim($year);
+      $node_wrapper->field_year->set($year);
     }
     else {
       $term = pocam_extract_create_terms('Statement', 'type');
       $node_wrapper->field_document_type->set($term->tid);
-    }
 
-    // Theme.
-    $themes = array();
-    if (isset($data['level 0']) && !empty($data['level 0'])) {
-      $themes[] = $data['level 0'];
+      // Year.
+      $year_parts = explode('/', $parts[0]);
+      $year = (int) $year_parts[2];
+      $node_wrapper->field_year->set($year);
     }
-    if (isset($data['level 1']) && !empty($data['level 1'])) {
-      $themes[] = $data['level 1'];
-    }
-    if (isset($data['level 2']) && !empty($data['level 2'])) {
-      $themes[] = $data['level 2'];
-    }
+  }
 
-    if (!empty($themes)) {
-      $term = pocam_extract_create_terms($themes, 'theme', $data['_id']);
-      $node_wrapper->field_theme->set($term->tid);
+  // Theme.
+  $themes = array();
+  if (isset($data['level 0']) && !empty($data['level 0'])) {
+    $themes[] = $data['level 0'];
+  }
+  if (isset($data['level 1']) && !empty($data['level 1'])) {
+    $themes[] = $data['level 1'];
+  }
+  if (isset($data['level 2']) && !empty($data['level 2'])) {
+    $themes[] = $data['level 2'];
+  }
 
-      // Update see also fields on term.
-      if (isset($data['see also']) && !empty($data['see also'])) {
-        // Only update if it's empty.
-        if (!isset($term->field_see_also[LANGUAGE_NONE]) || empty($term->field_see_also[LANGUAGE_NONE])) {
-          $see_also = $data['see also'];
-          $see_also = str_replace('See also, for example, ', '', $see_also);
-          $see_alsos = explode(';', $see_also);
+  if (!empty($themes)) {
+    $term = pocam_extract_create_terms($themes, 'theme', $data['_id']);
+    $node_wrapper->field_theme->set($term->tid);
 
-          $links = array();
-          foreach ($see_alsos as $item) {
-            $parts = explode(' ', trim($item));
-            $links[] = array(
-              'title' => trim($item),
-              'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
-            );
-          }
-          $term->field_see_also[LANGUAGE_NONE] = $links;
-          taxonomy_term_save($term);
+    // Update see also fields on term.
+    if (isset($data['see also']) && !empty($data['see also'])) {
+      // Only update if it's empty.
+      if (!isset($term->field_see_also[LANGUAGE_NONE]) || empty($term->field_see_also[LANGUAGE_NONE])) {
+        $see_also = $data['see also'];
+        $see_also = str_replace('See also, for example, ', '', $see_also);
+        $see_alsos = explode(';', $see_also);
+
+        $links = array();
+        foreach ($see_alsos as $item) {
+          $parts = explode(' ', trim($item));
+          $links[] = array(
+            'title' => trim($item),
+            'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
+          );
         }
+        $term->field_see_also[LANGUAGE_NONE] = $links;
+        taxonomy_term_save($term);
       }
     }
   }
