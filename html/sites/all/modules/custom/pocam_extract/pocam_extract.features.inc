@@ -62,7 +62,7 @@ function pocam_extract_default_search_api_index() {
       "fields" : {
         "field_document_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_document_type:name" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.1" },
-        "field_link:title" : { "type" : "text" },
+        "field_link:title" : { "type" : "text", "boost" : "3.0" },
         "field_see_also:title" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.5" },
         "field_text:value" : { "type" : "text", "boost" : "5.0" },
         "field_theme" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -115,7 +115,7 @@ function pocam_extract_default_search_api_index() {
           }
         },
         "search_api_tokenizer" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "20",
           "settings" : {
             "fields" : {
@@ -128,7 +128,7 @@ function pocam_extract_default_search_api_index() {
           }
         },
         "search_api_stopwords" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "30",
           "settings" : {
             "fields" : {
@@ -141,16 +141,9 @@ function pocam_extract_default_search_api_index() {
           }
         },
         "search_api_porter_stemmer" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "35",
-          "settings" : {
-            "fields" : {
-              "field_link:title" : true,
-              "field_see_also:title" : true,
-              "field_text:value" : true
-            },
-            "exceptions" : "texan=texa"
-          }
+          "settings" : { "fields" : { "field_text:value" : true }, "exceptions" : "texan=texa" }
         },
         "search_api_highlighting" : {
           "status" : 1,
@@ -165,7 +158,7 @@ function pocam_extract_default_search_api_index() {
               "field_see_also:title" : "field_see_also:title"
             },
             "highlight" : "always",
-            "highlight_partial" : 1
+            "highlight_partial" : 0
           }
         }
       }
@@ -205,7 +198,7 @@ function pocam_extract_default_search_api_server() {
           "field_link:title" : {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "text",
-            "boost" : "1.0"
+            "boost" : "3.0"
           },
           "field_see_also:title" : {
             "table" : "search_api_db_pocam_extracts_text",
