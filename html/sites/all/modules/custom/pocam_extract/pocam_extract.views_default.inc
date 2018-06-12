@@ -73,7 +73,8 @@ function pocam_extract_views_default_views() {
   $handler->display->display_options['fields']['field_text_value']['id'] = 'field_text_value';
   $handler->display->display_options['fields']['field_text_value']['table'] = 'search_api_index_pocam_extracts';
   $handler->display->display_options['fields']['field_text_value']['field'] = 'field_text_value';
-  $handler->display->display_options['fields']['field_text_value']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['field_text_value']['label'] = 'Text';
+  $handler->display->display_options['fields']['field_text_value']['link_to_entity'] = 0;
   /* Field: Indexed Node: Link */
   $handler->display->display_options['fields']['field_link']['id'] = 'field_link';
   $handler->display->display_options['fields']['field_link']['table'] = 'search_api_index_pocam_extracts';
