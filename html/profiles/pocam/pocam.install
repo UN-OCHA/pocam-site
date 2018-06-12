@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * POCAM install profile.
@@ -8,6 +9,8 @@
  * Implements hook_install().
  */
 function pocam_install() {
+  $t = get_t();
+
   // Do not rebuild features during install.
   variable_set('features_rebuild_on_module_install', FALSE);
 
@@ -112,7 +115,16 @@ function pocam_install() {
       'cache' => -1,
     ),
   );
-  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  $query = db_insert('block')->fields(array(
+    'module',
+    'delta',
+    'theme',
+    'status',
+    'weight',
+    'region',
+    'pages',
+    'cache',
+  ));
   foreach ($blocks as $block) {
     $query->values($block);
   }
@@ -124,7 +136,7 @@ function pocam_install() {
   user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
   user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));
 
-  // Create a default role for site administrators, with all available permissions assigned.
+  // Create a default role for site administrators.
   $admin_role = new stdClass();
   $admin_role->name = 'administrator';
   $admin_role->weight = 2;
@@ -140,7 +152,7 @@ function pocam_install() {
 
   // Create a Home link in the main menu.
   $item = array(
-    'link_title' => st('Home'),
+    'link_title' => $t('Home'),
     'link_path' => '<front>',
     'menu_name' => 'main-menu',
   );
@@ -170,13 +182,16 @@ function pocam_install_tasks_alter(&$tasks, $install_state) {
  * Perform final steps.
  */
 function pocam_install_finished(&$install_state) {
+  $t = get_t();
+
   module_enable(array(
     'pocam_general',
     'pocam_extract',
   ));
 
-  drupal_set_title(st('@drupal installation complete', array('@drupal' => drupal_install_profile_distribution_name())), PASS_THROUGH);
-  $messages = drupal_set_message();
+  drupal_set_title($t('@drupal installation complete', array(
+    '@drupal' => drupal_install_profile_distribution_name(),
+  )), PASS_THROUGH);
 
   // Remember the profile which was used.
   variable_set('install_profile', drupal_get_profile());
@@ -188,7 +203,7 @@ function pocam_install_finished(&$install_state) {
   // Flush all caches.
   drupal_flush_all_caches();
 
-  // Install profiles are always loaded last
+  // Install profiles are always loaded last.
   db_update('system')
     ->fields(array('weight' => 1000))
     ->condition('type', 'module')
@@ -209,4 +224,16 @@ function pocam_install_finished(&$install_state) {
 
   // Flush all caches.
   drupal_flush_all_caches();
+}
+
+/**
+ * Implements hook_update_N().
+ *
+ * Disable toolbar, as admin_menu is enabled.
+ */
+function pocam_update_7001(&$sandbox) {
+  $modules = array('toolbar');
+
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
 }
