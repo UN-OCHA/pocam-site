@@ -4,6 +4,10 @@
  * @file
  * Theme implementation to display a single Drupal page.
  */
+
+// Remove messsage.
+unset($page['content']['system_main']['default_message']);
+
 ?>
 <div class="page-wrapper">
   <?php include 'header.inc'; ?>
