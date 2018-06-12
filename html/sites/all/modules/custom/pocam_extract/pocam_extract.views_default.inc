@@ -29,6 +29,7 @@ function pocam_extract_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['search_api_bypass_access'] = 0;
   $handler->display->display_options['query']['options']['entity_access'] = 0;
+  $handler->display->display_options['query']['options']['parse_mode'] = 'single';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '25';
@@ -111,7 +112,6 @@ function pocam_extract_views_default_views() {
     'field_see_also:title' => 'field_see_also:title',
     'field_text:value' => 'field_text:value',
     'field_theme:field_long_name' => 'field_theme:field_long_name',
-    'field_theme:field_see_also:title' => 'field_theme:field_see_also:title',
     'field_theme:name' => 'field_theme:name',
   );
 

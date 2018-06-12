@@ -123,12 +123,12 @@ function pocam_extract_default_search_api_index() {
               "field_see_also:title" : true,
               "field_text:value" : true
             },
-            "spaces" : "[^[:alnum:]]",
-            "ignorable" : "[\\u0027]"
+            "spaces" : "[^[:alnum:]\\/]",
+            "ignorable" : ""
           }
         },
         "search_api_stopwords" : {
-          "status" : 1,
+          "status" : 0,
           "weight" : "30",
           "settings" : {
             "fields" : {
@@ -141,9 +141,17 @@ function pocam_extract_default_search_api_index() {
           }
         },
         "search_api_porter_stemmer" : {
-          "status" : 1,
+          "status" : 0,
           "weight" : "35",
-          "settings" : { "fields" : { "field_text:value" : true }, "exceptions" : "texan=texa" }
+          "settings" : {
+            "fields" : {
+              "field_theme" : true,
+              "field_link:title" : true,
+              "field_text:value" : true,
+              "field_theme:name" : true
+            },
+            "exceptions" : "texan=texa"
+          }
         },
         "search_api_highlighting" : {
           "status" : 1,
@@ -158,7 +166,7 @@ function pocam_extract_default_search_api_index() {
               "field_see_also:title" : "field_see_also:title"
             },
             "highlight" : "always",
-            "highlight_partial" : 0
+            "highlight_partial" : 1
           }
         }
       }
