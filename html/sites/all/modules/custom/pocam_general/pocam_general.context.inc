@@ -44,6 +44,12 @@ function pocam_general_context_default_contexts() {
           'region' => 'content',
           'weight' => '-7',
         ),
+        'current_search-standard' => array(
+          'module' => 'current_search',
+          'delta' => 'standard',
+          'region' => 'content',
+          'weight' => '-6',
+        ),
       ),
     ),
   );

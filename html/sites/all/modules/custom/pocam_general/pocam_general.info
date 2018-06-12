@@ -5,6 +5,7 @@ package = POCAM
 dependencies[] = admin_menu
 dependencies[] = context
 dependencies[] = ctools
+dependencies[] = current_search
 dependencies[] = entity
 dependencies[] = environment_indicator
 dependencies[] = facetapi

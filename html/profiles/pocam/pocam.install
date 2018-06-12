@@ -235,3 +235,12 @@ function pocam_update_7001(&$sandbox) {
   module_disable($modules);
   drupal_uninstall_modules($modules);
 }
+
+/**
+ * Enbable current search block.
+ */
+function pocam_update_7002(&$sandbox) {
+  $modules = array('current_search');
+
+  module_enable($modules);
+}
