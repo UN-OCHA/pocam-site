@@ -536,8 +536,8 @@ function pocam_extract_facetapi_default_facet_settings() {
     'widget' => 'facetapi_select_dropdowns',
     'filters' => array(),
     'active_sorts' => array(
-      'active' => 'active',
       'display' => 'display',
+      'active' => 0,
       'count' => 0,
       'indexed' => 0,
     ),
@@ -550,7 +550,7 @@ function pocam_extract_facetapi_default_facet_settings() {
     'sort_order' => array(
       'active' => '3',
       'count' => '3',
-      'display' => '4',
+      'display' => '3',
       'indexed' => '4',
     ),
     'empty_behavior' => 'none',
