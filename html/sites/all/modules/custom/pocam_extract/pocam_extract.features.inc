@@ -60,13 +60,16 @@ function pocam_extract_default_search_api_index() {
       "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
+        "field_document_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_document_type:name" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.1" },
         "field_link:title" : { "type" : "text" },
         "field_see_also:title" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.5" },
         "field_text:value" : { "type" : "text", "boost" : "5.0" },
+        "field_theme" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_theme:field_long_name" : { "type" : "text", "boost" : "0.8" },
         "field_theme:field_see_also:title" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.3" },
         "field_theme:name" : { "type" : "text" },
+        "field_year" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" }
       },
       "data_alter_callbacks" : {
@@ -224,6 +227,24 @@ function pocam_extract_default_search_api_server() {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "list\\u003Ctext\\u003E",
             "boost" : "0.3"
+          },
+          "field_year" : {
+            "table" : "search_api_db_pocam_extracts",
+            "column" : "field_year",
+            "type" : "integer",
+            "boost" : "1.0"
+          },
+          "field_document_type" : {
+            "table" : "search_api_db_pocam_extracts_field_document_type",
+            "column" : "value",
+            "type" : "list\\u003Cinteger\\u003E",
+            "boost" : "1.0"
+          },
+          "field_theme" : {
+            "table" : "search_api_db_pocam_extracts",
+            "column" : "field_theme",
+            "type" : "integer",
+            "boost" : "1.0"
           }
         }
       }

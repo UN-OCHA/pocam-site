@@ -26,17 +26,23 @@ function pocam_general_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'facetapi-0Pusq0zftXdOJDSRLOSFYp7IB6GKKuh1' => array(
+        'facetapi-7TqCFBUvppfBoYrlTYxf0VxXrnz4llZ7' => array(
           'module' => 'facetapi',
-          'delta' => '0Pusq0zftXdOJDSRLOSFYp7IB6GKKuh1',
-          'region' => 'content',
-          'weight' => '-10',
-        ),
-        'facetapi-h4J767t1sdzXEtEOAD03WQ9E8BvwROxn' => array(
-          'module' => 'facetapi',
-          'delta' => 'h4J767t1sdzXEtEOAD03WQ9E8BvwROxn',
+          'delta' => '7TqCFBUvppfBoYrlTYxf0VxXrnz4llZ7',
           'region' => 'content',
           'weight' => '-9',
+        ),
+        'facetapi-jMt8phZnpIgZZNTtJ71tATNsoZgFxqKb' => array(
+          'module' => 'facetapi',
+          'delta' => 'jMt8phZnpIgZZNTtJ71tATNsoZgFxqKb',
+          'region' => 'content',
+          'weight' => '-8',
+        ),
+        'facetapi-h3E804ufRqmwuxTFodspV21rBJb00L2X' => array(
+          'module' => 'facetapi',
+          'delta' => 'h3E804ufRqmwuxTFodspV21rBJb00L2X',
+          'region' => 'content',
+          'weight' => '-7',
         ),
       ),
     ),
