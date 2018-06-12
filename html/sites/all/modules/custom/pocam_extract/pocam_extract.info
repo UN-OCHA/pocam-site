@@ -88,3 +88,5 @@ features[variable][] = node_submitted_pocam_extract
 features[views_view][] = extracts
 features_exclude[dependencies][ctools] = ctools
 features_exclude[dependencies][entity] = entity
+files[] = pocam_extract.service.inc
+files[] = pocam_extract.highlight.inc
