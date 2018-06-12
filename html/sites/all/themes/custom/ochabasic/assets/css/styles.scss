@@ -29,3 +29,8 @@
 @import '../sass/components/cd-header/_cd-header';
 @import '../sass/components/cd-header/_cd-nav';
 @import '../sass/components/cd-header/_cd-site-header';
+
+strong.highlight {
+  background-color: yellow;
+  padding: 0 5px;
+}

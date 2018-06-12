@@ -60,12 +60,12 @@ function pocam_extract_default_search_api_index() {
       "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
-        "field_document_type:name" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_document_type:name" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.1" },
         "field_link:title" : { "type" : "text" },
-        "field_see_also:title" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_text:value" : { "type" : "text", "boost" : "2.0" },
-        "field_theme:field_long_name" : { "type" : "text" },
-        "field_theme:field_see_also:title" : { "type" : "list\\u003Ctext\\u003E" },
+        "field_see_also:title" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.5" },
+        "field_text:value" : { "type" : "text", "boost" : "5.0" },
+        "field_theme:field_long_name" : { "type" : "text", "boost" : "0.8" },
+        "field_theme:field_see_also:title" : { "type" : "list\\u003Ctext\\u003E", "boost" : "0.3" },
         "field_theme:name" : { "type" : "text" },
         "search_api_language" : { "type" : "string" }
       },
@@ -91,9 +91,9 @@ function pocam_extract_default_search_api_index() {
           "status" : 1,
           "weight" : "0",
           "settings" : { "fields" : {
-              "field_text:value" : true,
               "field_link:title" : true,
-              "field_see_also:title" : true
+              "field_see_also:title" : true,
+              "field_text:value" : true
             }
           }
         },
@@ -112,9 +112,9 @@ function pocam_extract_default_search_api_index() {
           "weight" : "20",
           "settings" : {
             "fields" : {
-              "field_text:value" : true,
               "field_link:title" : true,
-              "field_see_also:title" : true
+              "field_see_also:title" : true,
+              "field_text:value" : true
             },
             "spaces" : "[^[:alnum:]]",
             "ignorable" : "[\\u0027]"
@@ -125,9 +125,9 @@ function pocam_extract_default_search_api_index() {
           "weight" : "30",
           "settings" : {
             "fields" : {
-              "field_text:value" : true,
               "field_link:title" : true,
-              "field_see_also:title" : true
+              "field_see_also:title" : true,
+              "field_text:value" : true
             },
             "file" : "",
             "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
@@ -138,9 +138,9 @@ function pocam_extract_default_search_api_index() {
           "weight" : "35",
           "settings" : {
             "fields" : {
-              "field_text:value" : true,
               "field_link:title" : true,
-              "field_see_also:title" : true
+              "field_see_also:title" : true,
+              "field_text:value" : true
             },
             "exceptions" : "texan=texa"
           }
@@ -149,7 +149,7 @@ function pocam_extract_default_search_api_index() {
           "status" : 1,
           "weight" : "40",
           "settings" : {
-            "prefix" : "\\u003Cstrong\\u003E",
+            "prefix" : "\\u003Cstrong class=\\u0022highlight\\u0022\\u003E",
             "suffix" : "\\u003C\\/strong\\u003E",
             "excerpt" : 1,
             "excerpt_length" : "256",
@@ -193,7 +193,7 @@ function pocam_extract_default_search_api_server() {
           "field_text:value" : {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "text",
-            "boost" : "2.0"
+            "boost" : "5.0"
           },
           "field_link:title" : {
             "table" : "search_api_db_pocam_extracts_text",
@@ -203,12 +203,12 @@ function pocam_extract_default_search_api_server() {
           "field_see_also:title" : {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "list\\u003Ctext\\u003E",
-            "boost" : "1.0"
+            "boost" : "0.5"
           },
           "field_document_type:name" : {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "list\\u003Ctext\\u003E",
-            "boost" : "1.0"
+            "boost" : "0.1"
           },
           "field_theme:name" : {
             "table" : "search_api_db_pocam_extracts_text",
@@ -218,12 +218,12 @@ function pocam_extract_default_search_api_server() {
           "field_theme:field_long_name" : {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "text",
-            "boost" : "1.0"
+            "boost" : "0.8"
           },
           "field_theme:field_see_also:title" : {
             "table" : "search_api_db_pocam_extracts_text",
             "type" : "list\\u003Ctext\\u003E",
-            "boost" : "1.0"
+            "boost" : "0.3"
           }
         }
       }
