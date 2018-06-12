@@ -210,3 +210,15 @@ function pocam_install_finished(&$install_state) {
   // Flush all caches.
   drupal_flush_all_caches();
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Disable toolbar, as admin_menu is enabled.
+ */
+function pocam_update_7001(&$sandbox) {
+  $modules = array('toolbar');
+
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
