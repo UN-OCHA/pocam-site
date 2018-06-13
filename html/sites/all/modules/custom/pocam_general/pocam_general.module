@@ -6,3 +6,20 @@
  */
 
 include_once 'pocam_general.features.inc';
+
+/**
+ * Implements advagg_mod_critical_css_file_pre_alter().
+ */
+function pocam_general_advagg_mod_critical_css_file_pre_alter(&$filename, &$params, &$inline_strings) {
+  if (!isset($params[0][6])) {
+    return;
+  }
+
+  if (strpos($params[0][6], 'extracts/') !== FALSE) {
+    $params[0][6] = 'extracts';
+    $params[0][7] = $params[0][6];
+    $params[0][8] = $params[0][6];
+    $params[0][9] = $params[0][6];
+    $params[0][10] = $params[0][6];
+  }
+}
