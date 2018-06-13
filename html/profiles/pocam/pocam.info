@@ -37,3 +37,4 @@ dependencies[] = facetapi_select
 dependencies[] = views
 dependencies[] = fe_block
 dependencies[] = context
+dependencies[] = admin_denied
