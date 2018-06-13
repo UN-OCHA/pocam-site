@@ -40,7 +40,10 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          'assets/css/styles.css': 'assets/css/styles.css'
+          'assets/css/styles.css': 'assets/css/styles.css',
+          'critical-css/anonymous/urls/front.css': 'critical-css/anonymous/urls/front.css',
+          'critical-css/anonymous/urls/extracts.css': 'critical-css/anonymous/urls/extracts.css',
+          'critical-css/anonymous/type/pocam_extract.css': 'critical-css/anonymous/type/pocam_extract.css'
         }
       }
     },
@@ -57,6 +60,33 @@ module.exports = function(grunt) {
         ],
         uglify: true
       }
+    },
+
+    criticalcss: {
+      options: {
+        filename: 'assets/css/styles.css',
+        width: 1200,
+        height: 900,
+        buffer: 1200*1200
+      },
+      home: {
+        options: {
+          url: 'http://aide.docksal',
+          outputfile: 'critical-css/anonymous/urls/front.css',
+        }
+      },
+      extract: {
+        options: {
+          url: 'http://aide.docksal/extracts',
+          outputfile: 'critical-css/anonymous/urls/extracts.css',
+        }
+      },
+      page: {
+        options: {
+          url: 'http://aide.docksal/node/1',
+          outputfile: 'critical-css/anonymous/type/pocam_extract.css',
+        }
+      },
     }
   });
 
@@ -64,5 +94,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-modernizr"); //not picked up by load-grunt-tasks
 
   grunt.registerTask('default', ['sass_import','sass', 'autoprefixer', 'cssmin', 'modernizr']);
+  grunt.registerTask('critical', ['criticalcss', 'cssmin', 'modernizr']);
 
 };
