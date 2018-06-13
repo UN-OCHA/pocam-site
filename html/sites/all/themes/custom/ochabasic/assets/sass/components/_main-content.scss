@@ -1,33 +1,28 @@
 .main-content {
-	img {
-		display: block;
-		width: 80%;
-		max-width: 280px;
-		margin: 0 auto;
-	}
+  img {
+    display: block;
+    width: 80%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
 }
 
-
 @include media-query(sm) {
-
-	.main-content {
-		img {
-			float: right;
-			max-width: 40%;
-			margin: 0;
-		}
-	}
-
+  .main-content {
+    img {
+      float: right;
+      max-width: 40%;
+      margin: 0;
+    }
+  }
 }
 
 @include media-query(md) {
-
-	.main-content {
-		img {
-			max-width: 30%;
-		}
-	}
-
+  .main-content {
+    img {
+      max-width: 30%;
+    }
+  }
 }
 
 strong.highlight {
@@ -38,43 +33,37 @@ strong.highlight {
 .region-content-top {
   @include clearfix;
   margin-bottom: 2em;
-
   .facetapi-select {
-	max-width: 100%;
+    max-width: 100%;
   }
-
   #block-current-search-standard {
-	padding: 10px;
-	background-color: #dfdfdf;
-	margin-top: .5em;
+    padding: 10px;
+    background-color: #dfdfdf;
+    margin-top: .5em;
   }
-
   @include media-query(md) {
     .block-facetapi {
       width: 32%;
-	  float: left;
-	  margin-left: 1%;
-
-	  &:first-child {
-		margin-left: 0;
+      float: left;
+      margin-left: 1%;
+      &:first-child {
+        margin-left: 0;
       }
-	  &:nth-child(3) {
-		float: right;
+      &:nth-child(3) {
+        float: right;
       }
-	}
-
-	#block-views-exp-extracts-page {
-	  float: left;
-	}
-
-	#block-current-search-standard {
-	  float: right;
-	}
+    }
+    #block-views-exp-extracts-page {
+      float: left;
+    }
+    #block-current-search-standard {
+      float: right;
+    }
   }
 }
 
 .views-exposed-widget {
-  max-width: 70vw;	
+  max-width: 70vw;
 }
 
 .views-exposed-form .views-exposed-widget .form-submit {
@@ -84,18 +73,16 @@ strong.highlight {
 .views-table {
   th,
   td {
-	padding: 10px;
-	white-space: nowrap;
-	&:first-child {
-		white-space: normal;
-	}
+    padding: 10px;
+    white-space: nowrap;
+    &:first-child {
+      white-space: normal;
+    }
   }
-
   p {
-	margin-bottom: 0;
+    margin-bottom: 0;
   }
-
   tr.even {
-	background-color: #ffffff;
+    background-color: #ffffff;
   }
 }
