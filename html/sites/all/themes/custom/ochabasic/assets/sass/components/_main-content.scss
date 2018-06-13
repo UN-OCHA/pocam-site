@@ -33,14 +33,18 @@ strong.highlight {
 .region-content-top {
   @include clearfix;
   margin-bottom: 2em;
+
   .facetapi-select {
     max-width: 100%;
+    width: 100%
   }
+
   #block-current-search-standard {
     padding: 10px;
     background-color: #dfdfdf;
     margin-top: .5em;
   }
+
   @include media-query(md) {
     .block-facetapi {
       width: 32%;
