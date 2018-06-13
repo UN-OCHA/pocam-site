@@ -36,3 +36,4 @@ features[variable][] = chosen_search_contains
 features[variable][] = site_frontpage
 features[variable][] = site_name
 features[variable][] = theme_default
+features[variable][] = theme_ochabasic_settings
