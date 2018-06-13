@@ -29,3 +29,17 @@
 	}
 
 }
+
+strong.highlight {
+  background-color: yellow;
+  padding: 0 5px;
+}
+
+.region-content-top {
+  @include clearfix;
+  .block-facetapi {
+	width: 33%;
+	float: left;
+  }
+}
+  
