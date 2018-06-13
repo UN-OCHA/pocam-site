@@ -21,10 +21,10 @@ function pocam_extract_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
+      'ochabasic' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'bartik',
+        'theme' => 'ochabasic',
         'weight' => 0,
       ),
       'seven' => array(
@@ -47,10 +47,10 @@ function pocam_extract_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
+      'ochabasic' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'bartik',
+        'theme' => 'ochabasic',
         'weight' => 0,
       ),
       'seven' => array(
@@ -73,10 +73,10 @@ function pocam_extract_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
+      'ochabasic' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'bartik',
+        'theme' => 'ochabasic',
         'weight' => 0,
       ),
       'seven' => array(
@@ -99,10 +99,10 @@ function pocam_extract_default_fe_block_settings() {
     'pages' => '',
     'roles' => array(),
     'themes' => array(
-      'bartik' => array(
+      'ochabasic' => array(
         'region' => '',
         'status' => 0,
-        'theme' => 'bartik',
+        'theme' => 'ochabasic',
         'weight' => 0,
       ),
       'seven' => array(
