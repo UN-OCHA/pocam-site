@@ -30,7 +30,7 @@
         "drupal/filefield_nginx_progress": "^2.3",
         "drupal/filefield_paths": "^1.0",
         "drupal/hybridauth": "^2.15",
-        "drupal/jquery_update": "^2.7",
+        "drupal/jquery_update": "^3.0",
         "drupal/libraries": "^2.3",
         "drupal/link": "^1.5",
         "drupal/markdown": "^1.5",
@@ -64,7 +64,7 @@
             "url": "https://packages.drupal.org/7"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
     "extra": {
         "drupal-composer-helper": {
             "web-prefix": "html",
