@@ -253,3 +253,18 @@ function pocam_update_7003(&$sandbox) {
 
   module_enable($modules);
 }
+
+/**
+ * Enable advagg module.
+ */
+function pocam_update_7004(&$sandbox) {
+  $modules = array(
+    'advagg_css_compress',
+    'advagg_js_compress',
+    'advagg_critical_css',
+    'advagg_mod',
+    'advagg',
+  );
+
+  module_enable($modules);
+}
