@@ -32,7 +32,7 @@
 
 strong.highlight {
   background-color: yellow;
-  padding: 0 5px;
+  padding: 0 0.1em;
 }
 
 .region-content-top {
@@ -84,7 +84,15 @@ strong.highlight {
 .views-table {
   th,
   td {
-    padding: 3px 5px;
+	padding: 10px;
+	white-space: nowrap;
+	&:first-child {
+		white-space: normal;
+	}
+  }
+
+  p {
+	margin-bottom: 0;
   }
 
   tr.even {
