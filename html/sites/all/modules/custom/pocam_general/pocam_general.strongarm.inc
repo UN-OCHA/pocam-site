@@ -20,6 +20,153 @@ function pocam_general_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_admin_mode';
+  $strongarm->value = '2';
+  $export['advagg_admin_mode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_ajax_render_alter';
+  $strongarm->value = 1;
+  $export['advagg_ajax_render_alter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_brotli';
+  $strongarm->value = FALSE;
+  $export['advagg_brotli'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_cache_level';
+  $strongarm->value = 3;
+  $export['advagg_cache_level'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_combine_css_media';
+  $strongarm->value = TRUE;
+  $export['advagg_combine_css_media'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_convert_absolute_to_protocol_relative_path';
+  $strongarm->value = 1;
+  $export['advagg_convert_absolute_to_protocol_relative_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_convert_absolute_to_relative_path';
+  $strongarm->value = 1;
+  $export['advagg_convert_absolute_to_relative_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_core_groups';
+  $strongarm->value = FALSE;
+  $export['advagg_core_groups'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_cron_frequency';
+  $strongarm->value = '82800';
+  $export['advagg_cron_frequency'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_css_absolute_path';
+  $strongarm->value = 0;
+  $export['advagg_css_absolute_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_css_fix_type';
+  $strongarm->value = TRUE;
+  $export['advagg_css_fix_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_css_remove_empty_files';
+  $strongarm->value = TRUE;
+  $export['advagg_css_remove_empty_files'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_disable_on_admin';
+  $strongarm->value = 0;
+  $export['advagg_disable_on_admin'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_disable_on_listed_pages';
+  $strongarm->value = '';
+  $export['advagg_disable_on_listed_pages'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_enabled';
+  $strongarm->value = TRUE;
+  $export['advagg_enabled'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_force_https_path';
+  $strongarm->value = 0;
+  $export['advagg_force_https_path'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_gzip';
+  $strongarm->value = 1;
+  $export['advagg_gzip'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_htaccess_symlinksifownermatch';
+  $strongarm->value = 0;
+  $export['advagg_htaccess_symlinksifownermatch'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_ie_css_selector_limiter';
+  $strongarm->value = FALSE;
+  $export['advagg_ie_css_selector_limiter'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_ie_css_selector_limiter_value';
+  $strongarm->value = 4095;
+  $export['advagg_ie_css_selector_limiter_value'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_include_base_url';
+  $strongarm->value = 0;
+  $export['advagg_include_base_url'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'advagg_js_compressor';
   $strongarm->value = '1';
   $export['advagg_js_compressor'] = $strongarm;
@@ -51,6 +198,27 @@ function pocam_general_strongarm() {
   $strongarm->name = 'advagg_js_compress_packer';
   $strongarm->value = 0;
   $export['advagg_js_compress_packer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_js_fix_type';
+  $strongarm->value = TRUE;
+  $export['advagg_js_fix_type'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_js_remove_empty_files';
+  $strongarm->value = TRUE;
+  $export['advagg_js_remove_empty_files'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_mod_admin_mode';
+  $strongarm->value = '4';
+  $export['advagg_mod_admin_mode'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -303,6 +471,130 @@ function pocam_general_strongarm() {
   $strongarm->name = 'advagg_mod_wrap_inline_js_xpath';
   $strongarm->value = 0;
   $export['advagg_mod_wrap_inline_js_xpath'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_remove_missing_files_from_db_time';
+  $strongarm->value = '1209600';
+  $export['advagg_remove_missing_files_from_db_time'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_remove_old_unused_aggregates_time';
+  $strongarm->value = '3888000';
+  $export['advagg_remove_old_unused_aggregates_time'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_resource_hints_dns_prefetch';
+  $strongarm->value = TRUE;
+  $export['advagg_resource_hints_dns_prefetch'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_resource_hints_location';
+  $strongarm->value = 1;
+  $export['advagg_resource_hints_location'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_resource_hints_preconnect';
+  $strongarm->value = TRUE;
+  $export['advagg_resource_hints_preconnect'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_resource_hints_preload';
+  $strongarm->value = FALSE;
+  $export['advagg_resource_hints_preload'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_resource_hints_preload_settings';
+  $strongarm->value = array(
+    'style' => array(
+      '#weight' => '-10',
+      'enabled' => 1,
+      'external' => 1,
+      'local' => 1,
+      'push' => 0,
+    ),
+    'font' => array(
+      '#weight' => '-9',
+      'enabled' => 1,
+      'external' => 1,
+      'local' => 1,
+      'push' => 0,
+    ),
+    'script' => array(
+      '#weight' => '-8',
+      'enabled' => 1,
+      'external' => 1,
+      'local' => 1,
+      'push' => 0,
+    ),
+    'svg' => array(
+      '#weight' => '-7',
+      'enabled' => 1,
+      'external' => 1,
+      'local' => 1,
+      'push' => 0,
+    ),
+    'image' => array(
+      '#weight' => '-6',
+      'enabled' => 1,
+      'external' => 1,
+      'local' => 1,
+      'push' => 0,
+    ),
+    'all_others' => array(
+      0 => TRUE,
+      1 => FALSE,
+    ),
+  );
+  $export['advagg_resource_hints_preload_settings'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_resource_hints_use_immutable';
+  $strongarm->value = TRUE;
+  $export['advagg_resource_hints_use_immutable'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_root_dir_prefix';
+  $strongarm->value = 'public://';
+  $export['advagg_root_dir_prefix'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_scripts_scope_anywhere';
+  $strongarm->value = 0;
+  $export['advagg_scripts_scope_anywhere'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_skip_file_create_url_inside_css';
+  $strongarm->value = 1;
+  $export['advagg_skip_file_create_url_inside_css'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'advagg_use_httprl';
+  $strongarm->value = TRUE;
+  $export['advagg_use_httprl'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
