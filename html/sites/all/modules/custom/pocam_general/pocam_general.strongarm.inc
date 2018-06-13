@@ -182,7 +182,7 @@ function pocam_general_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'advagg_mod_admin_mode';
-  $strongarm->value = 0;
+  $strongarm->value = '4';
   $export['advagg_mod_admin_mode'] = $strongarm;
 
   $strongarm = new stdClass();
