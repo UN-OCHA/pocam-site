@@ -82,7 +82,7 @@
             "html/sites/all/modules/features",
             "html/sites/all/themes/custom",
             "html/sites/all/translations",
-            "html/sites/profiles/pocam",
+            "html/profiles/pocam",
             "html/sites/default"
         ],
         "patches-file": "composer.patches.json",
