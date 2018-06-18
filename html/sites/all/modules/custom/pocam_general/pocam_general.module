@@ -23,3 +23,133 @@ function pocam_general_advagg_mod_critical_css_file_pre_alter(&$filename, &$para
     $params[0][10] = $params[0][6];
   }
 }
+
+/**
+ * Implements hook_menu().
+ */
+function pocam_general_menu() {
+  $items = array();
+
+  $items['home'] = array(
+    'title' => 'Protection of Civilians Aide Memoire',
+    'page callback' => '_pocam_general_home',
+    'access arguments' => array('access content'),
+  );
+
+  $items['about'] = array(
+    'title' => 'What is the Protection of Civilians Aide Memoire?',
+    'page callback' => '_pocam_general_about',
+    'access arguments' => array('access content'),
+  );
+
+  $items['theme'] = array(
+    'title' => 'Themes',
+    'page callback' => '_pocam_general_themes',
+    'access arguments' => array('access content'),
+  );
+
+  return $items;
+}
+
+/**
+ * Render home page.
+ */
+function _pocam_general_home() {
+  $block = module_invoke('views', 'block_view', '-exp-extracts-page');
+
+  return array(
+    'title' => array(
+      '#markup' => 'Protection of Civilians Aide Memoire',
+      '#prefix' => '<h1>',
+      '#suffix' => '</h1>',
+    ),
+    'intro' => array(
+      '#markup' => 'Search Security Council Resolutions and Statements',
+      '#prefix' => '<div class="intro">',
+      '#suffix' => '</div>',
+    ),
+    'search' => array(
+      '#markup' => render($block),
+      '#prefix' => '<div class="search-wrapper">',
+      '#suffix' => '</div>',
+    ),
+    'explanation' => array(
+      '#markup' => '
+        <p>The Aide Memoire serves is a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists [[the main themes and sub-themes]] that pertain to the protection of civilians, and proposes model language to address those; an addendum contains verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
+        <p><a href="/theme">Browse by theme</a></p>
+      ',
+      '#prefix' => '<div class="explanation">',
+      '#suffix' => '</div>',
+    ),
+  );
+}
+
+/**
+ * Render about page.
+ */
+function _pocam_general_about() {
+  return array(
+    'title' => array(
+      '#markup' => 'What is the Protection of Civilians Aide Memoire?',
+      '#prefix' => '<h1>',
+      '#suffix' => '</h1>',
+    ),
+    'text' => array(
+      '#markup' => '
+        <p>The Security Council Aide Memoire for the Consideration of Issues pertaining to the Protection of Civilians in Armed Conflict was elaborated in 2002 upon a request from the President of the Security Council to the Secretary-General (S/2001/614), and is periodically updated by OCHA. All editions of the Aide Memoire were discussed by the Security Council and annexed to a Security Council Presidential Statement.</p>
+        <p>The Aide Memoire serves as a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists the main themes and sub-themes that pertain to the protection of civilians, and proposes model language to address those; an addendum contains verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
+        <p>The physical version of the Aide Memoire, having evolved from a 7-page document (S/PRST/2002/6) to several hundred pages of references (most recent reference to be added), is in itself a testament to the relevance of the protection of civilians to the Security Council, and the importance the Security Council gives to this issue, which it called “one of the core issues on its agenda” (S/PRST/2015/23).</p>
+      ',
+      '#prefix' => '<div class="text">',
+      '#suffix' => '</div>',
+    ),
+    'search' => array(
+      '#theme' => 'item_list',
+      '#items' => _pocam_general_build_tree('theme'),
+      '#prefix' => '<div class="theme-wrapper">',
+      '#suffix' => '</div>',
+    ),
+  );
+}
+
+/**
+ * Render themes page.
+ */
+function _pocam_general_themes() {
+  return array(
+    'title' => array(
+      '#markup' => 'Themes',
+      '#prefix' => '<h1>',
+      '#suffix' => '</h1>',
+    ),
+    'search' => array(
+      '#theme' => 'item_list',
+      '#items' => _pocam_general_build_tree('theme'),
+      '#prefix' => '<div class="theme-wrapper">',
+      '#suffix' => '</div>',
+    ),
+  );
+}
+
+/**
+ * Build tree of links.
+ */
+function _pocam_general_build_tree($voc, $depth = 2) {
+  $links = array();
+  $vid = taxonomy_vocabulary_machine_name_load($voc)->vid;
+  $terms = taxonomy_get_tree($vid, 0, $depth);
+  foreach ($terms as $term) {
+    if ($term->parents[0] == 0) {
+      $links['p-' . $term->tid] = array(
+        'data' => l($term->name, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+      );
+    }
+    else {
+      $links['p-' . $term->parents[0]]['children'][] = array(
+        'data' => l($term->name, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+      );
+    }
+  }
+
+  return $links;
+}

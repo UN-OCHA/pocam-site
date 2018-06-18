@@ -67,7 +67,7 @@ function pocam_general_context_default_contexts() {
   $export['extract_search'] = $context;
 
   $context = new stdClass();
-  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->disabled = TRUE; /* Edit this to true to make a default context disabled initially */
   $context->api_version = 3;
   $context->name = 'home_page';
   $context->description = 'Home page';
@@ -87,6 +87,12 @@ function pocam_general_context_default_contexts() {
           'delta' => '-exp-extracts-page',
           'region' => 'content',
           'weight' => '-10',
+        ),
+        'views-43e546e4f4f3411600f496f39dec6797' => array(
+          'module' => 'views',
+          'delta' => '43e546e4f4f3411600f496f39dec6797',
+          'region' => 'content',
+          'weight' => '-9',
         ),
       ),
     ),
