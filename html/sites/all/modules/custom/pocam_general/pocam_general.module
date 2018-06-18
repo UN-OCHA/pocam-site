@@ -42,7 +42,7 @@ function pocam_general_menu() {
     'access arguments' => array('access content'),
   );
 
-  $items['themes'] = array(
+  $items['theme'] = array(
     'title' => 'Themes',
     'page callback' => '_pocam_general_themes',
     'access arguments' => array('access content'),
@@ -74,7 +74,10 @@ function _pocam_general_home() {
       '#suffix' => '</div>',
     ),
     'explanation' => array(
-      '#markup' => 'The Aide Memoire serves is a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists [[the main themes and sub-themes]] that pertain to the protection of civilians, and proposes model language to address those; an addendum contains verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.',
+      '#markup' => '
+        <p>The Aide Memoire serves is a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists [[the main themes and sub-themes]] that pertain to the protection of civilians, and proposes model language to address those; an addendum contains verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
+        <p><a href="/theme">Browse by theme</a></p>
+      ',
       '#prefix' => '<div class="explanation">',
       '#suffix' => '</div>',
     ),
@@ -85,23 +88,6 @@ function _pocam_general_home() {
  * Render about page.
  */
 function _pocam_general_about() {
-  // Build tree of terms.
-  $links = array();
-  $vid = taxonomy_vocabulary_machine_name_load('theme')->vid;
-  $terms = taxonomy_get_tree($vid, 0, 2);
-  foreach ($terms as $term) {
-    if ($term->parents[0] == 0) {
-      $links['p-' . $term->tid] = array(
-        'data' => l($term->name, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
-      );
-    }
-    else {
-      $links['p-' . $term->parents[0]]['children'][] = array(
-        'data' => l($term->name, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
-      );
-    }
-  }
-
   return array(
     'title' => array(
       '#markup' => 'What is the Protection of Civilians Aide Memoire?',
@@ -119,7 +105,7 @@ function _pocam_general_about() {
     ),
     'search' => array(
       '#theme' => 'item_list',
-      '#items' => $links,
+      '#items' => _pocam_general_build_tree('theme'),
       '#prefix' => '<div class="theme-wrapper">',
       '#suffix' => '</div>',
     ),
@@ -130,10 +116,28 @@ function _pocam_general_about() {
  * Render themes page.
  */
 function _pocam_general_themes() {
-  // Build tree of terms.
+  return array(
+    'title' => array(
+      '#markup' => 'Themes',
+      '#prefix' => '<h1>',
+      '#suffix' => '</h1>',
+    ),
+    'search' => array(
+      '#theme' => 'item_list',
+      '#items' => _pocam_general_build_tree('theme'),
+      '#prefix' => '<div class="theme-wrapper">',
+      '#suffix' => '</div>',
+    ),
+  );
+}
+
+/**
+ * Build tree of links.
+ */
+function _pocam_general_build_tree($voc, $depth = 2) {
   $links = array();
-  $vid = taxonomy_vocabulary_machine_name_load('theme')->vid;
-  $terms = taxonomy_get_tree($vid, 0, 2);
+  $vid = taxonomy_vocabulary_machine_name_load($voc)->vid;
+  $terms = taxonomy_get_tree($vid, 0, $depth);
   foreach ($terms as $term) {
     if ($term->parents[0] == 0) {
       $links['p-' . $term->tid] = array(
@@ -147,17 +151,5 @@ function _pocam_general_themes() {
     }
   }
 
-  return array(
-    'title' => array(
-      '#markup' => 'Themes',
-      '#prefix' => '<h1>',
-      '#suffix' => '</h1>',
-    ),
-    'search' => array(
-      '#theme' => 'item_list',
-      '#items' => $links,
-      '#prefix' => '<div class="theme-wrapper">',
-      '#suffix' => '</div>',
-    ),
-  );
+  return $links;
 }
