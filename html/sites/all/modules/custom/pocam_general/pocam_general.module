@@ -30,6 +30,13 @@ function pocam_general_advagg_mod_critical_css_file_pre_alter(&$filename, &$para
 function pocam_general_menu() {
   $items = array();
 
+  $items['login'] = array(
+    'title' => 'Log in',
+    'page callback' => 'pocam_general_login_redirect',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_CALLBACK,
+  );
+
   $items['home'] = array(
     'title' => 'Protection of Civilians Aide Memoire',
     'page callback' => '_pocam_general_home',
@@ -152,4 +159,14 @@ function _pocam_general_build_tree($voc, $depth = 2) {
   }
 
   return $links;
+}
+
+/**
+ * Redirect to hybrid auth.
+ */
+function pocam_general_login_redirect() {
+  drupal_goto('hybridauth/window/HumanitarianId', array(
+    'destination' => drupal_get_destination(),
+    'destination_error' => 'extracts',
+  ));
 }
