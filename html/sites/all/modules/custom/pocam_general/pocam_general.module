@@ -145,20 +145,45 @@ function _pocam_general_build_tree($voc, $depth = 2) {
   $links = array();
   $vid = taxonomy_vocabulary_machine_name_load($voc)->vid;
   $terms = taxonomy_get_tree($vid, 0, $depth);
+  $facet_count = _pocam_general_get_facet_count('field_theme');
   foreach ($terms as $term) {
+    $text = $term->name;
+    if (isset($facet_count[$term->tid])) {
+      $text .= ' (' . $facet_count[$term->tid] . ')';
+    }
     if ($term->parents[0] == 0) {
       $links['p-' . $term->tid] = array(
-        'data' => l($term->name, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+        'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
       );
     }
     else {
       $links['p-' . $term->parents[0]]['children'][] = array(
-        'data' => l($term->name, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+        'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
       );
     }
   }
 
   return $links;
+}
+
+/**
+ * Get facet counts from field.
+ */
+function _pocam_general_get_facet_count($field) {
+  $index = search_api_index_load('pocam_extracts');
+  $query = new SearchApiQuery($index);
+  $query->range(0, 0);
+  $query->setOption('skip result count', TRUE);
+  $results = $query->execute();
+
+  $tids = array();
+  if (isset($results['search_api_facets'][$field])) {
+    foreach ($results['search_api_facets'][$field] as $facet) {
+      $tids[intval(str_replace('"', '', $facet['filter']))] = $facet['count'];
+    }
+  }
+
+  return $tids;
 }
 
 /**
