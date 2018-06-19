@@ -78,7 +78,7 @@ function pocam_extract_facetapi_default_facet_settings() {
   $facet->enabled = FALSE;
   $facet->settings = array(
     'operator' => 'and',
-    'hard_limit' => '50',
+    'hard_limit' => '-1',
     'dependencies' => array(
       'bundle' => 'none',
       'bundle_selected' => array(),
@@ -90,7 +90,7 @@ function pocam_extract_facetapi_default_facet_settings() {
     'individual_parent' => '1',
     'query_type' => 'term',
     'limit_active_items' => 0,
-    'default_true' => TRUE,
+    'default_true' => '1',
     'facet_search_ids' => array(),
     'exclude' => 0,
     'pretty_paths_alias' => 'theme',
