@@ -150,16 +150,12 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Creates content of a given type provided in the form:
    *
-   * @Given list of events:
+   * @Given list of extracts:
    */
-  public function createEvents(TableNode $nodesTable) {
+  public function createExtracts(TableNode $nodesTable) {
     foreach ($nodesTable->getHash() as $nodeHash) {
-      if (!isset($nodeHash['field_event_date:value'])) {
-        $nodeHash['field_event_date:value'] = format_date(REQUEST_TIME, 'custom', 'Y-m-d\TH:i:s');
-        $nodeHash['field_event_date:value2'] = format_date(REQUEST_TIME + rand(15 * 60, 3 * 60 * 60), 'custom', 'Y-m-d\TH:i:s');
-      }
       $node = (object) $nodeHash;
-      $node->type = 'ev_event';
+      $node->type = 'pocam_extract';
       $this->nodeCreate($node);
     }
   }
