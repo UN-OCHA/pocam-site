@@ -59,6 +59,15 @@ function pocam_general_menu() {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function pocam_general_menu_alter(&$items) {
+  $items['user/register']['access callback'] = FALSE;
+  $items['user/password']['page callback'] = FALSE;
+  $items['user/login']['access callback'] = FALSE;
+}
+
+/**
  * Render home page.
  */
 function _pocam_general_home() {
