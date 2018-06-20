@@ -15,6 +15,7 @@ dependencies[] = hybridauth
 dependencies[] = menu
 dependencies[] = strongarm
 dependencies[] = views
+dependencies[] = chosen
 features[context][] = extract_search
 features[context][] = home_page
 features[ctools][] = context:context:3

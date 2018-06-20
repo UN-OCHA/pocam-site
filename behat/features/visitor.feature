@@ -17,10 +17,10 @@ Feature: See extracts
       | Sub 4       | Top B       |
       | Sub 5       | Top B       |
     And list of extracts:
-      | title       | field_text            | field_document_type | field_theme |
-      | Extract1    | Lorem ipsum extract 1 | Resolution          | Sub 1       |
-      | Extract2    | Lorem ipsum extract 2 | Statement           | Sub 2       |
-      | Extract3    | Lorem ipsum extract 3 | Resolution          | Sub 4       |
+      | title       | field_text            | field_document_type | field_theme | field_year |
+      | Extract1    | Lorem ipsum extract 1 | Resolution          | Sub 1       | 2018       |
+      | Extract2    | Lorem ipsum extract 2 | Statement           | Sub 2       | 2014       |
+      | Extract3    | Lorem ipsum extract 3 | Resolution          | Sub 4       | 2018       |
     And I run drush "search-api-index"
 
   @api
@@ -35,3 +35,12 @@ Feature: See extracts
     Then I should see "extract 1"
     And I should see "extract 2"
     And I should see "extract 3"
+
+  @api
+  Scenario: See the filters
+    When I go to "extracts"
+    And I wait for AJAX to finish
+    And I wait for AJAX to finish
+    When I click the ".facetapi-facet-field-year .chosen-container" element
+    Then I should see "2018"
+    And I should not see "2011"
