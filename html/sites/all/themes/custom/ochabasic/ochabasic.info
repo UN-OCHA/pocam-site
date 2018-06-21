@@ -11,3 +11,4 @@ stylesheets[all][] = assets/css/styles.css
 scripts[] = assets/js/bootstrap-dropdown.js
 scripts[] = assets/js/clipboard.min.js
 scripts[] = assets/js/modernizr-output.js
+scripts[] = assets/js/script.js
