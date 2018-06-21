@@ -37,9 +37,25 @@ Feature: See extracts
     And I should see "extract 3"
 
   @api
-  Scenario: See the filters
+  Scenario: See the document type filter
     When I go to "extracts"
     And I wait for AJAX to finish
+    When I click the ".facetapi-facet-field-document-type .chosen-container" element
+    Then I should see "Resolution"
+    And I should see "Statement"
+
+  @api
+  Scenario: See the theme filter
+    When I go to "extracts"
+    And I wait for AJAX to finish
+    When I click the ".facetapi-facet-field-theme .chosen-container" element
+    Then I should see "Top A"
+    And I should see "Sub 4"
+    And I should not see "Sub 3"
+
+  @api
+  Scenario: See the year filter
+    When I go to "extracts"
     And I wait for AJAX to finish
     When I click the ".facetapi-facet-field-year .chosen-container" element
     Then I should see "2018"
