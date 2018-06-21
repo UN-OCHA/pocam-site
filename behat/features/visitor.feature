@@ -60,3 +60,27 @@ Feature: See extracts
     When I click the ".facetapi-facet-field-year .chosen-container" element
     Then I should see "2018"
     And I should not see "2011"
+
+  @api
+  Scenario: Filter by document type
+    When I go to "extracts"
+    And I wait for AJAX to finish
+    And I set the chosen element ".facetapi-facet-field-document-type select" to "Resolution"
+    Then I should see "extract 1"
+    And I should not see "extract 2"
+
+  @api
+  Scenario: Filter by theme
+    When I go to "extracts"
+    And I wait for AJAX to finish
+    And I set the chosen element ".facetapi-facet-field-theme select" to "Top A"
+    Then I should see "extract 2"
+    And I should not see "extract 3"
+
+  @api
+  Scenario: Filter by year
+    When I go to "extracts"
+    And I wait for AJAX to finish
+    And I set the chosen element ".facetapi-facet-field-year select" to "2018"
+    Then I should see "extract 3"
+    And I should not see "extract 2"

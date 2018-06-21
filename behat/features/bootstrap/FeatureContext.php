@@ -54,7 +54,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $element_id = str_replace('-', '_', $element->getAttribute('id')) . '_chosen';
 
     $element = $session->getPage()->find('xpath', "//div[@id='{$element_id}']");
-
     if ($element->hasClass('chosen-container-single')) {
       // This is a single select element.
       $element = $session->getPage()->find('xpath', "//div[@id='{$element_id}']/a[@class='chosen-single']");
@@ -66,7 +65,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       $element->click();
     }
 
-    $selector = "//div[@id='{$element_id}']/div[@class='chosen-drop']/ul[@class='chosen-results']/li[text() = '{$value}']";
+    $selector = "//div[@id='{$element_id}']/div[@class='chosen-drop']/ul[@class='chosen-results']/li[contains(., '{$value}')]";
     $element = $session->getPage()->find('xpath', $selector);
 
     if (empty($element)) {
