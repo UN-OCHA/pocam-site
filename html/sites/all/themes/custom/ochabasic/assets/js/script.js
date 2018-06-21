@@ -13,6 +13,11 @@
           .find('.views-field-field-text-value p')
           .toggleClass('collapsed');
       });
+
+      // Collapse filters.
+      window.setTimeout(function () {
+        $('.search-filters').removeAttr('open');
+      }, 1500);
     }
   };
 })(jQuery);
