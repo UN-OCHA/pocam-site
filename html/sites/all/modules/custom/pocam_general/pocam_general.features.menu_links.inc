@@ -67,6 +67,26 @@ function pocam_general_menu_default_menu_links() {
     'weight' => 0,
     'customized' => 1,
   );
+  // Exported menu link: user-menu_themes:theme.
+  $menu_links['user-menu_themes:theme'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'theme',
+    'router_path' => 'theme',
+    'link_title' => 'Themes',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+      'identifier' => 'user-menu_themes:theme',
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 0,
+    'weight' => -50,
+    'customized' => 1,
+  );
   // Exported menu link: user-menu_user-account:user.
   $menu_links['user-menu_user-account:user'] = array(
     'menu_name' => 'user-menu',
@@ -91,6 +111,7 @@ function pocam_general_menu_default_menu_links() {
   t('About');
   t('Log out');
   t('Login');
+  t('Themes');
   t('User account');
 
   return $menu_links;
