@@ -24,11 +24,6 @@ Feature: See extracts
     And I run drush "search-api-index"
 
   @api
-  Scenario: Check homepage
-    Given I am on the homepage
-    Then I should see "Fulltext search"
-
-  @api
   Scenario: See the extracts
     When I go to "extracts"
     And I wait for AJAX to finish
