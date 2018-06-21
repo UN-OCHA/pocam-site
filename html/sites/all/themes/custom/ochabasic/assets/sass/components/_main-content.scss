@@ -99,6 +99,10 @@ strong.highlight {
   margin-bottom: 1em;
 }
 
+td.data--read-more {
+  display: none;
+}
+
 @media screen and (max-width: 769px) {
   table {
     border: 0;
@@ -136,6 +140,21 @@ strong.highlight {
     display: block;
     text-align: left;
     flex: 1;
+  }
+
+  td.views-field-field-link {
+    max-width: 33%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  td.views-field-view-node {
+    text-align: center;
+  }
+
+  td.data--read-more {
+    display: block;
+    text-align: right;
   }
 
   td.views-field-field-text-value {
