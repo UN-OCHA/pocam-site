@@ -26,7 +26,7 @@ Feature: Home page
   @api
   Scenario: Check homepage
     Given I am on the homepage
-    Then I should see "Fulltext search"
+    Then I should see "Search Security Council Resolutions and Statements"
 
   @api
   Scenario: See the extracts
