@@ -73,6 +73,9 @@ function pocam_general_menu_alter(&$items) {
 function _pocam_general_home() {
   $block = module_invoke('views', 'block_view', '-exp-extracts-page');
 
+  // Add placeholder text.
+  $block['content']['#markup'] = str_replace('id="edit-search-api-views-fulltext"', 'id="edit-search-api-views-fulltext" placeholder="Search for phrases or keywords"', $block['content']['#markup']);
+
   return array(
     'title' => array(
       '#markup' => 'Protection of Civilians Aide Memoire',
