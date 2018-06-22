@@ -281,3 +281,11 @@ input.cd-header-search__input:focus + * + .cd-header-search__active {
   }
 
 }
+
+.cd-site-header__inner {
+  justify-content: space-between;
+  
+  a {
+    flex: 1;
+  }
+}

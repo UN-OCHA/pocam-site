@@ -55,6 +55,19 @@
           <?php print t('Aide Memoire') ?>
         </a>
       <?php endif; ?>
+      <div class=cd-global-header__main_nav>
+        <?php if ($main_menu): ?>
+          <?php print theme('links__system_main_menu',
+            array(
+              'links' => $main_menu,
+              'attributes' => array(
+                'id' => 'main-menu',
+                'class' => array('cd-nav cd-nav--main'),
+              ),
+            )
+          ); ?>
+        <?php endif; ?>
+        </div>
     </div>
   </div>
 </header>
