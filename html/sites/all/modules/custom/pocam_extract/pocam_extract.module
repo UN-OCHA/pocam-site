@@ -252,3 +252,16 @@ function pocam_extract_search_api_processor_info_alter(array &$processors) {
     $processors['search_api_highlighting']['class'] = 'PocamExtractSearchApiHighlight';
   }
 }
+
+/**
+ * Returns HTML for a search keys facet item.
+ *
+ * @param $variables
+ *   An associative array containing the keys 'keys' and 'adapter'.
+ *
+ * @ingroup themeable
+ */
+function pocam_extract_current_search_keys($variables) {
+	dpm($variables, 'pocam_extract_current_search_keys');
+  return check_plain($variables['keys']);
+}

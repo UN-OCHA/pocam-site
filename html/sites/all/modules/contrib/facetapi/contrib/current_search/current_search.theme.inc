@@ -127,6 +127,7 @@ function theme_current_search_link_active($variables) {
  * @ingroup themeable
  */
 function theme_current_search_keys($variables) {
+	dpm($variables);
   return check_plain($variables['keys']);
 }
 

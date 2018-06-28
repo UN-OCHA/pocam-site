@@ -2,7 +2,9 @@ name = OCHABasic
 description = A very simple OCHA branded theme
 core = 7.x
 
-regions[content_top] = Content Top
+regions[content_top_1] = Content Top 1
+regions[content_top_2] = Content Top 2
+regions[content_top_3] = Content Top 3
 regions[content] = Content
 regions[lang_switch] = Language switcher
 
