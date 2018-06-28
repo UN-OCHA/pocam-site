@@ -184,3 +184,34 @@ td.data--read-more {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+#block-views-exp-extracts-page {
+  .form-item {
+    background: rgb(249, 251, 251);
+    padding: 0;
+  }
+
+  label {
+    display: none;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    text-align: left;
+    padding: 12px 24px 12px 0;
+    border:0;
+    border-bottom: 1px solid #ecf1f4;
+    position: relative;
+    color: #007ac0;
+    font-size: 16px;
+    font-size: 1.1428571429rem;
+    font-family: "Open Sans",helvetica,arial,sans-serif;
+    background: 0 0;
+    transition: all .3s ease;
+    cursor: pointer;
+  }
+
+  .views-exposed-form .views-exposed-widget .form-submit {
+    margin-top: 0;
+  }
+}
