@@ -31,7 +31,9 @@ unset($page['content']['system_main']['default_message']);
       </h1>
       <?php endif; ?>
 
-      <?php print render($page['content_top']); ?>
+      <?php print render($page['content_top_1']); ?>
+      <?php print render($page['content_top_2']); ?>
+      <?php print render($page['content_top_3']); ?>
       <?php print render($page['content']); ?>
     </div>
   </div>

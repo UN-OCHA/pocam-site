@@ -238,7 +238,7 @@ function pocam_extract_field_widget_form_alter(&$element, &$form_state, $context
 /**
  * Implements hook_search_api_service_info_alter().
  */
-function pocam_extract_search_api_service_info_alter(array &$service_info) {
+function pocam_extract_search_api_service_info_alter(&$service_info) {
   if (!empty($service_info['search_api_db_service'])) {
     $service_info['search_api_db_service']['class'] = 'PocamExtractSearchApiDbService';
   }
@@ -247,7 +247,7 @@ function pocam_extract_search_api_service_info_alter(array &$service_info) {
 /**
  * Implements hook_search_api_processor_info_alter().
  */
-function pocam_extract_search_api_processor_info_alter(array &$processors) {
+function pocam_extract_search_api_processor_info_alter(&$processors) {
   if (!empty($processors['search_api_highlighting'])) {
     $processors['search_api_highlighting']['class'] = 'PocamExtractSearchApiHighlight';
   }

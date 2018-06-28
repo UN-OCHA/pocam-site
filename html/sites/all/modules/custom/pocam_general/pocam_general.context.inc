@@ -26,35 +26,35 @@ function pocam_general_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'views--exp-extracts-page' => array(
+          'module' => 'views',
+          'delta' => '-exp-extracts-page',
+          'region' => 'content_top_1',
+          'weight' => '-10',
+        ),
         'facetapi-jMt8phZnpIgZZNTtJ71tATNsoZgFxqKb' => array(
           'module' => 'facetapi',
           'delta' => 'jMt8phZnpIgZZNTtJ71tATNsoZgFxqKb',
-          'region' => 'content_top',
+          'region' => 'content_top_2',
           'weight' => '-10',
         ),
         'facetapi-h3E804ufRqmwuxTFodspV21rBJb00L2X' => array(
           'module' => 'facetapi',
           'delta' => 'h3E804ufRqmwuxTFodspV21rBJb00L2X',
-          'region' => 'content_top',
+          'region' => 'content_top_2',
           'weight' => '-9',
         ),
         'facetapi-7TqCFBUvppfBoYrlTYxf0VxXrnz4llZ7' => array(
           'module' => 'facetapi',
           'delta' => '7TqCFBUvppfBoYrlTYxf0VxXrnz4llZ7',
-          'region' => 'content_top',
+          'region' => 'content_top_2',
           'weight' => '-8',
-        ),
-        'views--exp-extracts-page' => array(
-          'module' => 'views',
-          'delta' => '-exp-extracts-page',
-          'region' => 'content_top',
-          'weight' => '-7',
         ),
         'current_search-standard' => array(
           'module' => 'current_search',
           'delta' => 'standard',
-          'region' => 'content_top',
-          'weight' => '-6',
+          'region' => 'content_top_3',
+          'weight' => '-10',
         ),
       ),
     ),

@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.ocha = {
+  Drupal.behaviors.ochaCommon = {
     attach: function (context, settings) {
       'use strict';
 
@@ -13,11 +13,21 @@
           .find('.views-field-field-text-value p')
           .toggleClass('collapsed');
       });
-
-      // Collapse filters.
-      window.setTimeout(function () {
-        $('.search-filters').removeAttr('open');
-      }, 1500);
     }
   };
+
+  Drupal.behaviors.ochaFilters = {
+    attach: function (context, settings) {
+      'use strict';
+
+      // Add button to show/hide filters.
+      var button = $('<button class="toggle-button">Show/Hide filters</button>');
+      button.click(function (e) {
+        $('.region-content-top-2').toggle();
+      });
+
+      $('#block-views-exp-extracts-page').append(button);
+    }
+  };
+
 })(jQuery);
