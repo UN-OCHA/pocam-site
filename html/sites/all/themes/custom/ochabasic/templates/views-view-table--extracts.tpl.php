@@ -43,9 +43,6 @@
             <?php print $content; ?>
           </td>
         <?php endforeach; ?>
-        <td class="data--read-more">
-          Read more
-        </td>
       </tr>
     <?php endforeach; ?>
   </tbody>

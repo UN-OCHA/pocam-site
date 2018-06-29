@@ -10,12 +10,17 @@
           $(e.target).toggleClass('collapsed');
         });
 
+      // Add button to all p tags.
+      $('.views-field-field-text-value p').after('<div class="data--read-more"><button>Read more</button></div>');
+
       // Add click handler.
       $('.data--read-more').click(function (e) {
         $(e.target)
-          .parent()
-          .find('.views-field-field-text-value p')
+          .parent().parent()
+          .find('p')
           .toggleClass('collapsed');
+
+        e.stopPropagation();
       });
     }
   };
