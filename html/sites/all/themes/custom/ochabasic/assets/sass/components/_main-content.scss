@@ -68,6 +68,13 @@ strong.highlight {
 }
 
 @media screen and (max-width: 769px) {
+  .ds-2col-fluid > .group-left,
+  .ds-2col-fluid > .group-right {
+    float: none;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+
   table {
     border: 0;
   }
