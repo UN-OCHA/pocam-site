@@ -94,7 +94,7 @@ function _pocam_general_home() {
     ),
     'explanation' => array(
       '#markup' => '
-        <p>The Aide Memoire serves is a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists [[the main themes and sub-themes]] that pertain to the protection of civilians, and proposes model language to address those; an addendum contains verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
+        <p>The Aide Memoire serves is a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists <a href="/theme">the main themes and sub-themes</a> that pertain to the protection of civilians, and proposes model language to address those; an addendum contains verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
         <p><a href="/theme">Browse by theme</a></p>
       ',
       '#prefix' => '<div class="explanation">',
