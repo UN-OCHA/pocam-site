@@ -29,13 +29,16 @@
     attach: function (context, settings) {
       'use strict';
 
-      // Add button to show/hide filters.
-      var button = $('<button class="toggle-button">Show/Hide filters</button>');
+      // Add button to add filters.
+      var button = $('<button class="toggle-button">Add filters</button>');
       button.click(function (e) {
         $('.region-content-top-2').toggle();
       });
 
       $('#block-views-exp-extracts-page').append(button);
+
+      // Hide by default.
+      $('.region-content-top-2').hide();
     }
   };
 
