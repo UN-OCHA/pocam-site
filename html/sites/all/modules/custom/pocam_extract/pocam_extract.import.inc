@@ -167,13 +167,14 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
 
   if (isset($data['ref']) && !empty($data['ref'])) {
     $parts = explode(' ', $data['ref']);
-    $node_wrapper->field_link->set(array(
-      'title' => $data['ref'],
-      'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
-    ));
 
     // Document type.
     if (strpos($parts[0], '/RES/') !== FALSE) {
+      $node_wrapper->field_link->set(array(
+        'title' => $data['ref'],
+        'url' => 'https://undocs.org/' . $parts[0] . str_replace(',', '', $parts[1]),
+      ));
+
       $term = pocam_extract_create_terms('Resolution', 'type');
       $node_wrapper->field_document_type->set($term->tid);
 
@@ -183,6 +184,11 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
       $node_wrapper->field_year->set($year);
     }
     else {
+      $node_wrapper->field_link->set(array(
+        'title' => $data['ref'],
+        'url' => 'https://undocs.org/' . str_replace(',', '', $parts[0]),
+      ));
+
       $term = pocam_extract_create_terms('Statement', 'type');
       $node_wrapper->field_document_type->set($term->tid);
 
