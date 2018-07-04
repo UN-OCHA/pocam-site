@@ -235,7 +235,7 @@ strong.highlight {
 .region-content-top-2 {
   @include clearfix;
 
-  margin: 2em 0;
+  margin-top: 2em 0;
 
   .facetapi-select {
     max-width: 100%;
@@ -261,6 +261,14 @@ strong.highlight {
       }
     }
   }
+
+  & ~ .region-content {
+    margin-top: 1em;
+  }
+}
+
+.block-facetapi {
+  margin-top: 1em;
 }
 
 #block-current-search-standard h2 {
@@ -273,3 +281,24 @@ strong.highlight {
     font-size: 3rem;
   }
 }
+
+.current-search-item-active-items {
+  ul {
+    display: flex;
+  }
+
+  ul li {
+    border: solid 1px #007ac0;
+    border-radius: 2px;
+    background-color: #007ac0;
+    color: #ffffff;
+    padding: 5px 10px;
+    margin: 0 5px 0 0 ;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
