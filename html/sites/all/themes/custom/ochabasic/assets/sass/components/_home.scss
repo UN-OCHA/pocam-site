@@ -2,14 +2,22 @@
   h1 {
     font-weight: 700;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
+
+    @include media-query(sm) {
+      font-size: 3rem;
+    }
   }
 
   .intro {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     margin-bottom: 1.5rem;
+
+    @include media-query(sm) {
+      font-size: 2rem;
+    }
   }
 
   .views-exposed-form .views-exposed-widget {
@@ -26,13 +34,35 @@
   }
 
   input[type=text] {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
+
+    @include media-query(sm) {
+      font-size: 2rem;
+    }
   }
 
   .explanation {
     font-size: 1.6rem;
-    text-align: center;
+    text-align: left;
     margin: 1em 0;
+  }
+
+  p + p {
+    margin-top: 1em;
+  }
+  
+  .centered {
+    text-align: center;
+  }
+  
+  .btn--browse {
+    border-radius: 4px;
+    background: #007ac0;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 12px;
+    transition: background .3s ease;
+    margin-top: 1em;
   }
 }
