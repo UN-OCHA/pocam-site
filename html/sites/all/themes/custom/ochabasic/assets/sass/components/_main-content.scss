@@ -114,17 +114,19 @@ strong.highlight {
   }
 
   td.views-field-field-link {
-    max-width: 75%;
     overflow: hidden;
     text-overflow: ellipsis;
+    flex: 3;
   }
 
   td.views-field-view-node {
-    text-align: center;
+    text-align: right;
+    flex: 1;
   }
 
   td.views-field-field-text-value {
     flex: 0 0 100%;
+    order: 2;
   }
 
   table .views-field-field-text-value p.collapsed {
