@@ -173,7 +173,7 @@ strong.highlight {
   input[type="text"] {
     width: 100%;
     text-align: left;
-    padding: 10px 24px 10px 0;
+    padding: 10px;
     border:0;
     border-bottom: 1px solid #ecf1f4;
     position: relative;
@@ -234,7 +234,8 @@ strong.highlight {
 
 .region-content-top-2 {
   @include clearfix;
-  margin-bottom: 2em;
+
+  margin: 2em 0;
 
   .facetapi-select {
     max-width: 100%;
@@ -259,5 +260,16 @@ strong.highlight {
         float: right;
       }
     }
+  }
+}
+
+#block-current-search-standard h2 {
+  font-weight: 700;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+
+  @include media-query(sm) {
+    font-size: 3rem;
   }
 }
