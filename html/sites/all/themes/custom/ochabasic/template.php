@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Theme functions.
+ */
+
+/**
  * Returns HTML for the facet title, usually the title of the block.
  */
 function ochabasic_facetapi_title($variables) {
@@ -30,8 +35,8 @@ function ochabasic_facetapi_link_active($variables) {
   );
   $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup', $replacements);
   $variables['options']['html'] = TRUE;
-  $variables['options']['attributes']['title'] = t('Remove filter') . ': ' . $link_text;
-  return theme_link($variables);
+  $variables['options']['attributes']['title'] = t('Remove filter: @text', array('@text' => $link_text));
+  return theme('link', $variables);
 }
 
 /**
