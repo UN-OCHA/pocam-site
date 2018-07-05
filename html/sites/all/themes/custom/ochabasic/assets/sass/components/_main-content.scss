@@ -167,7 +167,7 @@ strong.highlight {
   }
 
   label {
-    display: none;
+    @extend .sr-only;
   }
 
   input[type="text"] {
