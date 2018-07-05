@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "19b7546274d15ee1a6068a204f2654a6",
+    "content-hash": "3fcb6ebb439c183f74c7c0ba1c4d991c",
     "packages": [
         {
             "name": "drupal/admin_denied",
@@ -1880,6 +1880,61 @@
             "homepage": "https://www.drupal.org/project/link",
             "support": {
                 "source": "http://cgit.drupalcode.org/link"
+            }
+        },
+        {
+            "name": "drupal/maintenance200",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/maintenance200",
+                "reference": "7.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/maintenance200-7.x-1.1.zip",
+                "reference": "7.x-1.1",
+                "shasum": "783723e8daf7cc11490ec09becded3e304015015"
+            },
+            "require": {
+                "drupal/drupal": "~7.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "7.x-1.1",
+                    "datestamp": "1425773217",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/7/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Barrett",
+                    "homepage": "https://www.drupal.org/user/52745"
+                },
+                {
+                    "name": "ben.bunk",
+                    "homepage": "https://www.drupal.org/user/764808"
+                },
+                {
+                    "name": "runeasgar",
+                    "homepage": "https://www.drupal.org/user/1105258"
+                }
+            ],
+            "description": "Allows the maintenance page to return a Status of 200 rather than the standard 503 code.",
+            "homepage": "https://www.drupal.org/project/maintenance200",
+            "support": {
+                "source": "http://cgit.drupalcode.org/maintenance200"
             }
         },
         {

@@ -268,3 +268,16 @@ function pocam_update_7004(&$sandbox) {
 
   module_enable($modules);
 }
+
+/**
+ * Enable maintenance200 module.
+ */
+function pocam_update_7005(&$sandbox) {
+  $modules = array(
+    'maintenance200',
+  );
+
+  module_enable($modules);
+
+  variable_set('maintenance_mode_status', '203 Non-Authoritative Information');
+}

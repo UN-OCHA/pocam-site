@@ -34,6 +34,7 @@
         "drupal/jquery_update": "^3.0",
         "drupal/libraries": "^2.3",
         "drupal/link": "^1.5",
+        "drupal/maintenance200": "^1.1",
         "drupal/markdown": "^1.5",
         "drupal/redis": "^3.17",
         "drupal/search_api": "^1.22",
