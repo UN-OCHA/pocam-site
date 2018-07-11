@@ -236,6 +236,8 @@ strong.highlight {
   @include clearfix;
 
   margin-top: 2em 0;
+  display: flex;
+  justify-content: space-between;
 
   .facetapi-select {
     max-width: 100%;
@@ -250,14 +252,13 @@ strong.highlight {
 
   @include media-query(md) {
     .block-facetapi {
-      width: 32%;
-      float: left;
-      margin-left: 1%;
+      flex: 1;
+      margin: 0 1% 0 1%;
       &:first-child {
         margin-left: 0;
       }
-      &:nth-child(3) {
-        float: right;
+      &:last-child {
+        margin-right: 0;
       }
     }
   }
