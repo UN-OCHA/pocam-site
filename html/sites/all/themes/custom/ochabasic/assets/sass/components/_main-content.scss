@@ -238,6 +238,7 @@ strong.highlight {
   margin-top: 2em 0;
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 
   .facetapi-select {
     max-width: 100%;
@@ -251,6 +252,8 @@ strong.highlight {
   }
 
   @include media-query(md) {
+    flex-direction: row;
+
     .block-facetapi {
       flex: 1;
       margin: 0 1% 0 1%;
