@@ -13,6 +13,20 @@ function ochabasic_facetapi_title($variables) {
 }
 
 /**
+ * Returns HTML for a search keys facet item.
+ */
+function ochabasic_current_search_keys($variables) {
+  $link_text = check_plain($variables['keys']);
+
+  $variables['path'] = current_path();
+  $variables['text'] = 'X ' . $link_text;
+  $variables['options']['html'] = TRUE;
+  $variables['options']['attributes']['title'] = t('Remove keyword: @text', array('@text' => $link_text));
+
+  return theme('link', $variables);
+}
+
+/**
  * Returns HTML for an active facet item.
  */
 function ochabasic_facetapi_link_active($variables) {
