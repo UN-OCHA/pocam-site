@@ -10,6 +10,7 @@ button, input[type="submit"] {
 .btn-primary, input[type="submit"].form-submit {
 	border-radius: 4px;
 	background: #026CB6;
+	font-family: $body-font;
 	text-transform: uppercase;
 	color: $light-text-color;
 	padding: 0 $base-unit*1.5;
