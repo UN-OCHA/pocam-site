@@ -16,13 +16,29 @@
     margin-bottom: 40px;
   }
 
+  .search-wrapper {
+    text-align: center;
+  }
+
+  .views-exposed-form .views-exposed-widgets {
+    margin-bottom: 0;
+  }
+
   .views-exposed-form .views-exposed-widget {
+    display: block;
     float: none;
     padding: 0;
-    text-align: center;
-    max-width: 40rem;
-    margin: .5em auto;
-    font-size: 2rem;
+    margin: 0;
+
+    .form-item {
+      background: transparent;
+      padding: 0;
+      margin: 0;
+    }
+
+    .form-submit {
+      margin-top: 1rem;
+    }
   }
 
   label {
@@ -31,10 +47,10 @@
 
   input[type=text] {
     font-size: 16px;
-    text-align: center;
     font-family: $body-font;
     font-weight: 300;
     color: #4A4A4A;
+    height: 40px;
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: #4A4A4A;
@@ -58,8 +74,9 @@
     font-size: 1rem;
     line-height: 1.5;
     text-align: left;
-    margin: 40px 0 1em;
+    margin: 40px auto 1em;
     color: #4A4A4A;
+    max-width: 720px
   }
 
   p + p {
@@ -87,5 +104,36 @@
   	&:hover, &:focus {
   		background: darken(#026CB6, 7%);
   	}
+  }
+}
+
+
+@include media-query(sm) {
+  .front .content {
+    .views-exposed-form .views-exposed-widget {
+      display: inline-block;
+      float: none;
+      padding: 0;
+      text-align: center;
+      max-width: 40rem;
+      margin: 0;
+
+      .form-item {
+        background: transparent;
+        padding: 0;
+        margin: 0;
+      }
+
+      .form-submit {
+        margin-top: 0;
+      }
+    }
+    .views-exposed-form .views-submit-button {
+      margin-left: -4px;
+
+      .form-submit {
+        border-radius: 0 4px 4px 0;
+      }
+    }
   }
 }
