@@ -9,14 +9,17 @@ button, input[type="submit"] {
 
 .btn-primary, input[type="submit"].form-submit {
 	border-radius: 4px;
-	background: $primary-bg-color;
+	background: #026CB6;
 	text-transform: uppercase;
 	color: $light-text-color;
-	padding: $base-unit*1.5;
+	padding: 0 $base-unit*1.5;
 	transition: background 0.3s ease;
+	font-size: 16px;
+	line-height: 40px;
+	height: 40px;
 
 	&:hover, &:focus {
-		background: darken($primary-bg-color, 10%);
+		background: darken(#026CB6, 7%);
 	}
 }
 

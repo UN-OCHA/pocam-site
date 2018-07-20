@@ -59,14 +59,23 @@
   .centered {
     text-align: center;
   }
-  
+
   .btn--browse {
+    display: inline-block;
     border-radius: 4px;
-    background: #007ac0;
+    background: #026CB6;
     text-transform: uppercase;
     color: #fff;
-    padding: 12px;
+    font-size: 16px;
+    padding: 0 12px;
+    text-decoration: none;
     transition: background .3s ease;
     margin-top: 1em;
+    height: 40px;
+    line-height: 40px;
+
+  	&:hover, &:focus {
+  		background: darken(#026CB6, 7%);
+  	}
   }
 }
