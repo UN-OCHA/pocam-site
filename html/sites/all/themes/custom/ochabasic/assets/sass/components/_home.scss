@@ -29,6 +29,7 @@
     float: none;
     padding: 0;
     margin: 0;
+    font-family: $body-font;
 
     .form-item {
       background: transparent;
@@ -94,11 +95,11 @@
     text-transform: uppercase;
     color: #fff;
     font-size: 16px;
+    font-weight: 400;
     padding: 0 12px;
     text-decoration: none;
     transition: background .3s ease;
     margin-top: 1em;
-    height: 40px;
     line-height: 40px;
 
   	&:hover, &:focus {
