@@ -211,7 +211,6 @@ strong.highlight {
     background-repeat: no-repeat;
     text-indent: -999px;
     line-height: 40px;
-    height: 40px;
 
     @include media-query(sm) {
       background: #007ac0;
