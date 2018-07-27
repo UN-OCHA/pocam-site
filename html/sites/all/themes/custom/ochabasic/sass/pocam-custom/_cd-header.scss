@@ -1,0 +1,7 @@
+.cd-header {
+  margin-bottom: 16px;
+
+  @include media-query(md) {
+    margin-bottom: 60px;
+  }
+}
