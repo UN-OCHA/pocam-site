@@ -1,17 +1,17 @@
-/**
- * @file
+/*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
- *
  * Copyright 2011-2017 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=30c58b2207c910762cf8aa391aae7824).
- * Config saved to config.json and https://gist.github.com/30c58b2207c910762cf8aa391aae7824.
  */
 
+/*!
+ * Generated using the Bootstrap Customizer (http://getbootstrap.com/customize/?id=30c58b2207c910762cf8aa391aae7824)
+ * Config saved to config.json and https://gist.github.com/30c58b2207c910762cf8aa391aae7824
+ */
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
 }
-+ function ($) {
++function ($) {
   'use strict';
   var version = $.fn.jquery.split(' ')[0].split('.')
   if ((version[0] < 2 && version[1] < 9) || (version[0] == 1 && version[1] == 9 && version[2] < 1) || (version[0] > 3)) {
@@ -28,10 +28,12 @@ if (typeof jQuery === 'undefined') {
  * ======================================================================== */
 
 
-+ function ($) {
++function ($) {
   'use strict';
 
-  // DROPDOWN CLASS DEFINITION.
+  // DROPDOWN CLASS DEFINITION
+  // =========================
+
   var backdrop = '.dropdown-backdrop'
   var toggle   = '[data-toggle="dropdown"]'
   var Dropdown = function (element) {
@@ -45,7 +47,7 @@ if (typeof jQuery === 'undefined') {
 
     if (!selector) {
       selector = $this.attr('href')
-      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // Strip for ie7.
+      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
     var $parent = selector && $(selector)
@@ -79,14 +81,14 @@ if (typeof jQuery === 'undefined') {
 
     if ($this.is('.disabled, :disabled')) return
 
-    var $parent = getParent($this)
+    var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
 
     clearMenus()
 
     if (!isActive) {
       if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-        // If mobile we use a backdrop because click events don't delegate.
+        // if mobile we use a backdrop because click events don't delegate
         $(document.createElement('div'))
           .addClass('dropdown-backdrop')
           .insertAfter($(this))
@@ -111,7 +113,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Dropdown.prototype.keydown = function (e) {
-    if (! / (38 | 40 | 27 | 32) / .test(e.which) || / input | textarea / i.test(e.target.tagName)) return
+    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
 
     var $this = $(this)
 
@@ -120,7 +122,7 @@ if (typeof jQuery === 'undefined') {
 
     if ($this.is('.disabled, :disabled')) return
 
-    var $parent = getParent($this)
+    var $parent  = getParent($this)
     var isActive = $parent.hasClass('open')
 
     if (!isActive && e.which != 27 || isActive && e.which == 27) {
@@ -135,18 +137,21 @@ if (typeof jQuery === 'undefined') {
 
     var index = $items.index(e.target)
 
-    if (e.which == 38 && index > 0)                 index--         // Up.
-    if (e.which == 40 && index < $items.length - 1) index++         // Down.
+    if (e.which == 38 && index > 0)                 index--         // up
+    if (e.which == 40 && index < $items.length - 1) index++         // down
     if (!~index)                                    index = 0
 
     $items.eq(index).trigger('focus')
   }
 
-  // DROPDOWN PLUGIN DEFINITION.
+
+  // DROPDOWN PLUGIN DEFINITION
+  // ==========================
+
   function Plugin(option) {
     return this.each(function () {
       var $this = $(this)
-      var data = $this.data('bs.dropdown')
+      var data  = $this.data('bs.dropdown')
 
       if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
       if (typeof option == 'string') data[option].call($this)
@@ -158,13 +163,19 @@ if (typeof jQuery === 'undefined') {
   $.fn.dropdown             = Plugin
   $.fn.dropdown.Constructor = Dropdown
 
-  // DROPDOWN NO CONFLICT.
+
+  // DROPDOWN NO CONFLICT
+  // ====================
+
   $.fn.dropdown.noConflict = function () {
     $.fn.dropdown = old
     return this
   }
 
-  // APPLY TO STANDARD DROPDOWN ELEMENTS.
+
+  // APPLY TO STANDARD DROPDOWN ELEMENTS
+  // ===================================
+
   $(document)
     .on('click.bs.dropdown.data-api', clearMenus)
     .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
