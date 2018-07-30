@@ -1,3 +1,8 @@
+/**
+ * @file
+ * Custom functions for form filters.
+ */
+
 (function ($) {
   Drupal.behaviors.ochaCommon = {
     attach: function (context, settings) {
