@@ -142,10 +142,14 @@ strong.highlight {
 }
 
 .current-search-item li {
-  max-width: 30em;
+  max-width: 20em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @include media-query(sm) {
+    max-width: 30em;
+  }
 }
 
 #block-views-exp-extracts-page {
@@ -159,6 +163,10 @@ strong.highlight {
 
   .toggle-button {
     flex: 0 1 auto;
+
+    @include media-query(sm) {
+      flex: 1;
+    }
   }
 
   .form-item {

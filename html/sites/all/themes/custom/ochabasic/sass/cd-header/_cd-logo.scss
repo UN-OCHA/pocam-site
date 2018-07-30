@@ -22,11 +22,11 @@
 
 @media (min-width: map-get($cd-breakpoints, tablet)) {
   .cd-site-logo {
-    background: url('../logos/poc-logo-square.svg') center no-repeat;
+    background: url('../logos/poc-logo-mobile.svg') center no-repeat;
     width: 60px; // width may need to be adjusted depending on logo width.
 
     .no-svg & {
-      background: url('../logos/poc-logo-square.png') center no-repeat;
+      background: url('../logos/poc-logo-mobile.png') center no-repeat;
     }
   }
 }
