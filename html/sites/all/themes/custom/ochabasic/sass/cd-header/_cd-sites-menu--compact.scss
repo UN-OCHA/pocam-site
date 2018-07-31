@@ -1,0 +1,50 @@
+/**
+ * Common Design Sites Menu ('OCHA Services')
+ * Button and dropdown with compact list of links to OCHA services.
+ */
+
+ .cd-sites--compact {
+
+   .cd-sites-btn__label {
+     @include unhide;
+   }
+
+ }
+
+.cd-sites-dropdown--compact {
+  left: unset;
+
+  .cd-dropdown-menu {
+    position: absolute;
+    z-index: map-get($zindex, dropdown);
+    background: white;
+    margin-left: 0;
+    min-width: 212px;
+    width: 100%;
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.25);
+    display: none;
+
+    .open & {
+      display: block;
+    }
+
+    li {
+      margin-bottom: 0;
+    }
+
+    a {
+      display: block;
+      padding: $base-unit*1.5;
+      border-bottom: 1px solid $border-color;
+      text-decoration: none;
+      color: $default-text-color;
+      word-break: break-word;
+
+      &:hover,
+      &:focus {
+        background: $primary-bg-color;
+        color: $white-text-color;
+      }
+    }
+  }
+}
