@@ -30,6 +30,18 @@ strong.highlight {
   padding: 0 0.1em;
 }
 
+h2,
+h1.page__title {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: $cd-default-text-color;
+
+  @include media-query(sm) {
+    font-size: 3rem;
+  }
+}
+
 .views-table {
   th,
   td {
@@ -288,14 +300,7 @@ strong.highlight {
 }
 
 #block-current-search-standard h2 {
-  font-weight: 700;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-
-  @include media-query(sm) {
-    font-size: 3rem;
-  }
 }
 
 .current-search-item-active-items {

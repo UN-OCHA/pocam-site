@@ -110,7 +110,7 @@ function _pocam_general_about() {
   return array(
     'title' => array(
       '#markup' => 'What is the Protection of Civilians Aide Memoire?',
-      '#prefix' => '<h1>',
+      '#prefix' => '<h1 class="page__title">',
       '#suffix' => '</h1>',
     ),
     'text' => array(
@@ -138,7 +138,7 @@ function _pocam_general_themes() {
   return array(
     'title' => array(
       '#markup' => 'Themes',
-      '#prefix' => '<h1>',
+      '#prefix' => '<h1 class="page__title">',
       '#suffix' => '</h1>',
     ),
     'search' => array(
