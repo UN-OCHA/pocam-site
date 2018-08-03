@@ -79,7 +79,7 @@ function _pocam_general_home() {
   return array(
     'title' => array(
       '#markup' => 'Protection of Civilians Aide Memoire',
-      '#prefix' => '<h1>',
+      '#prefix' => '<h1 class="page__title">',
       '#suffix' => '</h1>',
     ),
     'intro' => array(
