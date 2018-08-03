@@ -16,21 +16,25 @@ function pocam_extract_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'pocam_extract';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_2col_fluid';
+  $ds_layout->layout = 'ds_2col_stacked_fluid';
   $ds_layout->settings = array(
     'regions' => array(
+      'header' => array(
+        0 => 'title',
+      ),
       'left' => array(
-        0 => 'field_text',
+        1 => 'field_text',
       ),
       'right' => array(
-        1 => 'field_year',
-        2 => 'field_document_type',
-        3 => 'theme_full_tree',
-        4 => 'field_link',
-        5 => 'theme_see_also',
+        2 => 'field_year',
+        3 => 'field_document_type',
+        4 => 'theme_full_tree',
+        5 => 'field_link',
+        6 => 'theme_see_also',
       ),
     ),
     'fields' => array(
+      'title' => 'header',
       'field_text' => 'left',
       'field_year' => 'right',
       'field_document_type' => 'right',
@@ -40,8 +44,10 @@ function pocam_extract_ds_layout_settings_info() {
     ),
     'classes' => array(),
     'wrappers' => array(
+      'header' => 'div',
       'left' => 'section',
       'right' => 'aside',
+      'footer' => 'div',
     ),
     'layout_wrapper' => 'article',
     'layout_attributes' => '',
