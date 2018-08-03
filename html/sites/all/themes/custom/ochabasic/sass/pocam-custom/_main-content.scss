@@ -7,7 +7,7 @@
   }
 }
 
-@include media-query(sm) {
+@include sm {
   .main-content {
     img {
       float: right;
@@ -17,7 +17,7 @@
   }
 }
 
-@include media-query(md) {
+@include tablet {
   .main-content {
     img {
       max-width: 30%;
@@ -147,7 +147,7 @@ strong.highlight {
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  @include media-query(sm) {
+  @include sm {
     max-width: 30em;
   }
 }
@@ -164,7 +164,7 @@ strong.highlight {
   .toggle-button {
     flex: 0 1 auto;
 
-    @include media-query(sm) {
+    @include sm {
       flex: 1;
     }
   }
@@ -220,7 +220,7 @@ strong.highlight {
     text-indent: -999px;
     line-height: 40px;
 
-    @include media-query(sm) {
+    @include sm {
       background: #007ac0;
       text-indent: 0;
     }
@@ -238,7 +238,7 @@ strong.highlight {
     line-height: 40px;
     height: 40px;
 
-    @include media-query(sm) {
+    @include sm {
       font-size: 16px;
     }
   }
@@ -263,7 +263,7 @@ strong.highlight {
     margin-top: .5em;
   }
 
-  @include media-query(md) {
+  @include tablet {
     flex-direction: row;
 
     .block-facetapi {
@@ -293,7 +293,7 @@ strong.highlight {
   font-size: 2rem;
   margin-bottom: 1rem;
 
-  @include media-query(sm) {
+  @include sm {
     font-size: 3rem;
   }
 }
@@ -305,7 +305,7 @@ strong.highlight {
     display: flex;
     flex-direction: column;
 
-    @include media-query(sm) {
+    @include sm {
       flex-direction: row;
     }
   }
@@ -316,7 +316,7 @@ strong.highlight {
     color: #007ac0;
     margin: 0 5px .5em 0;
 
-    @include media-query(sm) {
+    @include sm {
       margin-bottom: 0;
     }
   }

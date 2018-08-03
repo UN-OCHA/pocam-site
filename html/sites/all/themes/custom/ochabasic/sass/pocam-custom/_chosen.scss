@@ -1,116 +1,115 @@
 .chosen-container {
-	width: 100%!important; //over ride chosen's inline style
-	@include font-size($base-font-size);
-	background: white;
+  width: 100% !important; //over ride chosen's inline style
+  @include font-size($base-font-size);
+  background: white;
 
-	.chosen-drop {
-		box-shadow: none;
-		border-radius: 0;
-		border: 1px solid #ddd;
-		border-top: none;
-		@include font-size($base-font-size);
-	}
+  .chosen-drop {
+    box-shadow: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+    @include font-size($base-font-size);
+  }
 
-	.chosen-results {
-		max-height: 240px;
+  .chosen-results {
+    max-height: 240px;
 
-		li {
-			padding: $base-unit;
-		}
+    li {
+      padding: $base-unit;
+    }
 
-		li.active-result {
-			&.highlighted {
-				background: $primary-bg-color;
-			}
-		}
+    li.active-result {
+      &.highlighted {
+        background: $primary-bg-color;
+      }
+    }
 
-	}
+  }
 
-	&.error {
-		background-image: none;
-	}
+  &.error {
+    background-image: none;
+  }
 }
 
 .chosen-container-single.chosen-container-active {
 
-	.chosen-single {
-		border-color: $highlight-border-color;
-	}
+  .chosen-single {
+    border-color: $highlight-border-color;
+  }
 
 }
 
 .chosen-container-single .chosen-search {
 
-	&:after {
-		content: "\e919";
-		font-family: 'unocha-icons' !important;
-		position: absolute;
+  &:after {
+    content: "\e919";
+    font-family: 'unocha-icons' !important;
+    position: absolute;
     right: $base-unit*.75;
     @include font-size(24);
     margin-top: $base-unit*.25;
-	}
+  }
 
-	input[type="text"] {
-		@include font-size($medium-font-size);
-		font-weight: 300;
-		color: $body-text-color;
-		padding: $base-unit $base-unit*4 $base-unit $base-unit;
-		background: none!important;
-	}
-
+  input[type="text"] {
+    @include font-size($medium-font-size);
+    font-weight: 300;
+    color: $body-text-color;
+    padding: $base-unit $base-unit*4 $base-unit $base-unit;
+    background: none !important;
+  }
 
 }
 
 .chosen-container-active.chosen-with-drop {
 
-	.chosen-single {
-		border-color: #ddd;
-		background: none;
+  .chosen-single {
+    border-color: #ddd;
+    background: none;
 
-		div b {
-			transform: rotate(180deg);
-		}
-	}
+    div b {
+      transform: rotate(180deg);
+    }
+  }
 }
 
 .chosen-container {
-	.chosen-single, .chosen-choices {
-		background: none;
-		box-shadow: none;
-		border: 1px solid #ddd;
-		border-radius: 0;
-		height: auto;
-		padding: $base-unit/2 $base-unit;
-		line-height: $base-unit*3;
-	}
+  .chosen-single, .chosen-choices {
+    background: none;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    height: auto;
+    padding: $base-unit/2 $base-unit;
+    line-height: $base-unit*3;
+  }
 
-	.chosen-single {
-		div {
-			width: $base-unit*3;
+  .chosen-single {
+    div {
+      width: $base-unit*3;
 
-			b {
-				font-family: 'unocha-icons';
-				@extend .icon-arrow-down;
-				text-align: center;
-				line-height: 32px;
-				background: none!important;
-	    }
-	  }
-	}
+      b {
+        font-family: 'unocha-icons';
+        @extend .icon-arrow-down;
+        text-align: center;
+        line-height: 32px;
+        background: none !important;
+      }
+    }
+  }
 }
 
 .chosen-legend {
-	display: inline-block;
-	width: $base-unit*1.5;
-	height: $base-unit*1.5;
-	margin-right: $base-unit;
+  display: inline-block;
+  width: $base-unit*1.5;
+  height: $base-unit*1.5;
+  margin-right: $base-unit;
 }
 
-@include media-query(md) {
+@include tablet {
 
-	.chosen-legend {
-		width: $base-unit;
-		height: $base-unit;
-	}
+  .chosen-legend {
+    width: $base-unit;
+    height: $base-unit;
+  }
 
 }

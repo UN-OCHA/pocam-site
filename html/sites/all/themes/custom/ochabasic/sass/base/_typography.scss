@@ -42,7 +42,7 @@ h1, h2 ,h3 ,h4 ,h5, p, ol, ul, dl {
 }
 
 h4, h5 {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 a {
@@ -60,75 +60,75 @@ ol, ul {
 }
 
 ol {
-	list-style: decimal;
+  list-style: decimal;
 }
 
 .event-heading, .node-type-page h1 {
-	padding-bottom: $base-unit*1.5;
-	border-bottom: 1px solid $border-color;
-	color: $heading-text-color;
-	font-weight: 300;
+  padding-bottom: $base-unit*1.5;
+  border-bottom: 1px solid $border-color;
+  color: $heading-text-color;
+  font-weight: 300;
 }
 
 .event-heading {
-	color: $heading-text-dark-color;
-	font-weight: normal;
+  color: $heading-text-dark-color;
+  font-weight: normal;
 
-	span {
-		color: $heading-text-color;
-		font-weight: 300;
-	}
+  span {
+    color: $heading-text-color;
+    font-weight: 300;
+  }
 }
 
 .node-type-page .content {
-	h1, h2 ,h3 ,h4 ,h5 {
-		color: $heading-text-color;
-	}
+  h1, h2, h3, h4, h5 {
+    color: $heading-text-color;
+  }
 
   h2, h3 {
     text-transform: uppercase
   }
 
-	.submitted {
-		margin-bottom: $base-unit;
-	}
+  .submitted {
+    margin-bottom: $base-unit;
+  }
 
-	li {
-		margin-bottom: $base-unit/4;
-	}
+  li {
+    margin-bottom: $base-unit/4;
+  }
 
-	strong {
-		font-weight: 400;
-	}
+  strong {
+    font-weight: 400;
+  }
 }
 
 dt {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 dd {
-	margin-bottom: $base-unit;
+  margin-bottom: $base-unit;
 }
 
-@include media-query(sm) {
+@include min-width(sm) {
 
-	.event-heading, .node-type-page h1 {
-		@include font-size($large-font-size);
-	}
+  .event-heading, .node-type-page h1 {
+    @include font-size($large-font-size);
+  }
 
-	.node-type-page .content {
+  .node-type-page .content {
 
-		p, ul, ol, dl {
-	  	@include font-size($medium-font-size);
-	  }
+    p, ul, ol, dl {
+      @include font-size($medium-font-size);
+    }
 
-	  li {
-			margin-bottom: $base-unit/2;
-		}
+    li {
+      margin-bottom: $base-unit/2;
+    }
 
-	}
+  }
 
-	h2 {
+  h2 {
     @include font-size($medium-font-size);
   }
 

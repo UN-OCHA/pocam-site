@@ -19,7 +19,7 @@
     position: relative;
 
     &:last-child {
-      a,
+      li,
       .cd-user-menu__item {
         padding-right: 0;
 
@@ -169,9 +169,7 @@ button.cd-user-menu__item {
   border-bottom: 1px solid transparent;
 }
 
-@media (min-width: map-get($cd-breakpoints, tablet)) {
-
-  .cd-user-menu li a,
+@include tablet {
   .cd-user-menu__item {
     max-width: none;
     padding: 0 16px;
@@ -202,5 +200,4 @@ button.cd-user-menu__item {
       @include unhide;
     }
   }
-
 }

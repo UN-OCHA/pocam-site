@@ -1,10 +1,8 @@
-/**
- * Common Design Footer copyright section.
- */
+// Common Design Footer copyright section.
 
- .cd-footer-copyright {
-   margin: 0 auto;
- }
+.cd-footer-copyright {
+  margin: 0 auto;
+}
 
 .cd-footer-copyright__text {
   a {
@@ -30,15 +28,15 @@
   margin: 0 auto;
 }
 
-@media (min-width: map-get($cd-breakpoints, desktop)) {
-
+@include desktop {
   .cd-footer-copyright {
     flex: 0 1 350px;
     align-items: flex-start;
     display: flex;
     justify-content: flex-end;
     text-align: right;
-    margin-top: 30px; // align with provide-by main text
+    margin: 0;
+    margin-top: 30px; // Align with provide-by main text.
   }
 
   .cd-footer-copyright__message {

@@ -1,7 +1,7 @@
 .cd-header {
   margin-bottom: 16px;
 
-  @include media-query(md) {
+  @include tablet {
     margin-bottom: 60px;
   }
 }
