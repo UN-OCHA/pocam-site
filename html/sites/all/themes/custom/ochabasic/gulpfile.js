@@ -79,26 +79,26 @@ gulp.task('dev:sass', () => {
 });
 
 // JS Linting.
-gulp.task('dev:js-lint', () => {
-  return gulp.src('js/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter(stylish));
-});
+// gulp.task('dev:js-lint', () => {
+//   return gulp.src('js/*.js')
+//     .pipe(jshint())
+//     .pipe(jshint.reporter(stylish));
+// });
 
 
 // JS Bundling.
-gulp.task('dev:js-bundle', () => {
-  return gulp.src([
-      'js/*.js',
-    ])
-    .pipe(concat('ocha_bundle.js'))
-    .pipe(gulpif(process.env.NODE_ENV === 'production', uglify()))
-    .pipe(gulp.dest('js'))
-    .pipe(reload({stream: true}));
-});
+// gulp.task('dev:js-bundle', () => {
+//   return gulp.src([
+//       'js/*.js',
+//     ])
+//     .pipe(concat('ocha_bundle.js'))
+//     .pipe(gulpif(process.env.NODE_ENV === 'production', uglify()))
+//     .pipe(gulp.dest('js'))
+//     .pipe(reload({stream: true}));
+// });
 
 // JS Lint + Bundle.
-gulp.task('dev:js', ['dev:js-lint', 'dev:js-bundle']);
+// gulp.task('dev:js', ['dev:js-lint', 'dev:js-bundle']);
 
 
 // Build assets and start Browser-Sync.

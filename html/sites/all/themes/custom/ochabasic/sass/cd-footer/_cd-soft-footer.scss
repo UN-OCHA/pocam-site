@@ -1,6 +1,4 @@
-/**
- * Common Design soft footer - optional space for call to actions, newsletter sign up etc
- */
+// Common Design soft footer - optional space for call to actions, newsletter sign up etc
 
 .cd-soft-footer {
   background: $cd-dark-blue;
@@ -36,9 +34,8 @@
   }
 }
 
-@media (min-width: map-get($cd-breakpoints, tablet)) {
-
-  // override container layout so flexbox justify-content works
+@include tablet {
+  // Override container layout so flexbox justify-content works.
   .cd-soft-footer .cd-container:after {
     content: none;
   }
@@ -50,8 +47,7 @@
   }
 }
 
-@media (min-width: map-get($cd-breakpoints, desktop)) {
-
+@include desktop {
   .cd-soft-footer {
     padding: 32px 0;
   }

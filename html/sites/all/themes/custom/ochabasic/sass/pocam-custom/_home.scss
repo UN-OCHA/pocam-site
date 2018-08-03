@@ -109,7 +109,7 @@
 }
 
 
-@include media-query(sm) {
+@include sm {
   .front .content {
     .views-exposed-form .views-exposed-widget {
       display: inline-block;

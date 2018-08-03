@@ -153,7 +153,7 @@ function ochabasic_pwa_manifest_alter(&$manifest) {
   // to your heart's content.
   $manifest['icons'] = [
     [
-      'src' => url(drupal_get_path('theme', 'ocha_basic') . '/android-chrome-512x512.png'),
+      'src' => url(drupal_get_path('theme', 'ochabasic') . '/android-chrome-512x512.png'),
       'sizes' => '512x512',
       'type' => 'image/png',
     ],
