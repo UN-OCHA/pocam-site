@@ -36,6 +36,8 @@
         "drupal/link": "^1.5",
         "drupal/maintenance200": "^1.1",
         "drupal/markdown": "^1.5",
+        "drupal/modernizr": "3.11",
+        "drupal/pwa": "1.0",
         "drupal/redis": "^3.17",
         "drupal/search_api": "^1.22",
         "drupal/search_api_db": "^1.6",
