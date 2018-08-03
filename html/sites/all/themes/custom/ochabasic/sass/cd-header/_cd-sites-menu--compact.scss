@@ -12,6 +12,7 @@
  }
 
 .cd-sites-dropdown--compact {
+  left: auto; // This is for IE 11.
   left: unset;
 
   .cd-dropdown-menu {
