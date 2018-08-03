@@ -30,6 +30,18 @@ strong.highlight {
   padding: 0 0.1em;
 }
 
+h1.page__title,
+.page__title {
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: $cd-default-text-color;
+
+  @include media-query(sm) {
+    font-size: 2.5rem;
+  }
+}
+
 .views-table {
   th,
   td {
@@ -47,11 +59,18 @@ strong.highlight {
   }
 }
 
-.ds-2col-fluid > .group-left {
+.ds-2col-fluid > .group-left,
+.ds-2col-stacked-fluid > .group-left {
   padding-right: 1em;
 }
 
-.ds-2col-fluid > .group-right .field {
+.ds-2col-fluid > .group-left .field-name-field-text .field-item p:first-child,
+.ds-2col-stacked-fluid > .group-left .field-name-field-text .field-item p:first-child {
+  margin-top: 0;
+}
+
+.ds-2col-fluid > .group-right .field,
+.ds-2col-stacked-fluid > .group-right .field {
   margin-bottom: 1em;
 }
 
@@ -61,7 +80,9 @@ strong.highlight {
 
 @media screen and (max-width: 769px) {
   .ds-2col-fluid > .group-left,
-  .ds-2col-fluid > .group-right {
+  .ds-2col-fluid > .group-right,
+  .ds-2col-stacked-fluid > .group-left,
+  .ds-2col-stacked-fluid > .group-right {
     float: none;
     width: 100%;
     margin-bottom: 1em;
@@ -288,14 +309,8 @@ strong.highlight {
 }
 
 #block-current-search-standard h2 {
-  font-weight: 700;
+  @extend .page__title;
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-
-  @include media-query(sm) {
-    font-size: 3rem;
-  }
 }
 
 .current-search-item-active-items {
