@@ -10,7 +10,6 @@ dependencies[] = facetapi_select
 dependencies[] = fe_block
 dependencies[] = features
 dependencies[] = link
-dependencies[] = node
 dependencies[] = number
 dependencies[] = options
 dependencies[] = search_api
