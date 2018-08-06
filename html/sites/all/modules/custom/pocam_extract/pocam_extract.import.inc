@@ -168,6 +168,9 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
   if (isset($data['ref']) && !empty($data['ref'])) {
     $parts = explode(' ', $data['ref']);
 
+    // Set node title.
+    $node_wrapper->title->set('Excerpt from ' . $data['ref']);
+
     // Document type.
     if (strpos($parts[0], '/RES/') !== FALSE) {
       $node_wrapper->field_link->set(array(
