@@ -49,3 +49,22 @@ button, input[type="submit"] {
 		margin-right: 2px;
 	}
 }
+
+.btn--browse {
+	display: inline-block;
+	border-radius: 4px;
+	background: #026CB6;
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 0 12px;
+	text-decoration: none;
+	transition: background .3s ease;
+	margin-top: 1em;
+	line-height: 40px;
+
+	&:hover, &:focus {
+		background: darken(#026CB6, 7%);
+	}
+}
