@@ -1,0 +1,11 @@
+name = Progressive Web App
+description = Make the website installable on mobile.
+core = 7.x
+
+configure = admin/config/system/pwa
+
+; Information added by Drupal.org packaging script on 2018-07-19
+version = "7.x-1.0"
+core = "7.x"
+project = "pwa"
+datestamp = "1532006589"
