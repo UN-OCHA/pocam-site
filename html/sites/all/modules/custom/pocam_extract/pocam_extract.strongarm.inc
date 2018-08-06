@@ -117,13 +117,13 @@ function pocam_extract_strongarm() {
       'display' => array(
         'theme_see_also' => array(
           'full' => array(
-            'weight' => '5',
+            'weight' => '6',
             'visible' => TRUE,
           ),
         ),
         'theme_full_tree' => array(
           'full' => array(
-            'weight' => '3',
+            'weight' => '4',
             'visible' => TRUE,
           ),
         ),
