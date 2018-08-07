@@ -17,8 +17,8 @@ function pocam_basic_page_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'page';
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
-    'search' => array(
-      'weight' => '2',
+    'search_security_council_resoluti' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -69,16 +69,14 @@ function pocam_basic_page_ds_layout_settings_info() {
   $ds_layout->settings = array(
     'regions' => array(
       'header' => array(
-        0 => 'field_subtitle',
-        1 => 'search',
+        0 => 'search_security_council_resoluti',
       ),
       'left' => array(
-        2 => 'body',
+        1 => 'body',
       ),
     ),
     'fields' => array(
-      'field_subtitle' => 'header',
-      'search' => 'header',
+      'search_security_council_resoluti' => 'header',
       'body' => 'left',
     ),
     'classes' => array(),
