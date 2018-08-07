@@ -282,7 +282,7 @@ function pocam_update_7005(&$sandbox) {
   variable_set('maintenance_mode_status', '203 Non-Authoritative Information');
 }
 
-/*
+/**
  * Enable PWA and modernizr module.
  */
 function pocam_update_7006(&$sandbox) {
@@ -303,6 +303,6 @@ function pocam_update_7007(&$sandbox) {
     'token',
     'token_filter',
   );
-  
+
   module_enable($modules);
 }

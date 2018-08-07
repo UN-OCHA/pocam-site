@@ -134,10 +134,9 @@ function pocam_general_token_info() {
  * Implements hook_tokens().
  */
 function pocam_general_tokens($type, $tokens, array $data = array(), array $options = array()) {
-	$replacements = array();
-  $sanitize = !empty($options['sanitize']);
+  $replacements = array();
 
-	if ($type == 'pocam-general') {
+  if ($type == 'pocam-general') {
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'search-block':
@@ -153,7 +152,7 @@ function pocam_general_tokens($type, $tokens, array $data = array(), array $opti
             'items' => _pocam_general_build_tree('theme'),
             'prefix' => '<div class="theme-wrapper">',
             'suffix' => '</div>',
-            ));
+          ));
           $replacements[$original] = $output;
           break;
 
@@ -161,5 +160,5 @@ function pocam_general_tokens($type, $tokens, array $data = array(), array $opti
     }
   }
 
-	return $replacements;
+  return $replacements;
 }
