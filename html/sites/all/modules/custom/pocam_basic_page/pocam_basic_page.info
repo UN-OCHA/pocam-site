@@ -12,6 +12,7 @@ dependencies[] = token_filter
 features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|page|default
+features[ds_field_settings][] = node|pocam_extract|full
 features[ds_fields][] = search
 features[ds_layout_settings][] = node|page|default
 features[features_api][] = api:2
