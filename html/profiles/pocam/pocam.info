@@ -45,3 +45,5 @@ dependencies[] = advagg_critical_css
 dependencies[] = advagg_mod
 dependencies[] = advagg
 dependencies[] = maintenance200
+dependencies[] = token
+dependencies[] = token_filter
