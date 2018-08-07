@@ -36,6 +36,11 @@ function pocam_basic_page_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '0',
+        'wrapper' => 'h1',
+        'class' => 'page__title',
+      ),
     ),
   );
   $export['node|pocam_extract|full'] = $ds_fieldsetting;
@@ -83,15 +88,11 @@ function pocam_basic_page_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_2col_stacked_fluid';
   $ds_layout->settings = array(
     'regions' => array(
-      'header' => array(
-        0 => 'search_security_council_resoluti',
-      ),
       'left' => array(
-        1 => 'body',
+        0 => 'body',
       ),
     ),
     'fields' => array(
-      'search_security_council_resoluti' => 'header',
       'body' => 'left',
     ),
     'classes' => array(),
