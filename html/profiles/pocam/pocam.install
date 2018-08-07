@@ -293,3 +293,14 @@ function pocam_update_7006(&$sandbox) {
 
   module_enable($modules);
 }
+
+/**
+ * Enable CKEditor
+ */
+function pocam_update_7007(&$sandbox) {
+  $modules = array(
+      'ckeditor',
+  );
+
+  module_enable($modules);
+}
