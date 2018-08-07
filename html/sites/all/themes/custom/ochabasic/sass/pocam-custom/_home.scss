@@ -1,45 +1,36 @@
-.front .content {
+.front {
+
+  .content {
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #4A4A4A;
+    margin: 0 auto 1em;
+    max-width: 720px;
+  }
+
   h1.page__title {
     font-weight: 700;
     text-align: center;
     font-size: 20px;
     font-family: $body-font;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
     text-transform: uppercase;
     color: #026CB6;
   }
 
-  .intro {
+  .intro,
+  h2 {
     font-size: 16px;
     text-align: center;
+    font-weight: 400;
     color: #4A4A4A;
-    margin-bottom: 40px;
-  }
-
-  .search-wrapper {
-    text-align: center;
-  }
-
-  .views-exposed-form .views-exposed-widgets {
-    margin-bottom: 0;
-  }
-
-  .views-exposed-form .views-exposed-widget {
-    display: block;
-    float: none;
-    padding: 0;
-    margin: 0;
+    margin: 0 0 40px;
     font-family: $body-font;
+  }
 
-    .form-item {
-      background: transparent;
-      padding: 0;
-      margin: 0;
-    }
-
-    .form-submit {
-      margin-top: 1rem;
-    }
+  form {
+    margin-bottom: 40px;
   }
 
   label {
@@ -71,21 +62,12 @@
     }
   }
 
-  .explanation {
-    font-size: 1rem;
-    line-height: 1.5;
+  .node-page p {
     text-align: left;
-    margin: 40px auto 1em;
-    color: #4A4A4A;
-    max-width: 720px
-  }
-
-  p + p {
-    margin-top: 1em;
-  }
-
-  .centered {
-    text-align: center;
+    font-size: 14px;
+    &.centered {
+      text-align: center;
+    }
   }
 
   .btn--browse {
@@ -99,12 +81,12 @@
     padding: 0 12px;
     text-decoration: none;
     transition: background .3s ease;
-    margin-top: 1em;
     line-height: 40px;
+    margin: 1em auto 0;
 
-  	&:hover, &:focus {
-  		background: darken(#026CB6, 7%);
-  	}
+    &:hover, &:focus {
+      background: darken(#026CB6, 7%);
+    }
   }
 }
 

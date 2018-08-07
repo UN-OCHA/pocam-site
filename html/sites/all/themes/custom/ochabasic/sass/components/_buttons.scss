@@ -2,69 +2,50 @@
  * Button styles
  */
 button, input[type="submit"] {
-	-webkit-appearance: none;
-	@include font-size($base-font-size);
-	color: $body-text-color;
-	background: none;
-	border: none;
-	box-shadow: none;
+  -webkit-appearance: none;
+  @include font-size($base-font-size);
+  color: $body-text-color;
+  background: none;
+  border: none;
+  box-shadow: none;
 }
 
 .btn-primary, input[type="submit"].form-submit {
-	border-radius: 4px;
-	background: $primary-bg-color;
-	font-family: $body-font;
-	text-transform: uppercase;
-	color: $white-text-color;
-	padding: 0 $base-unit*1.5;
-	transition: background 0.3s ease;
-	font-size: 16px;
-	line-height: 40px;
+  border-radius: 4px;
+  background: $primary-bg-color;
+  font-family: $body-font;
+  text-transform: uppercase;
+  color: $white-text-color;
+  padding: 0 $base-unit*1.5;
+  transition: background 0.3s ease;
+  font-size: 16px;
+  line-height: 40px;
 
-	&:hover, &:focus {
-		background: darken($primary-bg-color, 7%);
-	}
+  &:hover, &:focus {
+    background: darken($primary-bg-color, 7%);
+  }
 }
 
 .form-submit {
-	@extend .btn-primary;
+  @extend .btn-primary;
 
-	&+.form-submit {
-		margin-left: $base-unit;
-	}
+  & + .form-submit {
+    margin-left: $base-unit;
+  }
 }
 
 .btn-icon {
-	padding: 0;
-	@include font-size($small-font-size);
-	text-transform: uppercase;
-	color: $heading-text-color;
-	display: flex;
-	align-items: center;
-	line-height: 22px;
-	cursor: pointer;
+  padding: 0;
+  @include font-size($small-font-size);
+  text-transform: uppercase;
+  color: $heading-text-color;
+  display: flex;
+  align-items: center;
+  line-height: 22px;
+  cursor: pointer;
 
-	i {
-		@include font-size(20);
-		margin-right: 2px;
-	}
-}
-
-.btn--browse {
-	display: inline-block;
-	border-radius: 4px;
-	background: #026CB6;
-	text-transform: uppercase;
-	color: #fff;
-	font-size: 16px;
-	font-weight: 400;
-	padding: 0 12px;
-	text-decoration: none;
-	transition: background .3s ease;
-	margin-top: 1em;
-	line-height: 40px;
-
-	&:hover, &:focus {
-		background: darken(#026CB6, 7%);
-	}
+  i {
+    @include font-size(20);
+    margin-right: 2px;
+  }
 }
