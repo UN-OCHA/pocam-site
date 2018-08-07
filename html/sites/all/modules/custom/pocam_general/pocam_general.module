@@ -207,3 +207,60 @@ function pocam_general_login_redirect() {
     'destination_error' => 'extracts',
   ));
 }
+
+/**
+ * Implements hook_token_info().
+ */
+function pocam_general_token_info() {
+  $info['types']['pocam-general'] = array(
+    'name' => t('POCAM'),
+    'description' => t('Tokens related to POCAM.'),
+    'needs-data' => 'format',
+  );
+
+  $info['tokens']['pocam-general']['search-block'] = array(
+    'name' => t('Search block'),
+    'description' => t('Search block'),
+  );
+
+  $info['tokens']['pocam-general']['themes-list'] = array(
+    'name' => t('List of themes'),
+    'description' => t('List of themes'),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function pocam_general_tokens($type, $tokens, array $data = array(), array $options = array()) {
+	$replacements = array();
+  $sanitize = !empty($options['sanitize']);
+
+	if ($type == 'pocam-general') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'search-block':
+          $block = module_invoke('views', 'block_view', '-exp-extracts-page');
+
+          // Add placeholder text.
+          $block['content']['#markup'] = str_replace('id="edit-search-api-views-fulltext"', 'id="edit-search-api-views-fulltext" placeholder="Search for phrases or keywords"', $block['content']['#markup']);
+          $replacements[$original] = $block['content']['#markup'];
+          break;
+
+        case 'themes-list':
+          $output = theme('item_list', array(
+            'items' => _pocam_general_build_tree('theme'),
+            'prefix' => '<div class="theme-wrapper">',
+            'suffix' => '</div>',
+            ));
+          $replacements[$original] = $output;
+          break;
+
+      }
+    }
+  }
+
+	return $replacements;
+}

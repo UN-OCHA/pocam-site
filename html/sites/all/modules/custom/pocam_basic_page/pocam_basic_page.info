@@ -1,5 +1,5 @@
 name = POCAM basic page
-description = pocam basic page content type
+description = POCAM basic page content type
 core = 7.x
 package = POCAM
 dependencies[] = ctools
@@ -7,6 +7,8 @@ dependencies[] = ds
 dependencies[] = features
 dependencies[] = strongarm
 dependencies[] = text
+dependencies[] = token
+dependencies[] = token_filter
 features[ctools][] = ds:ds:1
 features[ctools][] = strongarm:strongarm:1
 features[ds_field_settings][] = node|page|default
