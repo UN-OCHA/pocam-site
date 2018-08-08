@@ -63,7 +63,7 @@ ol {
   list-style: decimal;
 }
 
-.event-heading, .node-type-page h1 {
+.event-heading {
   padding-bottom: $base-unit*1.5;
   border-bottom: 1px solid $border-color;
   color: $heading-text-color;
@@ -81,13 +81,6 @@ ol {
 }
 
 .node-type-page .content {
-  h1, h2, h3, h4, h5 {
-    color: $heading-text-color;
-  }
-
-  h2, h3 {
-    text-transform: uppercase
-  }
 
   .submitted {
     margin-bottom: $base-unit;
@@ -119,7 +112,7 @@ dd {
   .node-type-page .content {
 
     p, ul, ol, dl {
-      @include font-size($medium-font-size);
+      @include font-size($base-font-size);
     }
 
     li {

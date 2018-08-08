@@ -1,0 +1,8 @@
+<?php
+
+/**
+ * @file
+ * Code for the POCAM basic page feature.
+ */
+
+include_once 'pocam_basic_page.features.inc';

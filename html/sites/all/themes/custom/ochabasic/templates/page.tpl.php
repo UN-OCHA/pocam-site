@@ -28,7 +28,7 @@
     <?php endif; ?>
 
       <?php if (!drupal_is_front_page() && $title && isset($node) && $node->type !== 'ev_event'): ?>
-      <h1>
+      <h1 class="page__title">
         <?php print $title; ?>
       </h1>
       <?php endif; ?>

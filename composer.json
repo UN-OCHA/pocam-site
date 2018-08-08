@@ -44,6 +44,7 @@
         "drupal/search_api_db": "^1.6",
         "drupal/strongarm": "^2.0",
         "drupal/token": "^1.7",
+        "drupal/token_filter": "^1.1",
         "drupal/transliteration": "^3.2",
         "drupal/variable": "^2.5",
         "drupal/views": "^3.18"

@@ -37,24 +37,6 @@ function pocam_general_menu() {
     'type' => MENU_CALLBACK,
   );
 
-  $items['home'] = array(
-    'title' => 'Protection of Civilians Aide Memoire',
-    'page callback' => '_pocam_general_home',
-    'access arguments' => array('access content'),
-  );
-
-  $items['about'] = array(
-    'title' => 'What is the Protection of Civilians Aide Memoire?',
-    'page callback' => '_pocam_general_about',
-    'access arguments' => array('access content'),
-  );
-
-  $items['theme'] = array(
-    'title' => 'Themes',
-    'page callback' => '_pocam_general_themes',
-    'access arguments' => array('access content'),
-  );
-
   return $items;
 }
 
@@ -65,89 +47,6 @@ function pocam_general_menu_alter(&$items) {
   $items['user/register']['access callback'] = FALSE;
   $items['user/password']['page callback'] = FALSE;
   $items['user/login']['access callback'] = FALSE;
-}
-
-/**
- * Render home page.
- */
-function _pocam_general_home() {
-  $block = module_invoke('views', 'block_view', '-exp-extracts-page');
-
-  // Add placeholder text.
-  $block['content']['#markup'] = str_replace('id="edit-search-api-views-fulltext"', 'id="edit-search-api-views-fulltext" placeholder="Search for phrases or keywords"', $block['content']['#markup']);
-
-  return array(
-    'title' => array(
-      '#markup' => 'Protection of Civilians Aide Memoire',
-      '#prefix' => '<h1 class="page__title">',
-      '#suffix' => '</h1>',
-    ),
-    'intro' => array(
-      '#markup' => 'Search Security Council Resolutions and Statements',
-      '#prefix' => '<div class="intro">',
-      '#suffix' => '</div>',
-    ),
-    'search' => array(
-      '#markup' => render($block),
-      '#prefix' => '<div class="search-wrapper">',
-      '#suffix' => '</div>',
-    ),
-    'explanation' => array(
-      '#markup' => '
-        <p>The Aide Memoire serves is a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists <a href="/theme">the main themes and sub-themes</a> that pertain to the protection of civilians, and proposes model language to address those, including verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
-        <p class="centered"><a class="btn--browse" href="/theme">Browse by theme</a></p>
-      ',
-      '#prefix' => '<div class="explanation">',
-      '#suffix' => '</div>',
-    ),
-  );
-}
-
-/**
- * Render about page.
- */
-function _pocam_general_about() {
-  return array(
-    'title' => array(
-      '#markup' => 'What is the Protection of Civilians Aide Memoire?',
-      '#prefix' => '<h1 class="page__title">',
-      '#suffix' => '</h1>',
-    ),
-    'text' => array(
-      '#markup' => '
-        <p>The Security Council Aide Memoire for the Consideration of Issues pertaining to the Protection of Civilians in Armed Conflict was elaborated in 2002 upon a request from the President of the Security Council to the Secretary-General (<a target="_blank" href="https://www.un.org/en/ga/search/view_doc.asp?symbol=S/2001/614">S/2001/614</a>), and is periodically updated by OCHA. All editions of the Aide Memoire were discussed by the Security Council and annexed to a Security Council Presidential Statement.</p>
-        <p>The Aide Memoire serves as a reference tool on the Security Council’s normative practice on the protection of civilians in armed conflict. Based on this practice, it lists the main themes and sub-themes that pertain to the protection of civilians, and proposes model language to address those, including verbatim examples of Security Council agreed language on each identified theme and sub-theme. This site offers a user-friendly interface to search into the addendum of the Aide-Memoire, entirely populated with official Security Council language on the protection of civilians in armed conflict.</p>
-        <p>The physical version of the Aide Memoire, having evolved from a 7-page document (<a href="https://www.un.org/en/ga/search/view_doc.asp?symbol=S/PRST/2002/6" target="_blank">S/PRST/2002/6</a>) to several hundred pages of references (most recent reference to be added), is in itself a testament to the relevance of the protection of civilians to the Security Council, and the importance the Security Council gives to this issue, which it called “one of the core issues on its agenda” (<a href="https://undocs.org/S/PRST/2015/23" target="_blank">S/PRST/2015/23</a>).</p>
-      ',
-      '#prefix' => '<div class="text">',
-      '#suffix' => '</div>',
-    ),
-    'search' => array(
-      '#theme' => 'item_list',
-      '#items' => _pocam_general_build_tree('theme'),
-      '#prefix' => '<div class="theme-wrapper">',
-      '#suffix' => '</div>',
-    ),
-  );
-}
-
-/**
- * Render themes page.
- */
-function _pocam_general_themes() {
-  return array(
-    'title' => array(
-      '#markup' => 'Themes',
-      '#prefix' => '<h1 class="page__title">',
-      '#suffix' => '</h1>',
-    ),
-    'search' => array(
-      '#theme' => 'item_list',
-      '#items' => _pocam_general_build_tree('theme'),
-      '#prefix' => '<div class="theme-wrapper">',
-      '#suffix' => '</div>',
-    ),
-  );
 }
 
 /**
@@ -206,4 +105,60 @@ function pocam_general_login_redirect() {
     'destination' => drupal_get_destination(),
     'destination_error' => 'extracts',
   ));
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function pocam_general_token_info() {
+  $info['types']['pocam-general'] = array(
+    'name' => t('POCAM'),
+    'description' => t('Tokens related to POCAM.'),
+    'needs-data' => 'format',
+  );
+
+  $info['tokens']['pocam-general']['search-block'] = array(
+    'name' => t('Search block'),
+    'description' => t('Search block'),
+  );
+
+  $info['tokens']['pocam-general']['themes-list'] = array(
+    'name' => t('List of themes'),
+    'description' => t('List of themes'),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function pocam_general_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'pocam-general') {
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'search-block':
+          $block = module_invoke('views', 'block_view', '-exp-extracts-page');
+
+          // Add placeholder text.
+          $block['content']['#markup'] = str_replace('id="edit-search-api-views-fulltext"', 'id="edit-search-api-views-fulltext" placeholder="Search for phrases or keywords"', $block['content']['#markup']);
+          $replacements[$original] = $block['content']['#markup'];
+          break;
+
+        case 'themes-list':
+          $output = theme('item_list', array(
+            'items' => _pocam_general_build_tree('theme'),
+            'prefix' => '<div class="theme-wrapper">',
+            'suffix' => '</div>',
+          ));
+          $replacements[$original] = $output;
+          break;
+
+      }
+    }
+  }
+
+  return $replacements;
 }
