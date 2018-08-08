@@ -295,7 +295,7 @@ function pocam_update_7006(&$sandbox) {
 }
 
 /**
-* Enable pocam_basic_page feature.
+ * Enable pocam_basic_page feature.
  */
 function pocam_update_7007(&$sandbox) {
   $modules = array(
@@ -308,11 +308,11 @@ function pocam_update_7007(&$sandbox) {
 }
 
 /**
- * Enable CKEditor
+ * Enable CKEditor.
  */
 function pocam_update_7008(&$sandbox) {
   $modules = array(
-      'ckeditor',
+    'ckeditor',
   );
 
   module_enable($modules);
