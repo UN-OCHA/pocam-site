@@ -293,3 +293,16 @@ function pocam_update_7006(&$sandbox) {
 
   module_enable($modules);
 }
+
+/**
+ * Enable pocam_basic_page feature.
+ */
+function pocam_update_7007(&$sandbox) {
+  $modules = array(
+    'pocam_basic_page',
+    'token',
+    'token_filter',
+  );
+
+  module_enable($modules);
+}
