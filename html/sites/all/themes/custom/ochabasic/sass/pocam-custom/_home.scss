@@ -65,7 +65,9 @@
   .node-page p {
     text-align: left;
     font-size: 14px;
-    &.centered {
+
+    &.centered,
+    &.rtecenter {
       text-align: center;
     }
   }

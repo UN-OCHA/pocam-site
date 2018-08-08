@@ -17,6 +17,7 @@ function pocam_basic_page_ckeditor_profile_defaults() {
     [\'Bold\',\'Italic\'],
     [\'NumberedList\',\'BulletedList\'],
     [\'Link\',\'Unlink\'],
+    [\'JustifyLeft\',\'JustifyCenter\'],
     [\'Styles\']
 ]',
         'expand' => 't',
@@ -111,6 +112,7 @@ function pocam_basic_page_ckeditor_profile_defaults() {
     [\'Bold\',\'Italic\'],
     [\'NumberedList\',\'BulletedList\'],
     [\'Link\',\'Unlink\'],
+    [\'JustifyLeft\',\'JustifyCenter\'],
     [\'Styles\'],
     [\'Source\']
 ]',
