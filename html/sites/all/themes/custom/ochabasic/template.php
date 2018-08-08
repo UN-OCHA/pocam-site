@@ -158,7 +158,7 @@ function ochabasic_pwa_manifest_alter(&$manifest) {
       'type' => 'image/png',
     ],
     [
-      'src' => url(drupal_get_path('theme', 'ocha_basic') . '/android-chrome-192x192.png'),
+      'src' => url(drupal_get_path('theme', 'ochabasic') . '/android-chrome-192x192.png'),
       'sizes' => '192x192',
       'type' => 'image/png',
     ],
