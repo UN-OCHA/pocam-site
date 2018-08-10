@@ -26,11 +26,9 @@ cd sites/test
 
 ### Webserver
 
-Use `localhost`, not `127.0.0.1` so it doesn't use the default sites directory
-
 ```
 cd ../html/sites/test
-../../../behat/bin/drush runserver localhost:8888
+../../../behat/bin/drush runserver 8888
 ```
 
 ### Chromedriver
