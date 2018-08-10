@@ -187,6 +187,7 @@ function pocam_install_finished(&$install_state) {
   module_enable(array(
     'pocam_general',
     'pocam_extract',
+    'pocam_basic_page',
   ));
 
   drupal_set_title($t('@drupal installation complete', array(
@@ -221,6 +222,7 @@ function pocam_install_finished(&$install_state) {
   // Revert features.
   features_revert_module('pocam_general');
   features_revert_module('pocam_extract');
+  features_revert_module('pocam_basic_page');
 
   // Flush all caches.
   drupal_flush_all_caches();
