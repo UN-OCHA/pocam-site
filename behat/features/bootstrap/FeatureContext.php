@@ -200,4 +200,31 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
 
     $element->click();
   }
+
+  /**
+   * @Given I am viewing a :arg1 content with the alias :arg2:
+   */
+  public function iAmViewingAContentWithTheAlias($type, $alias, TableNode $fields)
+  {
+    $node = (object) array(
+      'type' => $type,
+    );
+
+    foreach ($fields->getRowsHash() as $field => $value) {
+      $node->{$field} = $value;
+    }
+
+    $saved = $this->nodeCreate($node);
+
+    // Save path.
+    $path = array(
+      'source' => 'node/' . $saved->nid,
+      'alias' => $alias,
+    );
+    path_save($path);
+
+    // Set internal browser on the node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
+  }
+
 }
