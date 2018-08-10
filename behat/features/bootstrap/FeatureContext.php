@@ -204,8 +204,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * @Given I am viewing a :arg1 content with the alias :arg2:
    */
-  public function iAmViewingAContentWithTheAlias($type, $alias, TableNode $fields)
-  {
+  public function iAmViewingAContentWithTheAlias($type, $alias, TableNode $fields) {
     $node = (object) array(
       'type' => $type,
     );
@@ -227,4 +226,42 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 
+  /**
+   * @Given I am viewing a :arg1 content with the alias :arg2 and menu :menu:
+   */
+  public function iAmViewingAContentWithTheAliasAndMenu($type, $alias, $menu, TableNode $fields) {
+    $node = (object) array(
+      'type' => $type,
+    );
+
+    foreach ($fields->getRowsHash() as $field => $value) {
+      $node->{$field} = $value;
+    }
+
+    $saved = $this->nodeCreate($node);
+
+    // Save path.
+    $path = array(
+      'source' => 'node/' . $saved->nid,
+      'alias' => $alias,
+    );
+    path_save($path);
+
+    // Save menu.
+    if (!empty($menu)) {
+      list($menu_name, $link_title) = explode(':', $menu);
+      $item = array(
+        'menu_name' => $menu_name,
+        'link_path' => drupal_get_normal_path($alias),
+        'link_title' => $link_title,
+        'weight' => 0,
+        'customized' => 1,
+      );
+      menu_link_save($item);
+      menu_cache_clear_all();
+    }
+
+    // Set internal browser on the node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
+  }
 }
