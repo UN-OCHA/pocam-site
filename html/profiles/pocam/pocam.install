@@ -319,3 +319,11 @@ function pocam_update_7008(&$sandbox) {
 
   module_enable($modules);
 }
+
+
+/**
+ * Enable custom theme.
+ */
+function pocam_update_7009(&$sandbox) {
+  $default_theme = variable_get('theme_default', 'ocha_basic');
+}
