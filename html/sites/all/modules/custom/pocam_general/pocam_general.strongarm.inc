@@ -975,13 +975,13 @@ After that, you will be able to log in at [site:login-url] using your [user:hybr
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
-  $strongarm->value = 'ochabasic';
+  $strongarm->value = 'ocha_basic';
   $export['theme_default'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'theme_ochabasic_settings';
+  $strongarm->name = 'theme_ocha_basic_settings';
   $strongarm->value = array(
     'toggle_logo' => 1,
     'toggle_name' => 1,
@@ -1000,7 +1000,7 @@ After that, you will be able to log in at [site:login-url] using your [user:hybr
     'favicon_upload' => '',
     'jquery_update_jquery_version' => '3.1',
   );
-  $export['theme_ochabasic_settings'] = $strongarm;
+  $export['theme_ocha_basic_settings'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
