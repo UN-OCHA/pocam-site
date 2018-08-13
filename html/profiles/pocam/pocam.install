@@ -320,7 +320,6 @@ function pocam_update_7008(&$sandbox) {
   module_enable($modules);
 }
 
-
 /**
  * Enable custom theme.
  */
