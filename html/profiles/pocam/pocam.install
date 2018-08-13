@@ -324,5 +324,5 @@ function pocam_update_7008(&$sandbox) {
  * Enable custom theme.
  */
 function pocam_update_7009(&$sandbox) {
-  $default_theme = variable_get('theme_default', 'ocha_basic');
+  variable_get('theme_default', 'ocha_basic');
 }
