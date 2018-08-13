@@ -159,5 +159,5 @@ features[variable][] = hybridauth_widget_weight
 features[variable][] = site_frontpage
 features[variable][] = site_name
 features[variable][] = theme_default
-features[variable][] = theme_ochabasic_settings
+features[variable][] = theme_ocha_basic_settings
 features[variable][] = user_register
