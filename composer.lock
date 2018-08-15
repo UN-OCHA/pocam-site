@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "885ef760493d6fe4a431531e5489ee4b",
+    "content-hash": "f10ffcf97b7d6fcaf05dbbefa2e9cbb7",
     "packages": [
         {
             "name": "drupal/admin_denied",
@@ -94,10 +94,6 @@
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
-                    "name": "RenatoG",
-                    "homepage": "https://www.drupal.org/user/3326031"
-                },
-                {
                     "name": "fubhy",
                     "homepage": "https://www.drupal.org/user/761344"
                 },
@@ -112,10 +108,6 @@
                 {
                     "name": "sun",
                     "homepage": "https://www.drupal.org/user/54136"
-                },
-                {
-                    "name": "truls1502",
-                    "homepage": "https://www.drupal.org/user/325866"
                 }
             ],
             "description": "Provides a dropdown menu to most administrative tasks and other common destinations (to users with the proper permissions).",
@@ -258,8 +250,7 @@
             "homepage": "https://www.drupal.org/project/audit_log",
             "support": {
                 "source": "http://cgit.drupalcode.org/audit_log"
-            },
-            "time": "2017-11-09T10:43:56+00:00"
+            }
         },
         {
             "name": "drupal/chosen",
@@ -915,7 +906,7 @@
                 },
                 "drupal": {
                     "version": "7.59",
-                    "datestamp": "1524805044",
+                    "datestamp": "1524674011",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -927,6 +918,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "Cottser",
+                    "homepage": "https://www.drupal.org/user/1167326"
+                },
                 {
                     "name": "David_Rothstein",
                     "homepage": "https://www.drupal.org/user/124982"
