@@ -162,3 +162,17 @@ function pocam_general_tokens($type, $tokens, array $data = array(), array $opti
 
   return $replacements;
 }
+
+/**
+ * Implements hook_hybridauth_destination_options_alter().
+ */
+function pocam_general_hybridauth_destination_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
+}
+
+/**
+ * Implements hook_hybridauth_destination_error_options_alter().
+ */
+function pocam_general_hybridauth_destination_error_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
+}
