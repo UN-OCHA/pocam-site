@@ -124,7 +124,7 @@ function pocam_general_token_info() {
 
   $info['tokens']['pocam-general']['themes-list'] = array(
     'name' => t('List of themes'),
-    'description' => t('List of themes'),
+    'description' => t('List of themes. Ex. [pocam-general:themes-list:1], [pocam-general:themes-list:2], [pocam-general:themes-list:3]'),
   );
 
   return $info;
@@ -138,7 +138,14 @@ function pocam_general_tokens($type, $tokens, array $data = array(), array $opti
 
   if ($type == 'pocam-general') {
     foreach ($tokens as $name => $original) {
-      switch ($name) {
+      // Split name to get parameters.
+      $token_name = $name;
+      $param = '';
+      if (strpos($name, ':') !== FALSE) {
+        list($token_name, $param) = explode(':', $name);
+      }
+
+      switch ($token_name) {
         case 'search-block':
           $block = module_invoke('views', 'block_view', '-exp-extracts-page');
 
@@ -148,8 +155,13 @@ function pocam_general_tokens($type, $tokens, array $data = array(), array $opti
           break;
 
         case 'themes-list':
+          $depth = 2;
+          if (!empty($param) && is_numeric($param)) {
+            $depth = (int) $param;
+          }
+
           $output = theme('item_list', array(
-            'items' => _pocam_general_build_tree('theme'),
+            'items' => _pocam_general_build_tree('theme', $depth),
             'prefix' => '<div class="theme-wrapper">',
             'suffix' => '</div>',
           ));
