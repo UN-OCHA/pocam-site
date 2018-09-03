@@ -75,15 +75,15 @@ function _pocam_general_build_tree($voc, $depth = 2) {
             'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
             'children' => array(),
           );
-          $parents[$term->tid] = $term->parents[0];
+          $parents[$term->tid] = &$links['p-' . $term->parents[0]]['children'][$term->tid];
         }
         else {
           if (isset($parents[$term->parents[0]])) {
-            $links['p-' . $parents[$term->parents[0]]]['children'][$term->parents[0]]['children'][$term->tid] = array(
+            $parents[$term->parents[0]]['children'][$term->tid] = array(
               'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
               'children' => array(),
             );
-            $parents[$term->tid] = $term->parents[0];
+            $parents[$term->tid]= &$parents[$term->tid]['children'][$term->tid];
           }
         }
       }
