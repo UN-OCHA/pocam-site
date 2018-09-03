@@ -122,8 +122,6 @@ function pocam_extract_theme_full_tree($node, $view_mode, $langcode) {
     '#prefix' => '<div class="theme-list">',
     '#suffix' => '</div>',
   );
-
-  return $output;
 }
 
 /**
