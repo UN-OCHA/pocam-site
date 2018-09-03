@@ -83,7 +83,7 @@ function _pocam_general_build_tree($voc, $depth = 2) {
               'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
               'children' => array(),
             );
-            $parents[$term->tid]= &$parents[$term->tid]['children'][$term->tid];
+            $parents[$term->tid] = &$parents[$term->tid]['children'][$term->tid];
           }
         }
       }
