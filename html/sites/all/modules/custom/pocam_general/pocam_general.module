@@ -57,6 +57,8 @@ function _pocam_general_build_tree($voc, $depth = 2) {
   $vid = taxonomy_vocabulary_machine_name_load($voc)->vid;
   $terms = taxonomy_get_tree($vid, 0, $depth);
   $facet_count = _pocam_general_get_facet_count('field_theme');
+  $parents = array();
+
   foreach ($terms as $term) {
     $text = $term->name;
     if (isset($facet_count[$term->tid])) {
@@ -64,12 +66,26 @@ function _pocam_general_build_tree($voc, $depth = 2) {
       if ($term->parents[0] == 0) {
         $links['p-' . $term->tid] = array(
           'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+          'children' => array(),
         );
       }
       else {
-        $links['p-' . $term->parents[0]]['children'][] = array(
-          'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
-        );
+        if (isset($links['p-' . $term->parents[0]]['children'])) {
+          $links['p-' . $term->parents[0]]['children'][$term->tid] = array(
+            'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+            'children' => array(),
+          );
+          $parents[$term->tid] = &$links['p-' . $term->parents[0]]['children'][$term->tid];
+        }
+        else {
+          if (isset($parents[$term->parents[0]])) {
+            $parents[$term->parents[0]]['children'][$term->tid] = array(
+              'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+              'children' => array(),
+            );
+            $parents[$term->tid] = &$parents[$term->tid]['children'][$term->tid];
+          }
+        }
       }
     }
   }
