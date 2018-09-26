@@ -5,3 +5,11 @@
     margin-bottom: 60px;
   }
 }
+
+.cd-site-header__inner {
+  .cssgrid.flexbox & {
+    @include tablet {
+      grid-template-columns: 247px 1fr; // Match logo width.
+    }
+  }
+}

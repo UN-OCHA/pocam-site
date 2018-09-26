@@ -14,24 +14,25 @@
   float: left;
   width: 52px;
   height: $cd-site-header-height;
-  background: url('../img/logos/ocha-logo-blue.svg') center no-repeat;
+  background: url('../img/logos/poc-logo-mobile.svg') center no-repeat;
 
   .cssgrid.flexbox & {
     float: none;
   }
 
   .no-svg & {
-    background: url('../img/logos/ocha-logo-blue@53x37.png') center no-repeat;
+    background: url('../img/logos/poc-logo-mobile.png') center no-repeat;
   }
 }
 
 @include tablet {
   .cd-site-logo {
-    background: url('../img/logos/ocha-lockup-blue.svg') center no-repeat;
-    width: 186px; // width may need to be adjusted depending on logo width.
+    background: url('../img/logos/poc-logo-text.svg') center no-repeat;
+    width: 247px; // width may need to be adjusted depending on logo width.
 
     .no-svg & {
-      background: url('../img/logos/ocha-lockup-blue@186x60.png') center no-repeat;
+      background: url('../img/logos/poc-logo-text.png') center no-repeat;
+      background-size: 247px auto;
     }
   }
 }
