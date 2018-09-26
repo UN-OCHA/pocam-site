@@ -144,6 +144,11 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
     return;
   }
 
+  $previous_row = variable_get('pocam_extract_import_previous_row', array());
+  if (empty($previous_row)) {
+    $previous_row = $data;
+  }
+
   global $user;
 
   $values = array(
@@ -202,6 +207,20 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
     }
   }
 
+  // Merge previous row if needed.
+  if (isset($data['level 0']) && empty($data['level 0'])) {
+    $data['level 0'] = $previous_row['level 0'];
+  }
+  if (isset($data['level 1']) && empty($data['level 1'])) {
+    $data['level 1'] = $previous_row['level 1'];
+  }
+  if (isset($data['level 2']) && empty($data['level 2'])) {
+    $data['level 2'] = $previous_row['level 2'];
+  }
+  if (isset($data['see also']) && empty($data['see also'])) {
+    $data['see also'] = $previous_row['see also'];
+  }
+
   // Theme.
   $themes = array();
   if (isset($data['level 0']) && !empty($data['level 0'])) {
@@ -242,6 +261,14 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
 
   $node_wrapper->save();
   $context['results']['succes'][] = 'Imported row ' . $node_wrapper->getIdentifier();
+
+  // Update previous row.
+  $previous_row['level 0'] = $data['level 0'];
+  $previous_row['level 1'] = $data['level 1'];
+  $previous_row['level 2'] = $data['level 2'];
+  $previous_row['see also'] = $data['see also'];
+
+  variable_set('pocam_extract_import_previous_row', $previous_row);
 }
 
 function pocam_extract_import_extract_finished($success, $results, $operations) {
@@ -282,8 +309,9 @@ function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
 
     $term = new stdClass();
     $term->vid = $vocabularies[$voc]->vid;
-    $term->name = $term_name;
+    $term->name = substr($term_name, 0, 250);
     $term->weight = $term_weight;
+    $term->description = $term_name;
     if (isset($parent) && isset($parent->tid)) {
       $term->parent = $parent->tid;
     }
