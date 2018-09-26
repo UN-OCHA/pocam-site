@@ -174,7 +174,7 @@ function ocha_basic_preprocess_page(&$vars) {
   }
   // Add language links.
   global $language;
-  $path = drupal_is_front_page() ? '<front>' : $_GET['q'];
+  $path = drupal_is_front_page() ? '<front>' : current_path();
   $links = language_negotiation_get_switch_links('language', $path);
   // Bail out if links is not enumerable.
   if (!$links) {
