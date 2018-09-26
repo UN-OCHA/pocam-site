@@ -1,7 +1,7 @@
 .tabs.primary {
   border-bottom: 1px solid $highlight-border-color;
   background: $light-bg-color;
-  margin: 0 0 $base-unit*4;
+  margin: 0 0 $cd-base-unit*4;
   padding: 0;
   display: flex;
 
@@ -11,7 +11,7 @@
 
   a {
     display: block;
-    padding: $base-unit;
+    padding: $cd-base-unit;
     margin: 0;
     border: none;
     background: $light-bg-color;
@@ -37,7 +37,7 @@
   .tabs.primary {
 
     a {
-      padding: $base-unit $base-unit*2;
+      padding: $cd-base-unit $cd-base-unit*2;
     }
 
   }

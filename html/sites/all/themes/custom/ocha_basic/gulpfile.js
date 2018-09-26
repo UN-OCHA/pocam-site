@@ -1,9 +1,4 @@
-/**
- * @file
- * Gulp everything.
- */
-
-// Node/Gulp Utilities.
+// Node/Gulp Utilities
 const gulp = require('gulp');
 const log = require('fancy-log');
 const c = require('chalk');
@@ -11,7 +6,7 @@ const plumber = require('gulp-plumber');
 const spawn = require('child_process').spawn;
 const gulpif = require('gulp-if');
 
-// Development Tools.
+// Development Tools
 const bs = require('browser-sync');
 const reload = bs.reload;
 const rename = require('gulp-rename');
@@ -28,27 +23,34 @@ const changed = require('gulp-changed');
 const concat = require('gulp-concat');
 
 
-// Load local environment config.
+//——————————————————————————————————————————————————————————————————————————————
+// Load local environment config
+//——————————————————————————————————————————————————————————————————————————————
 let localConfig;
 try {
   localConfig = require('./localConfig.json');
 }
 catch (err) {
-  log(c.bgRed.white('localConfig.json is missing'));
-  log(c.red('Copy localConfig.example.json to localConfig.json and configure for your Drupal environment.'));
+  if (process.env.NODE_ENV !== 'production') {
+    log(c.bgRed.white('localConfig.json is missing'));
+    log(c.red('Copy localConfig.example.json to localConfig.json and configure for your Drupal environment.'));
+  }
 }
 
 
-// Debug info.
+//——————————————————————————————————————————————————————————————————————————————
+// Debug info
+//——————————————————————————————————————————————————————————————————————————————
 if (process.env.NODE_ENV === 'production') {
   log(c.bgYellow.black('Production'), c.yellow('environment detected'));
-}
-else {
+} else {
   log(c.bgYellow.black('Local'), c.yellow('environment detected'));
 }
 
 
-// BrowserSync.
+//——————————————————————————————————————————————————————————————————————————————
+// BrowserSync
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('dev:bs', () => {
   bs({
     proxy: localConfig.drupalUrl,
@@ -58,17 +60,19 @@ gulp.task('dev:bs', () => {
 });
 
 
-// Sass.
+//——————————————————————————————————————————————————————————————————————————————
+// Sass
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('dev:sass', () => {
   bs.notify(`Compiling Sass...`);
 
-  return gulp.src(['css/styles.scss'])
+  return gulp.src(['sass/styles.scss'])
     .pipe(plumber())
     .pipe(gulpif(process.env.NODE_ENV !== 'production', sourcemaps.init()))
     .pipe(sass({outputStyle: 'nested'}).on('error', sass.logError))
     .pipe(postcss([
       prefix({
-        browsers: ['>0.333%', 'iOS 8'],
+        browsers: ['>1%', 'iOS 9'],
         cascade: false,
       }),
       cssnano(),
@@ -78,7 +82,9 @@ gulp.task('dev:sass', () => {
     .pipe(reload({stream: true}));
 });
 
-// JS Linting.
+//——————————————————————————————————————————————————————————————————————————————
+// JS Linting
+//——————————————————————————————————————————————————————————————————————————————
 // gulp.task('dev:js-lint', () => {
 //   return gulp.src('js/*.js')
 //     .pipe(jshint())
@@ -86,7 +92,9 @@ gulp.task('dev:sass', () => {
 // });
 
 
-// JS Bundling.
+//——————————————————————————————————————————————————————————————————————————————
+// JS Bundling
+//——————————————————————————————————————————————————————————————————————————————
 // gulp.task('dev:js-bundle', () => {
 //   return gulp.src([
 //       'js/*.js',
@@ -97,28 +105,40 @@ gulp.task('dev:sass', () => {
 //     .pipe(reload({stream: true}));
 // });
 
-// JS Lint + Bundle.
+//——————————————————————————————————————————————————————————————————————————————
+// JS Lint + Bundle
+//——————————————————————————————————————————————————————————————————————————————
 // gulp.task('dev:js', ['dev:js-lint', 'dev:js-bundle']);
 
 
-// Build assets and start Browser-Sync.
+//——————————————————————————————————————————————————————————————————————————————
+// Build assets and start Browser-Sync
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('dev', ['dev:sass', /*'dev:js',*/ 'dev:bs', 'watch']);
 
 
-// Watch Files For Changes.
+//——————————————————————————————————————————————————————————————————————————————
+// Watch Files For Changes
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('watch', () => {
-  gulp.watch(['js/*.js'], ['dev:js']);
-  gulp.watch(['css/*.scss', 'sass/**/*.scss'], ['dev:sass']);
+  // gulp.watch(['js/*.js'], ['dev:js']);
+  gulp.watch(['sass/**/*.scss'], ['dev:sass']);
 });
 
 
-// Build all assets in the theme.
+//——————————————————————————————————————————————————————————————————————————————
+// Build all assets in the theme
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('build', ['dev:sass', /*'dev:js'*/]);
 
 
-// Offer help on command line.
+//——————————————————————————————————————————————————————————————————————————————
+// Offer help on command line
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('help', taskListing);
 
 
-// Help task is default.
+//——————————————————————————————————————————————————————————————————————————————
+// Help task is default
+//——————————————————————————————————————————————————————————————————————————————
 gulp.task('default', ['help']);

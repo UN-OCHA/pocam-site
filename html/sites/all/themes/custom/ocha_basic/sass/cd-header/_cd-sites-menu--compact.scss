@@ -35,16 +35,16 @@
 
     a {
       display: block;
-      padding: $base-unit*1.5;
-      border-bottom: 1px solid $border-color;
+      padding: $cd-base-unit*1.5;
+      border-bottom: 1px solid $cd-border-color;
       text-decoration: none;
-      color: $default-text-color;
+      color: $cd-default-text-color;
       word-break: break-word;
 
       &:hover,
       &:focus {
-        background: $primary-bg-color;
-        color: $white-text-color;
+        background: $cd-ocha-blue;
+        color: $cd-white;
       }
     }
   }
