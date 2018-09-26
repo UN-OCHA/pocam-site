@@ -3,8 +3,8 @@
   font-style: normal;
   font-weight: 300;
   src: local('Open Sans Light'), local('OpenSans-Light'),
-       url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
@@ -12,8 +12,8 @@
   font-style: normal;
   font-weight: 600;
   src: local('Open Sans SemiBold'), local('OpenSans-SemiBold'),
-       url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 @font-face {
@@ -21,8 +21,8 @@
   font-style: normal;
   font-weight: 400;
   src: local('Open Sans Regular'), local('OpenSans-Regular'),
-       url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+  url('/sites/all/themes/custom/ocha_basic/fonts/open-sans-v15-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 h1, h2 ,h3 ,h4 ,h5 {
@@ -33,7 +33,7 @@ h1, h2 ,h3 ,h4 ,h5 {
 
 h1 {
   @include font-size($cd-font-size-medium);
-  color: $heading-text-color;
+  color: $cd-ocha-blue;
   font-weight: normal;
 }
 
@@ -45,61 +45,6 @@ h4, h5 {
   font-weight: 400;
 }
 
-ol, ul {
-  list-style: initial;
-  margin-left: $cd-base-unit*3;
-}
-
-ol {
-  list-style: decimal;
-}
-
-
-
-
-
-
-//——————————————————————————————————————————————————————————————————————————————
-// Typography
-//——————————————————————————————————————————————————————————————————————————————
-
-h1, h2 ,h3 ,h4 ,h5 {
-  line-height: 1.2;
-  font-weight: bold;
-}
-
-h1 {
-  @include font-size($cd-font-size-medium);
-  color: $cd-ocha-blue;
-  font-weight: normal;
-}
-
-h1, h2 ,h3 ,h4 ,h5, ol, dl {
-  margin-bottom: $cd-base-unit;
-}
-
-//p, ul {
-//  margin-bottom: $cd-base-unit;
-//}
-
-h4, h5 {
-  font-weight: 400;
-}
-
-h1, h2 ,h3 ,h4 ,h5 {
-  color: $cd-ocha-blue;
-}
-
-h1.page-heading {
-  padding-bottom: $cd-base-unit*1.5;
-  border-bottom: 1px solid $cd-mid-bluey-grey;
-  font-weight: 300;
-}
-
-h2, h3 {
-  text-transform: uppercase
-}
-
 a {
   color: $cd-dark-blue;
 
@@ -109,148 +54,31 @@ a {
   }
 }
 
-//ol, ul {
-//  list-style: initial;
-//  margin-left: $cd-base-unit*3;
-//}
+ol, ul {
+  list-style: initial;
+  margin-left: $cd-base-unit*3;
+}
 
 ol {
   list-style: decimal;
 }
 
-//li {
-//  margin-bottom: $cd-base-unit/4;
-//}
-
-strong {
-  font-weight: 400;
-}
-
-em {
-  font-style: italic;
-}
-
-u {
-  text-decoration: none;
-  font-weight: bold;
-}
-
-dt {
-  font-weight: 400;
-}
-
-dd {
-  margin-bottom: $cd-base-unit;
-}
-
-@include min-width(sm) {
-  h1 {
-    @include font-size($cd-font-size-xlarge);
-  }
-
-  //p, ul {
-  //  @include font-size($cd-font-size-base);
-  //}
-
-  ol, dl {
-    @include font-size($cd-font-size-base);
-  }
-
-  //li {
-  //  margin-bottom: $cd-base-unit/2;
-  //}
-
-  h2 {
-    @include font-size($cd-font-size-medium);
-    font-weight: normal;
-  }
-
-  h1, h2 ,h3 ,h4 ,h5, ol, dl {
-    margin-bottom: $cd-base-unit*2;
-  }
-
-  //p, ul {
-  //  margin-bottom: $cd-base-unit*2;
-  //}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .event-heading {
   padding-bottom: $cd-base-unit*1.5;
   border-bottom: 1px solid $cd-border-color;
-  color: $heading-text-color;
+  color: $cd-ocha-blue;
   font-weight: 300;
 }
 
 .event-heading {
-  color: $heading-text-dark-color;
+  color: $cd-ocha-blue;
   font-weight: normal;
 
   span {
-    color: $heading-text-color;
+    color: $cd-ocha-blue;
     font-weight: 300;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .node-type-page .content {
 

@@ -1,0 +1,52 @@
+// Pagination.
+
+.item-list ul.pager {
+  margin: 20px 0;
+}
+
+.item-list .pager {
+
+  li {
+    margin: 0 0.5em 0.5em ;
+    padding: 0;
+    display: inline-block;
+  }
+
+  .pager-current {
+    padding: 5px 14px;
+    background-color: $cd-white-bg-color;
+    border: 1px solid $cd-border-color;
+    border-radius: 4px;
+    &:hover,
+    &:focus {
+      color: $cd-ocha-blue;
+      background-color: $cd-light-bg-color;
+
+    }
+  }
+
+  .pager-item a,
+  .pager-previous a,
+  .pager-first a,
+  .pager-next a,
+  .pager-last a {
+    display: block;
+    padding: 5px 14px;
+    background-color: $cd-white-bg-color;
+    border: 1px solid $cd-border-color;
+    border-radius: 4px;
+    &:hover,
+    &:focus {
+      color: $cd-ocha-blue;
+      background-color: $cd-light-bg-color;
+    }
+  }
+
+  .pager-current,
+  .pager-current:hover,
+  .pager-current:focus {
+    color: $cd-white-bg-color;
+    background-color: $cd-ocha-blue;
+    border-color: $cd-ocha-blue;
+  }
+}
