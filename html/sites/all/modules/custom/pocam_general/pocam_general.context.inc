@@ -82,6 +82,12 @@ function pocam_general_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
+        'system-user-menu' => array(
+          'module' => 'system',
+          'delta' => 'user-menu',
+          'region' => 'header_top',
+          'weight' => '-10',
+        ),
         'system-main-menu' => array(
           'module' => 'system',
           'delta' => 'main-menu',
