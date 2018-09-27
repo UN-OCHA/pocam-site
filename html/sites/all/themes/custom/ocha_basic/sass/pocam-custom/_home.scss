@@ -1,6 +1,6 @@
 .front {
 
-  .content {
+  .region-content .content {
     font-size: 1rem;
     line-height: 1.5;
     text-align: center;
@@ -13,7 +13,7 @@
     font-weight: 700;
     text-align: center;
     font-size: 20px;
-    font-family: $body-font;
+    font-family: $cd-font;
     margin: 0 0 1rem;
     text-transform: uppercase;
     color: #026CB6;
@@ -26,11 +26,19 @@
     font-weight: 400;
     color: #4A4A4A;
     margin: 0 0 40px;
-    font-family: $body-font;
+    font-family: $cd-font;
+  }
+
+  .block h2 {
+    margin: 0;
   }
 
   form {
     margin-bottom: 40px;
+  }
+
+  .views-exposed-widgets {
+    margin-bottom: 0;
   }
 
   label {
@@ -38,8 +46,8 @@
   }
 
   input[type=text] {
-    font-size: 16px;
-    font-family: $body-font;
+    @include font-size($cd-font-size-base);
+    font-family: $cd-font;
     font-weight: 300;
     color: #4A4A4A;
     height: 40px;
@@ -65,6 +73,7 @@
   .node-page p {
     text-align: left;
     font-size: 14px;
+    line-height: 1.8;
 
     &.centered,
     &.rtecenter {
@@ -90,6 +99,11 @@
       background: darken(#026CB6, 7%);
     }
   }
+
+  .ds-2col-stacked-fluid.group-one-column > .group-left {
+    padding-right: 0;
+  }
+
 }
 
 .front .content {
@@ -111,6 +125,7 @@
       margin-top: 20px;
     }
   }
+
 }
 
 @include sm {

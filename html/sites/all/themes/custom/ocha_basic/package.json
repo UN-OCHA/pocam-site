@@ -1,11 +1,11 @@
 {
   "name": "unocha-basic",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "OCHA Basic theme. Use as a starterkit and apply customizations directly your copy.",
   "repository": "git@github.com:UN-OCHA/ocha_basic.git",
   "author": "UN OCHA",
   "license": "GPL-2.0",
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^8.6.5",
     "browser-sync": "^2.24.5",
     "chalk": "^2.4.1",
@@ -26,11 +26,14 @@
     "gulp-task-listing": "^1.1.0",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.5",
-    "jshint-stylish": "^2.2.1",
-    "load-grunt-tasks": "^0.6.0"
+    "jshint-stylish": "^2.2.1"
   },
   "engines": {
     "node": "^8.11.3",
-    "npm": "^6.1.0"
+    "npm": "^6.4.0"
+  },
+  "scripts": {
+    "gulp": "gulp",
+    "build": "gulp build"
   }
 }

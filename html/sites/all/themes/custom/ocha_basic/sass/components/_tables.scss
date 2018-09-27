@@ -6,10 +6,10 @@
 
 table {
   width: 100%;
-  margin-bottom: $base-unit;
+  margin-bottom: $cd-base-unit;
 
   th, td {
-    padding: $base-unit;
+    padding: $cd-base-unit;
     background: $light-bg-color;
     border-bottom: 1px solid white;
   }
@@ -40,7 +40,7 @@ table {
     }
 
     &:last-child {
-      margin-bottom: $base-unit;
+      margin-bottom: $cd-base-unit;
     }
   }
 }
@@ -53,7 +53,7 @@ tr.odd, tr.even {
 
 @include min-width(md) {
   table {
-    margin-bottom: $base-unit*3;
+    margin-bottom: $cd-base-unit*3;
   }
 
   .table-responsive {

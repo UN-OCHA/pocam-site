@@ -235,7 +235,7 @@ h1.page__title,
     float: none;
     padding: 0 12px;
     margin: 0;
-    background: url('/sites/all/themes/custom/ocha_basic/icons/magnifying-glass.svg');
+    background: url('/sites/all/themes/custom/ocha_basic/img/icons/magnifying-glass.svg');
     background-size: contain;
     background-repeat: no-repeat;
     text-indent: -999px;
@@ -250,7 +250,7 @@ h1.page__title,
   button.toggle-button {
     border-radius: 4px;
     background: #007ac0;
-    font-family: $body-font;
+    font-family: $cd-font;
     text-transform: uppercase;
     color: #fff;
     padding: 0 12px;
@@ -344,5 +344,26 @@ h1.page__title,
     display: inline-block;
     text-decoration: none;
     padding: 5px 10px;
+  }
+}
+
+// Theme list
+.node-type-page .item-list {
+
+  li a {
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: block;
+  }
+}
+
+.current-search-item h3 {
+  @include font-size($cd-font-size-base);
+}
+
+.block-facetapi h2{
+  @include font-size($cd-font-size-base);
+  @include tablet {
+    @include font-size($cd-font-size-medium);
   }
 }
