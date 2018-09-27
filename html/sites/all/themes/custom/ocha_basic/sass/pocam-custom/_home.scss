@@ -46,7 +46,7 @@
   }
 
   input[type=text] {
-    @include font-size($cd-font-size-base);
+    @include font-size($cd-font-size-medium);
     font-family: $cd-font;
     font-weight: 300;
     color: #4A4A4A;
