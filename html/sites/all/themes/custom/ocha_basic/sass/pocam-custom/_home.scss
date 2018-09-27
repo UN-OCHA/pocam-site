@@ -46,11 +46,12 @@
   }
 
   input[type=text] {
-    @include font-size($cd-font-size-base);
+    @include font-size($cd-font-size-medium);
     font-family: $cd-font;
     font-weight: 300;
     color: #4A4A4A;
     height: 40px;
+    line-height: 40px;
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: #4A4A4A;

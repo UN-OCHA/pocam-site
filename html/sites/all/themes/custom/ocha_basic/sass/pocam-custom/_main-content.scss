@@ -168,6 +168,11 @@ h1.page__title,
   text-overflow: ellipsis;
   white-space: nowrap;
 
+  // IE fix;
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    white-space: normal;
+  }
+
   @include sm {
     max-width: 30em;
   }
