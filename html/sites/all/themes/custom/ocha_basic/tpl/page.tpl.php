@@ -7,6 +7,8 @@
  * Complete documentation for this file is available online.
  * @see https://drupal.org/node/1728148
  */
+// Remove messsage.
+unset($page['content']['system_main']['default_message']);
 ?>
 <div class="page-wrapper">
   <a href="#main-content" class="skip-link element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
