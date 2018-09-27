@@ -14,3 +14,8 @@
     }
   }
 }
+
+.region-header-top .menu li {
+  @include font-size($cd-font-size-tiny);
+  margin-bottom: 0;
+}

@@ -75,7 +75,8 @@
 
   .cd-nav > ul > li.active-trail {
 
-    a {
+    a,
+    a.active {
       position: relative;
       &:before {
         bottom: -3px;
@@ -88,4 +89,16 @@
     }
 
   }
+
+  .cd-nav > ul > li > a:before {
+    bottom: -3px;
+    content: "";
+    height: 3px;
+    left: -1px;
+    position: absolute;
+    right: -1px;
+    top: unset;
+    width: calc(100% + 2px);
+  }
+
 }

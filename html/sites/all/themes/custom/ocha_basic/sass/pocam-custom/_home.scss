@@ -37,6 +37,10 @@
     margin-bottom: 40px;
   }
 
+  .views-exposed-widgets {
+    margin-bottom: 0;
+  }
+
   label {
     display: none;
   }
@@ -95,6 +99,11 @@
       background: darken(#026CB6, 7%);
     }
   }
+
+  .ds-2col-stacked-fluid.group-one-column > .group-left {
+    padding-right: 0;
+  }
+
 }
 
 .front .content {
@@ -116,6 +125,7 @@
       margin-top: 20px;
     }
   }
+
 }
 
 @include sm {
