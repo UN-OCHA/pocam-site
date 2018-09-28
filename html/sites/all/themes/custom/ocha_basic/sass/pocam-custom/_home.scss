@@ -52,8 +52,12 @@
     color: #4A4A4A;
     height: 40px;
     line-height: 40px;
+    // IE11 alignment fix.
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      line-height: unset;
+    }
 
-    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: #4A4A4A;
       font-style: italic;
     }
