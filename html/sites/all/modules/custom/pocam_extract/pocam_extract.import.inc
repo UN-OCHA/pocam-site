@@ -130,6 +130,11 @@ function pocam_extract_import_extract_populate_queue($csv_file, $strategy, $csv_
     );
   }
   fclose($handle);
+
+  // Clear temp storage.
+  variable_del('pocam_extract_import_previous_row');
+
+  // Start batch.
   batch_set($batch);
   batch_process(current_path());
 }
@@ -165,7 +170,7 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
   // Ellipsis break drupal_write_record.
   $data['text'] = str_replace('…', '...', $data['text']);
 
-  $node_wrapper->title->set(substr($data['text'], 0, 76) . ' ...');
+  $node_wrapper->title->set(truncate_utf8($data['text'], 76, TRUE, TRUE));
   $node_wrapper->field_text->set(array(
     'value' => $data['text'],
   ));
@@ -300,7 +305,13 @@ function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
 
   $parent = FALSE;
   foreach ($terms as $term_name) {
-    $existing = taxonomy_get_term_by_name($term_name, $voc);
+    // Make sure term name is not too long.
+    $short_term_name = $term_name;
+    if (drupal_strlen($term_name) > 250) {
+      $short_term_name = truncate_utf8($term_name, 250, TRUE, TRUE);
+    }
+
+    $existing = taxonomy_get_term_by_name($short_term_name, $voc);
     if (!empty($existing)) {
       $term = reset($existing);
       $parent = $term;
@@ -309,7 +320,7 @@ function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
 
     $term = new stdClass();
     $term->vid = $vocabularies[$voc]->vid;
-    $term->name = substr($term_name, 0, 250);
+    $term->name = $short_term_name;
     $term->weight = $term_weight;
     $term->description = $term_name;
     if (isset($parent) && isset($parent->tid)) {
