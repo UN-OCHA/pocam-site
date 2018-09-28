@@ -46,7 +46,10 @@ h1.page__title,
   th,
   td {
     padding: 10px;
-    white-space: nowrap;
+    @include desktop {
+      white-space: nowrap;
+    }
+
     &:first-child {
       white-space: normal;
     }
