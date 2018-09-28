@@ -215,12 +215,12 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
   // Merge previous row if needed.
   if (isset($data['level 0']) && empty($data['level 0'])) {
     $data['level 0'] = $previous_row['level 0'];
-  }
-  if (isset($data['level 1']) && empty($data['level 1'])) {
-    $data['level 1'] = $previous_row['level 1'];
-  }
-  if (isset($data['level 2']) && empty($data['level 2'])) {
-    $data['level 2'] = $previous_row['level 2'];
+    if (isset($data['level 1']) && empty($data['level 1'])) {
+      $data['level 1'] = $previous_row['level 1'];
+      if (isset($data['level 2']) && empty($data['level 2'])) {
+        $data['level 2'] = $previous_row['level 2'];
+      }
+    }
   }
   if (isset($data['see also']) && empty($data['see also'])) {
     $data['see also'] = $previous_row['see also'];
