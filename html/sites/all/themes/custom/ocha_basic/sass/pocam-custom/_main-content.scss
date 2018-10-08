@@ -168,11 +168,6 @@ h1.page__title,
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  // IE fix;
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    white-space: normal;
-  }
-
   @include sm {
     max-width: 30em;
   }
@@ -273,7 +268,6 @@ h1.page__title,
 .region-content-top-2 {
   @include clearfix;
 
-  margin-top: 2em;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -331,6 +325,7 @@ h1.page__title,
 
     @include sm {
       flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 
@@ -339,16 +334,21 @@ h1.page__title,
     border-radius: 2px;
     color: #007ac0;
     margin: 0 5px .5em 0;
-
-    @include sm {
-      margin-bottom: 0;
-    }
   }
 
   a {
-    display: inline-block;
     text-decoration: none;
     padding: 5px 10px;
+    display: inline-block;
+
+    // IE11 fix;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      display: inline;
+    }
+    // Edge fix;
+    @supports (-ms-ime-align:auto) {
+      display: inline;
+    }
   }
 }
 
