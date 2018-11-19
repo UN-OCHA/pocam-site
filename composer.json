@@ -13,8 +13,10 @@
         "ext-xml": "*",
         "drupal/admin_denied": "^1.0",
         "drupal/admin_menu": "3.0-rc5",
+        "drupal/advagg": "^2.33",
         "drupal/audit_log": "1.x-dev",
         "drupal/chosen": "^2.1",
+        "drupal/ckeditor": "^1.18",
         "drupal/composer_autoloader": "^1.0",
         "drupal/context": "^3.7",
         "drupal/date": "^2.10",
@@ -29,16 +31,20 @@
         "drupal/field_extrawidgets": "^1.1",
         "drupal/filefield_nginx_progress": "^2.3",
         "drupal/filefield_paths": "^1.0",
-        "drupal/hybridauth": "^2.15",
-        "drupal/jquery_update": "^2.7",
+        "drupal/hybridauth": "^2.16",
+        "drupal/jquery_update": "^3.0",
         "drupal/libraries": "^2.3",
         "drupal/link": "^1.5",
+        "drupal/maintenance200": "^1.1",
         "drupal/markdown": "^1.5",
+        "drupal/modernizr": "^3.11",
+        "drupal/pwa": "^1.1",
         "drupal/redis": "^3.17",
         "drupal/search_api": "^1.22",
         "drupal/search_api_db": "^1.6",
         "drupal/strongarm": "^2.0",
         "drupal/token": "^1.7",
+        "drupal/token_filter": "^1.1",
         "drupal/transliteration": "^3.2",
         "drupal/variable": "^2.5",
         "drupal/views": "^3.18"
@@ -64,7 +70,7 @@
             "url": "https://packages.drupal.org/7"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
     "extra": {
         "drupal-composer-helper": {
             "web-prefix": "html",
@@ -82,7 +88,7 @@
             "html/sites/all/modules/features",
             "html/sites/all/themes/custom",
             "html/sites/all/translations",
-            "html/sites/profiles/pocam",
+            "html/profiles/pocam",
             "html/sites/default"
         ],
         "patches-file": "composer.patches.json",

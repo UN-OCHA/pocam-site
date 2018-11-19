@@ -26,17 +26,35 @@ function pocam_general_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'facetapi-0Pusq0zftXdOJDSRLOSFYp7IB6GKKuh1' => array(
-          'module' => 'facetapi',
-          'delta' => '0Pusq0zftXdOJDSRLOSFYp7IB6GKKuh1',
-          'region' => 'content',
+        'views--exp-extracts-page' => array(
+          'module' => 'views',
+          'delta' => '-exp-extracts-page',
+          'region' => 'content_top_1',
           'weight' => '-10',
         ),
-        'facetapi-h4J767t1sdzXEtEOAD03WQ9E8BvwROxn' => array(
+        'facetapi-jMt8phZnpIgZZNTtJ71tATNsoZgFxqKb' => array(
           'module' => 'facetapi',
-          'delta' => 'h4J767t1sdzXEtEOAD03WQ9E8BvwROxn',
-          'region' => 'content',
+          'delta' => 'jMt8phZnpIgZZNTtJ71tATNsoZgFxqKb',
+          'region' => 'content_top_2',
+          'weight' => '-10',
+        ),
+        'facetapi-h3E804ufRqmwuxTFodspV21rBJb00L2X' => array(
+          'module' => 'facetapi',
+          'delta' => 'h3E804ufRqmwuxTFodspV21rBJb00L2X',
+          'region' => 'content_top_2',
           'weight' => '-9',
+        ),
+        'facetapi-7TqCFBUvppfBoYrlTYxf0VxXrnz4llZ7' => array(
+          'module' => 'facetapi',
+          'delta' => '7TqCFBUvppfBoYrlTYxf0VxXrnz4llZ7',
+          'region' => 'content_top_2',
+          'weight' => '-8',
+        ),
+        'current_search-standard' => array(
+          'module' => 'current_search',
+          'delta' => 'standard',
+          'region' => 'content_top_3',
+          'weight' => '-10',
         ),
       ),
     ),
@@ -47,6 +65,69 @@ function pocam_general_context_default_contexts() {
   // Included for use with string extractors like potx.
   t('Extract search');
   $export['extract_search'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'global';
+  $context->description = 'site-wide elements';
+  $context->tag = '';
+  $context->conditions = array(
+    'sitewide' => array(
+      'values' => array(
+        1 => 1,
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'block' => array(
+      'blocks' => array(
+        'system-user-menu' => array(
+          'module' => 'system',
+          'delta' => 'user-menu',
+          'region' => 'header_top',
+          'weight' => '-10',
+        ),
+        'system-main-menu' => array(
+          'module' => 'system',
+          'delta' => 'main-menu',
+          'region' => 'header_navigation',
+          'weight' => '-10',
+        ),
+      ),
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('site-wide elements');
+  $export['global'] = $context;
+
+  $context = new stdClass();
+  $context->disabled = FALSE; /* Edit this to true to make a default context disabled initially */
+  $context->api_version = 3;
+  $context->name = 'home_page';
+  $context->description = 'Home page';
+  $context->tag = '';
+  $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '<front>' => '<front>',
+      ),
+    ),
+  );
+  $context->reactions = array(
+    'theme_html' => array(
+      'class' => 'front',
+    ),
+  );
+  $context->condition_mode = 0;
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Home page');
+  $export['home_page'] = $context;
 
   return $export;
 }

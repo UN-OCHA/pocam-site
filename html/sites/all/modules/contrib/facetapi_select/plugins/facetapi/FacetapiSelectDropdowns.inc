@@ -88,6 +88,12 @@ class FacetapiSelectDropdowns extends FacetapiWidgetLinks {
       else {
         $variables['options'][$url] = $this->buildSelectOption($item, $facet_settings->settings);
       }
+
+      // When there is only one option and it is active with children let's add
+      // the children as options.
+      if (!empty($item['#item_children'])) {
+        $this->appendChildren($variables, $item, $depth);
+      }
     }
 
     // When there is only one option and it is active with children let's add

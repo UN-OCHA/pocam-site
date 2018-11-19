@@ -18,10 +18,7 @@ env:
 
 before_script:
   - cd $TRAVIS_BUILD_DIR
-  - rm composer.json
-  - rm composer.lock
-  - mv composer.travis.json composer.json
-  - composer install
+  - COMPOSER=composer.travis.json composer install
 
   # Ensure the PHP environment is ready.
   - phpenv rehash
@@ -31,19 +28,36 @@ before_script:
 
 script:
   - cd $TRAVIS_BUILD_DIR
+  - test ! -d ./html/profiles/pocam || find -L ./html/profiles/pocam -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
   - test ! -d ./html/sites/all/modules/custom || find -L ./html/sites/all/modules/custom -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
   - test ! -d ./html/sites/all/modules/features || find -L ./html/sites/all/modules/features -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
   - test ! -d ./html/sites/all/themes/custom || find -L ./html/sites/all/themes/custom -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
 
   - ./bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer
+  - test ! -d ./html/profiles/pocam || ./bin/phpcs -p --report=full ./html/profiles/pocam
   - test ! -d ./html/sites/all/modules/custom || ./bin/phpcs -p --report=full ./html/sites/all/modules/custom
   - test ! -d ./html/sites/all/modules/features || ./bin/phpcs -p --report=full ./html/sites/all/modules/features
   - test ! -d ./html/sites/all/themes/custom || ./bin/phpcs -p --report=full ./html/sites/all/themes/custom
 
+  - test ! -d ./html/profiles/pocam || ./bin/phpmd ./html/profiles/pocam text .phpmd.xml --suffixes=php,inc,module,install
   - test ! -d ./html/sites/all/modules/custom || ./bin/phpmd ./html/sites/all/modules/custom text .phpmd.xml --suffixes=php,inc,module,install
   - test ! -d ./html/sites/all/modules/features || ./bin/phpmd ./html/sites/all/modules/features text .phpmd.xml --suffixes=php,inc,module,install
   - test ! -d ./html/sites/all/themes/custom || ./bin/phpmd ./html/sites/all/themes/custom text .phpmd.xml --suffixes=php,inc,module,install
 
+  - test ! -d ./html/profiles/pocam | ./bin/phpcpd ./html/profiles/pocam --names=*.php,*.inc,*.module,*.install --names-exclude=*.features.*,*.panelizer.inc,*.views_default.inc,*.pages_default.inc,*.field_group.inc,*.strongarm.inc,*.facetapi_defaults.inc,*.ds.inc,*..inc,*.default_environment_indicator_environments.inc
   - test ! -d ./html/sites/all/modules/custom || ./bin/phpcpd ./html/sites/all/modules/custom --names=*.php,*.inc,*.module,*.install --names-exclude=*.features.*,*.panelizer.inc,*.views_default.inc,*.pages_default.inc,*.field_group.inc,*.strongarm.inc,*.facetapi_defaults.inc,*.ds.inc,*..inc,*.default_environment_indicator_environments.inc
   - test ! -d ./html/sites/all/modules/features || ./bin/phpcpd ./html/sites/all/modules/features --names=*.php,*.inc,*.module,*.install --names-exclude=*.features.*,*.panelizer.inc,*.views_default.inc,*.pages_default.inc,*.field_group.inc,*.strongarm.inc,*.facetapi_defaults.inc,*.ds.inc,*..inc,*.default_environment_indicator_environments.inc
   - test ! -d ./html/sites/all/themes/custom || ./bin/phpcpd ./html/sites/all/themes/custom --names=*.php,*.inc,*.module,*.install
+
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
+  - cd $TRAVIS_BUILD_DIR/behat
+  - ./scripts/setup.sh
+  - cd $TRAVIS_BUILD_DIR/behat
+  - ./scripts/install.sh
+  - cd $TRAVIS_BUILD_DIR/behat
+  - $TRAVIS_BUILD_DIR/behat/chromedriver &
+  - cd $TRAVIS_BUILD_DIR/html/sites/8888.127.0.0.1/
+  - ../../../behat/bin/drush runserver 8888 > /dev/null 2>&1 &
+
+  - cd $TRAVIS_BUILD_DIR/behat && bin/behat --config behat.travis.yml

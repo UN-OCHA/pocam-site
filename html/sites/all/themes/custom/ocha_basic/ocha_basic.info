@@ -1,0 +1,47 @@
+name = OCHA Basic Starterkit
+description = OCHA Basic theme. Use as a starterkit and apply customizations directly your copy.
+screenshot = screenshot.png
+core = "7.x"
+engine = phptemplate
+
+; ========================================
+; Remove Drupal core stylesheets
+; ========================================
+stylesheets[all][] = unset/system.menus.css
+
+; ========================================
+; Stylesheets
+; ========================================
+stylesheets[all][] = css/styles.css
+
+; ========================================
+; Scripts
+; ========================================
+scripts[] = js/bootstrap-dropdown.js
+scripts[] = js/custom-menu.js
+scripts[] = js/custom-form-filters.js
+
+; ========================================
+; Regions
+; ========================================
+regions[header_top] = Header top
+regions[header_search] = Header search
+regions[header_navigation] = Header navigation
+regions[content] = Content
+regions[sidebar_first] = First sidebar
+regions[footer_navigation] = Footer navigation
+regions[footer_logos] = Footer logos
+regions[footer_info] = Footer info
+regions[footer_license] = Footer license
+regions[content_top_1] = Content Top 1
+regions[content_top_2] = Content Top 2
+regions[content_top_3] = Content Top 3
+
+; ========================================
+; Modernizr Test API
+; ========================================
+modernizr[tests][] = cssgrid_cssgridlegacy
+modernizr[tests][] = flexbox
+modernizr[tests][] = mediaqueries
+modernizr[tests][] = svg
+modernizr[tests][] = setclasses

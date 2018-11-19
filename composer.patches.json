@@ -1,4 +1,7 @@
 {
     "patches": {
+		"drupal/facetapi_select": {
+			"Can't display all parent and child terms in the selection box": "https://www.drupal.org/files/issues/2897764-solve-multi-level-select-list-issue.patch"
+		}
     }
 }

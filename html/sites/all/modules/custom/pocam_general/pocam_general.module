@@ -6,3 +6,201 @@
  */
 
 include_once 'pocam_general.features.inc';
+
+/**
+ * Implements advagg_mod_critical_css_file_pre_alter().
+ */
+function pocam_general_advagg_mod_critical_css_file_pre_alter(&$filename, &$params, &$inline_strings) {
+  if (!isset($params[0][6])) {
+    return;
+  }
+
+  if (strpos($params[0][6], 'extracts/') !== FALSE) {
+    $params[0][6] = 'extracts';
+    $params[0][7] = $params[0][6];
+    $params[0][8] = $params[0][6];
+    $params[0][9] = $params[0][6];
+    $params[0][10] = $params[0][6];
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function pocam_general_menu() {
+  $items = array();
+
+  $items['login'] = array(
+    'title' => 'Log in',
+    'page callback' => 'pocam_general_login_redirect',
+    'access callback' => 'user_is_anonymous',
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function pocam_general_menu_alter(&$items) {
+  $items['user/register']['access callback'] = FALSE;
+  $items['user/password']['page callback'] = FALSE;
+  $items['user/login']['access callback'] = FALSE;
+}
+
+/**
+ * Build tree of links.
+ */
+function _pocam_general_build_tree($voc, $depth = 2) {
+  $links = array();
+  $vid = taxonomy_vocabulary_machine_name_load($voc)->vid;
+  $terms = taxonomy_get_tree($vid, 0, $depth);
+  $facet_count = _pocam_general_get_facet_count('field_theme');
+  $parents = array();
+
+  foreach ($terms as $term) {
+    $text = $term->name;
+    if (isset($facet_count[$term->tid])) {
+      $text .= ' (' . $facet_count[$term->tid] . ')';
+      if ($term->parents[0] == 0) {
+        $links['p-' . $term->tid] = array(
+          'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+          'children' => array(),
+        );
+      }
+      else {
+        if (isset($links['p-' . $term->parents[0]]['children'])) {
+          $links['p-' . $term->parents[0]]['children'][$term->tid] = array(
+            'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+            'children' => array(),
+          );
+          $parents[$term->tid] = &$links['p-' . $term->parents[0]]['children'][$term->tid];
+        }
+        else {
+          if (isset($parents[$term->parents[0]])) {
+            $parents[$term->parents[0]]['children'][$term->tid] = array(
+              'data' => l($text, 'extracts/theme/' . urlencode($term->name) . '-' . $term->tid),
+              'children' => array(),
+            );
+            $parents[$term->tid] = &$parents[$term->tid]['children'][$term->tid];
+          }
+        }
+      }
+    }
+  }
+
+  return $links;
+}
+
+/**
+ * Get facet counts from field.
+ */
+function _pocam_general_get_facet_count($field) {
+  $index = search_api_index_load('pocam_extracts');
+  $query = new SearchApiQuery($index);
+  $query->range(0, 0);
+  $query->setOption('skip result count', TRUE);
+  $results = $query->execute();
+
+  $tids = array();
+  if (isset($results['search_api_facets'][$field])) {
+    foreach ($results['search_api_facets'][$field] as $facet) {
+      $tids[intval(str_replace('"', '', $facet['filter']))] = $facet['count'];
+    }
+  }
+
+  return $tids;
+}
+
+/**
+ * Redirect to hybrid auth.
+ */
+function pocam_general_login_redirect() {
+  drupal_goto('hybridauth/window/HumanitarianId', array(
+    'destination' => drupal_get_destination(),
+    'destination_error' => 'extracts',
+  ));
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function pocam_general_token_info() {
+  $info['types']['pocam-general'] = array(
+    'name' => t('POCAM'),
+    'description' => t('Tokens related to POCAM.'),
+    'needs-data' => 'format',
+  );
+
+  $info['tokens']['pocam-general']['search-block'] = array(
+    'name' => t('Search block'),
+    'description' => t('Search block'),
+  );
+
+  $info['tokens']['pocam-general']['themes-list'] = array(
+    'name' => t('List of themes'),
+    'description' => t('List of themes. Ex. [pocam-general:themes-list:1], [pocam-general:themes-list:2], [pocam-general:themes-list:3]'),
+  );
+
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function pocam_general_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'pocam-general') {
+    foreach ($tokens as $name => $original) {
+      // Split name to get parameters.
+      $token_name = $name;
+      $param = '';
+      if (strpos($name, ':') !== FALSE) {
+        list($token_name, $param) = explode(':', $name);
+      }
+
+      switch ($token_name) {
+        case 'search-block':
+          $block = module_invoke('views', 'block_view', '-exp-extracts-page');
+
+          // Add placeholder text.
+          $block['content']['#markup'] = str_replace('id="edit-search-api-views-fulltext"', 'id="edit-search-api-views-fulltext" placeholder="Search for phrases or keywords"', $block['content']['#markup']);
+          $replacements[$original] = $block['content']['#markup'];
+          break;
+
+        case 'themes-list':
+          $depth = 2;
+          if (!empty($param) && is_numeric($param)) {
+            $depth = (int) $param;
+          }
+
+          $output = theme('item_list', array(
+            'items' => _pocam_general_build_tree('theme', $depth),
+            'prefix' => '<div class="theme-wrapper">',
+            'suffix' => '</div>',
+          ));
+          $replacements[$original] = $output;
+          break;
+
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Implements hook_hybridauth_destination_options_alter().
+ */
+function pocam_general_hybridauth_destination_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
+}
+
+/**
+ * Implements hook_hybridauth_destination_error_options_alter().
+ */
+function pocam_general_hybridauth_destination_error_options_alter(&$destination_options) {
+  $destination_options['path'] = 'home';
+}

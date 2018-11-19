@@ -62,6 +62,30 @@ function pocam_extract_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'ds_extras_hide_page_title';
+  $strongarm->value = 1;
+  $export['ds_extras_hide_page_title'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'facetapi_pretty_paths_searcher_search_api@pocam_extracts';
+  $strongarm->value = 1;
+  $export['facetapi_pretty_paths_searcher_search_api@pocam_extracts'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'facetapi_pretty_paths_searcher_search_api@pocam_extracts_options';
+  $strongarm->value = array(
+    'sort_path_segments' => 1,
+    'base_path_provider' => 'default',
+  );
+  $export['facetapi_pretty_paths_searcher_search_api@pocam_extracts_options'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__pocam_extract';
   $strongarm->value = array(
     'view_modes' => array(
