@@ -229,13 +229,13 @@ function pocam_extract_import_extract_line($data, $strategy, &$context) {
   // Theme.
   $themes = array();
   if (isset($data['level 0']) && !empty($data['level 0'])) {
-    $themes[] = $data['level 0'];
+    $themes[] = trim($data['level 0']);
   }
   if (isset($data['level 1']) && !empty($data['level 1'])) {
-    $themes[] = $data['level 1'];
+    $themes[] = trim($data['level 1']);
   }
   if (isset($data['level 2']) && !empty($data['level 2'])) {
-    $themes[] = $data['level 2'];
+    $themes[] = trim($data['level 2']);
   }
 
   if (!empty($themes)) {
@@ -295,7 +295,7 @@ function pocam_extract_import_extract_finished($success, $results, $operations) 
 /**
  * Recursively create terms.
  */
-function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
+function pocam_extract_create_terms($terms, $vocabulary_name, $term_weight = 1) {
   $vocabularies = taxonomy_vocabulary_get_names();
 
   // Make sure we have an array.
@@ -311,7 +311,26 @@ function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
       $short_term_name = truncate_utf8($term_name, 250, TRUE, TRUE);
     }
 
-    $existing = taxonomy_get_term_by_name($short_term_name, $voc);
+    // Load term by name
+    if (!$parent) {
+      $existing = taxonomy_get_term_by_name($short_term_name, $vocabulary_name);
+    }
+    else {
+      // Load by name respecting parent.
+      $vid = $vocabularies[$vocabulary_name]->vid;
+
+      $query = db_select('taxonomy_term_data', 't');
+      $query->join('taxonomy_term_hierarchy', 'h', 'h.tid = t.tid');
+      $query->addField('t', 'tid');
+      $query->condition('h.parent', $parent->tid);
+      $query->condition('t.vid', $vid);
+      $query->condition('t.name', $short_term_name);
+      $tids = $query
+        ->execute()
+        ->fetchCol();
+      $existing = taxonomy_term_load_multiple($tids);
+    }
+
     if (!empty($existing)) {
       $term = reset($existing);
       $parent = $term;
@@ -319,7 +338,7 @@ function pocam_extract_create_terms($terms, $voc, $term_weight = 1) {
     }
 
     $term = new stdClass();
-    $term->vid = $vocabularies[$voc]->vid;
+    $term->vid = $vocabularies[$vocabulary_name]->vid;
     $term->name = $short_term_name;
     $term->weight = $term_weight;
     $term->description = $term_name;
