@@ -1,0 +1,328 @@
+<?php
+
+/**
+ * @file
+ * POCAM install profile.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pocam_install() {
+  $t = get_t();
+
+  // Do not rebuild features during install.
+  variable_set('features_rebuild_on_module_install', FALSE);
+
+  // Add text formats.
+  $filtered_html_format = array(
+    'format' => 'filtered_html',
+    'name' => 'Filtered HTML',
+    'weight' => 0,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML filter.
+      'filter_html' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+
+  $full_html_format = array(
+    'format' => 'full_html',
+    'name' => 'Full HTML',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+
+  // Enable some standard blocks.
+  $default_theme = variable_get('theme_default', 'ocha_basic');
+  $admin_theme = 'seven';
+  $blocks = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => -1,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'help',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'help',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array(
+    'module',
+    'delta',
+    'theme',
+    'status',
+    'weight',
+    'region',
+    'pages',
+    'cache',
+  ));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+
+  variable_set('user_pictures', '0');
+
+  // Enable default permissions for system roles.
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));
+
+  // Create a default role for site administrators.
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->weight = 2;
+  user_role_save($admin_role);
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+
+  // Create a Home link in the main menu.
+  $item = array(
+    'link_title' => $t('Home'),
+    'link_path' => '<front>',
+    'menu_name' => 'main-menu',
+  );
+  menu_link_save($item);
+
+  // Update the menu router information.
+  menu_rebuild();
+
+  // Enable the admin theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', 'seven')
+    ->execute();
+  variable_set('admin_theme', 'seven');
+  variable_set('node_admin_theme', '1');
+}
+
+/**
+ * Implements hook_install_tasks_alter().
+ */
+function pocam_install_tasks_alter(&$tasks, $install_state) {
+  $tasks['install_finished']['function'] = 'pocam_install_finished';
+}
+
+/**
+ * Perform final steps.
+ */
+function pocam_install_finished(&$install_state) {
+  $t = get_t();
+
+  module_enable(array(
+    'pocam_general',
+    'pocam_extract',
+    'pocam_basic_page',
+  ));
+
+  drupal_set_title($t('@drupal installation complete', array(
+    '@drupal' => drupal_install_profile_distribution_name(),
+  )), PASS_THROUGH);
+
+  // Remember the profile which was used.
+  variable_set('install_profile', drupal_get_profile());
+  variable_set('install_task', 'done');
+
+  // Restore features behavior.
+  variable_set('features_rebuild_on_module_install', TRUE);
+
+  // Flush all caches.
+  drupal_flush_all_caches();
+
+  // Install profiles are always loaded last.
+  db_update('system')
+    ->fields(array('weight' => 1000))
+    ->condition('type', 'module')
+    ->condition('name', drupal_get_profile())
+    ->execute();
+
+  // Cache a fully-built schema.
+  drupal_get_schema(NULL, TRUE);
+
+  // Run cron to populate update status tables (if available) so that users
+  // will be warned if they've installed an out of date Drupal version.
+  // Will also trigger indexing of profile-supplied content or feeds.
+  drupal_cron_run();
+
+  // Revert features.
+  features_revert_module('pocam_general');
+  features_revert_module('pocam_extract');
+  features_revert_module('pocam_basic_page');
+
+  // Flush all caches.
+  drupal_flush_all_caches();
+}
+
+/**
+ * Disable toolbar, as admin_menu is enabled.
+ */
+function pocam_update_7001(&$sandbox) {
+  $modules = array('toolbar');
+
+  module_disable($modules);
+  drupal_uninstall_modules($modules);
+}
+
+/**
+ * Enbable current search block.
+ */
+function pocam_update_7002(&$sandbox) {
+  $modules = array('current_search');
+
+  module_enable($modules);
+}
+
+/**
+ * Enable admin_denied module.
+ */
+function pocam_update_7003(&$sandbox) {
+  $modules = array('admin_denied');
+
+  module_enable($modules);
+}
+
+/**
+ * Enable advagg module.
+ */
+function pocam_update_7004(&$sandbox) {
+  $modules = array(
+    'advagg_css_compress',
+    'advagg_js_compress',
+    'advagg_critical_css',
+    'advagg_mod',
+    'advagg',
+  );
+
+  module_enable($modules);
+}
+
+/**
+ * Enable maintenance200 module.
+ */
+function pocam_update_7005(&$sandbox) {
+  $modules = array(
+    'maintenance200',
+  );
+
+  module_enable($modules);
+
+  variable_set('maintenance_mode_status', '203 Non-Authoritative Information');
+}
+
+/**
+ * Enable PWA and modernizr module.
+ */
+function pocam_update_7006(&$sandbox) {
+  $modules = array(
+    'pwa',
+    'modernizr',
+  );
+
+  module_enable($modules);
+}
+
+/**
+ * Enable pocam_basic_page feature.
+ */
+function pocam_update_7007(&$sandbox) {
+  $modules = array(
+    'pocam_basic_page',
+    'token',
+    'token_filter',
+  );
+
+  module_enable($modules);
+}
+
+/**
+ * Enable CKEditor.
+ */
+function pocam_update_7008(&$sandbox) {
+  $modules = array(
+    'ckeditor',
+  );
+
+  module_enable($modules);
+}
+
+/**
+ * Enable custom theme.
+ */
+function pocam_update_7009(&$sandbox) {
+  variable_get('theme_default', 'ocha_basic');
+}
