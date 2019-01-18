@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "634f6cf523223bdb15336ff0ae4cd000",
+    "content-hash": "663dcdfe77d1847ac3d0c84b3cffe290",
     "packages": [
         {
             "name": "composer/installers",
@@ -1928,6 +1928,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Can't display all parent and child terms in the selection box": "https://www.drupal.org/files/issues/2897764-solve-multi-level-select-list-issue.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/7/downloads",
