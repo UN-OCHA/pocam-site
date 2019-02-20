@@ -9,8 +9,8 @@ files[] = pwa.install
 files[] = pwa.module
 files[] = pwa.pages.inc
 
-; Information added by Drupal.org packaging script on 2018-10-11
-version = "7.x-1.1"
+; Information added by Drupal.org packaging script on 2019-01-22
+version = "7.x-1.2"
 core = "7.x"
 project = "pwa"
-datestamp = "1539247527"
+datestamp = "1548116587"
