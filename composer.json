@@ -35,7 +35,7 @@
         "drupal/chosen": "^2.1",
         "drupal/ckeditor": "^1.18",
         "drupal/composer_autoloader": "^1.0",
-        "drupal/context": "^3.7",
+        "drupal/context": "^3.10",
         "drupal/date": "^2.10",
         "drupal/dragdropfile": "^1.7",
         "drupal/drupal": "~7.0",
