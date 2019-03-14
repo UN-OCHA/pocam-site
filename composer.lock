@@ -648,10 +648,10 @@
                 },
                 "drupal": {
                     "version": "7.x-3.0-rc5",
-                    "datestamp": "1419029280",
+                    "datestamp": "1543859280",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -663,6 +663,10 @@
                 {
                     "name": "Dave Reid",
                     "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "RenatoG",
+                    "homepage": "https://www.drupal.org/user/3326031"
                 },
                 {
                     "name": "fubhy",
@@ -679,6 +683,10 @@
                 {
                     "name": "sun",
                     "homepage": "https://www.drupal.org/user/54136"
+                },
+                {
+                    "name": "truls1502",
+                    "homepage": "https://www.drupal.org/user/325866"
                 }
             ],
             "description": "Provides a dropdown menu to most administrative tasks and other common destinations (to users with the proper permissions).",
@@ -815,6 +823,10 @@
                 {
                     "name": "karlos007",
                     "homepage": "https://www.drupal.org/user/122194"
+                },
+                {
+                    "name": "spheresh",
+                    "homepage": "https://www.drupal.org/user/624860"
                 }
             ],
             "description": "Provides a framework with swappable storage for logging entity audit events.",
@@ -1175,7 +1187,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-1.14",
+=======
                     "version": "7.x-1.15",
+>>>>>>> master
                     "datestamp": "1549603684",
                     "security-coverage": {
                         "status": "covered",
@@ -1302,16 +1318,16 @@
                     "homepage": "https://www.drupal.org/user/242659"
                 },
                 {
-                    "name": "cafuego",
-                    "homepage": "https://www.drupal.org/user/218525"
-                },
-                {
                     "name": "developer-x",
                     "homepage": "https://www.drupal.org/user/399625"
                 },
                 {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
                 },
                 {
                     "name": "podarok",
@@ -1379,16 +1395,16 @@
                     "homepage": "https://www.drupal.org/user/242659"
                 },
                 {
-                    "name": "cafuego",
-                    "homepage": "https://www.drupal.org/user/218525"
-                },
-                {
                     "name": "developer-x",
                     "homepage": "https://www.drupal.org/user/399625"
                 },
                 {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
                 },
                 {
                     "name": "podarok",
@@ -1481,8 +1497,13 @@
                     "dev-7.x": "7.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.59",
+                    "datestamp": "1539816864",
+=======
                     "version": "7.64",
                     "datestamp": "1549882081",
+>>>>>>> master
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1595,7 +1616,11 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-2.15",
+=======
                     "version": "7.x-2.16",
+>>>>>>> master
                     "datestamp": "1530614320",
                     "security-coverage": {
                         "status": "covered",
@@ -1972,8 +1997,13 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-2.10",
+                    "datestamp": "1541050680",
+=======
                     "version": "7.x-2.11",
                     "datestamp": "1541189192",
+>>>>>>> master
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2244,7 +2274,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-1.0",
+=======
                     "version": "7.x-1.1",
+>>>>>>> master
                     "datestamp": "1534351087",
                     "security-coverage": {
                         "status": "covered",
@@ -2300,7 +2334,11 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-2.15",
+=======
                     "version": "7.x-2.16",
+>>>>>>> master
                     "datestamp": "1531318398",
                     "security-coverage": {
                         "status": "covered",
@@ -2430,8 +2468,13 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-2.3",
+                    "datestamp": "1536581580",
+=======
                     "version": "7.x-2.5",
                     "datestamp": "1538770681",
+>>>>>>> master
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2493,7 +2536,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-1.5",
+=======
                     "version": "7.x-1.6",
+>>>>>>> master
                     "datestamp": "1550692505",
                     "security-coverage": {
                         "status": "covered",
@@ -2852,7 +2899,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-1.24",
+=======
                     "version": "7.x-1.25",
+>>>>>>> master
                     "datestamp": "1537171084",
                     "security-coverage": {
                         "status": "covered",
@@ -2904,7 +2955,11 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-1.6",
+=======
                     "version": "7.x-1.7",
+>>>>>>> master
                     "datestamp": "1537173480",
                     "security-coverage": {
                         "status": "covered",
@@ -3064,6 +3119,20 @@
             }
         },
         {
+<<<<<<< HEAD
+            "name": "drupal/views",
+            "version": "3.21.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupal.org/project/views",
+                "reference": "7.x-3.21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/views-7.x-3.21.zip",
+                "reference": "7.x-3.21",
+                "shasum": "417b8b68e0d4d5f955176943f270d3458fd73b11"
+=======
             "name": "drupal/token_filter",
             "version": "1.1.0",
             "source": {
@@ -3076,6 +3145,7 @@
                 "url": "https://ftp.drupal.org/files/projects/token_filter-7.x-1.1.zip",
                 "reference": "7.x-1.1",
                 "shasum": "ae88c19a50759039e08ef60f45cec1f1c8ba329d"
+>>>>>>> master
             },
             "require": {
                 "drupal/drupal": "~7.0",
@@ -3087,8 +3157,13 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
+<<<<<<< HEAD
+                    "version": "7.x-3.21",
+                    "datestamp": "1552498659",
+=======
                     "version": "7.x-1.1",
                     "datestamp": "1325700944",
+>>>>>>> master
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4915,8 +4990,17 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "backendtea@gmail.com"
+=======
                     "name": "Greg Sherwood",
                     "role": "lead"
+>>>>>>> master
                 }
             ],
             "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
