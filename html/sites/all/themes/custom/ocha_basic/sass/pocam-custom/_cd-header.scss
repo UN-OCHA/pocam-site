@@ -1,0 +1,21 @@
+.cd-header {
+  margin-bottom: 16px;
+
+  @include tablet {
+    margin-bottom: 60px;
+  }
+}
+
+.cd-site-header__inner {
+  .cssgrid.flexbox & {
+    width: 100%;
+    @include tablet {
+      grid-template-columns: 247px 1fr; // Match logo width.
+    }
+  }
+}
+
+.region-header-top .menu li {
+  @include font-size($cd-font-size-tiny);
+  margin-bottom: 0;
+}

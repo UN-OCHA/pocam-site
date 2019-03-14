@@ -1,0 +1,11 @@
+/**
+ * Helper classes
+ */
+
+.sr-only {
+  @include hide;
+}
+
+.hidden {
+	display: none;
+}

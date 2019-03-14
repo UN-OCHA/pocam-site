@@ -28,7 +28,7 @@ function pocam_extract_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 2,
       ),
       'teaser' => array(
@@ -48,7 +48,9 @@ function pocam_extract_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => -3,
     ),
@@ -92,7 +94,7 @@ function pocam_extract_field_default_field_instances() {
         'class' => '',
         'configurable_class' => 0,
         'configurable_title' => 0,
-        'rel' => '',
+        'rel' => 'noopener',
         'target' => '_blank',
         'title' => '',
       ),
@@ -156,7 +158,7 @@ function pocam_extract_field_default_field_instances() {
         'class' => '',
         'configurable_class' => 0,
         'configurable_title' => 0,
-        'rel' => '',
+        'rel' => 'noopener',
         'target' => 'default',
         'title' => '',
       ),
@@ -267,7 +269,9 @@ function pocam_extract_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => -2,
     ),
@@ -425,7 +429,7 @@ function pocam_extract_field_default_field_instances() {
         'class' => '',
         'configurable_class' => 0,
         'configurable_title' => 0,
-        'rel' => '',
+        'rel' => 'noopener',
         'target' => 'default',
         'title' => '',
       ),

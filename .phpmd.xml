@@ -15,6 +15,7 @@
   <exclude-pattern>*.strongarm.inc</exclude-pattern>
   <exclude-pattern>*.facetapi_defaults.inc</exclude-pattern>
   <exclude-pattern>*.ds.inc</exclude-pattern>
+  <exclude-pattern>*.context.inc</exclude-pattern>
   <exclude-pattern>*..inc</exclude-pattern>
   <exclude-pattern>*.default_environment_indicator_environments.inc</exclude-pattern>
   <exclude-pattern>node_modules/*</exclude-pattern>

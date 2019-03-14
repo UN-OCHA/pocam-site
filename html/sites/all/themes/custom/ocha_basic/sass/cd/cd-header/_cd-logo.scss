@@ -1,0 +1,38 @@
+//——————————————————————————————————————————————————————————————————————————————
+// Common Design: Logo
+//
+// Replace images with your site logo.
+//——————————————————————————————————————————————————————————————————————————————
+
+// Wrap the logo in a h1 if it's the main heading for the page (e.g. on homepage).
+.cd-site-header h1 {
+  margin: 0;
+}
+
+.cd-site-logo {
+  display: block;
+  float: left;
+  width: 52px;
+  height: $cd-site-header-height;
+  background: url('../img/logos/poc-logo-mobile.svg') center no-repeat;
+
+  .cssgrid.flexbox & {
+    float: none;
+  }
+
+  .no-svg & {
+    background: url('../img/logos/poc-logo-mobile.png') center no-repeat;
+  }
+}
+
+@include tablet {
+  .cd-site-logo {
+    background: url('../img/logos/poc-logo-text.svg') center no-repeat;
+    width: 247px; // width may need to be adjusted depending on logo width.
+
+    .no-svg & {
+      background: url('../img/logos/poc-logo-text.png') center no-repeat;
+      background-size: 247px auto;
+    }
+  }
+}

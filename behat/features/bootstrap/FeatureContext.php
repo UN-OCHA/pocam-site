@@ -54,7 +54,6 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     $element_id = str_replace('-', '_', $element->getAttribute('id')) . '_chosen';
 
     $element = $session->getPage()->find('xpath', "//div[@id='{$element_id}']");
-
     if ($element->hasClass('chosen-container-single')) {
       // This is a single select element.
       $element = $session->getPage()->find('xpath', "//div[@id='{$element_id}']/a[@class='chosen-single']");
@@ -66,7 +65,7 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
       $element->click();
     }
 
-    $selector = "//div[@id='{$element_id}']/div[@class='chosen-drop']/ul[@class='chosen-results']/li[text() = '{$value}']";
+    $selector = "//div[@id='{$element_id}']/div[@class='chosen-drop']/ul[@class='chosen-results']/li[contains(., '{$value}')]";
     $element = $session->getPage()->find('xpath', $selector);
 
     if (empty($element)) {
@@ -150,16 +149,12 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
   /**
    * Creates content of a given type provided in the form:
    *
-   * @Given list of events:
+   * @Given list of extracts:
    */
-  public function createEvents(TableNode $nodesTable) {
+  public function createExtracts(TableNode $nodesTable) {
     foreach ($nodesTable->getHash() as $nodeHash) {
-      if (!isset($nodeHash['field_event_date:value'])) {
-        $nodeHash['field_event_date:value'] = format_date(REQUEST_TIME, 'custom', 'Y-m-d\TH:i:s');
-        $nodeHash['field_event_date:value2'] = format_date(REQUEST_TIME + rand(15 * 60, 3 * 60 * 60), 'custom', 'Y-m-d\TH:i:s');
-      }
       $node = (object) $nodeHash;
-      $node->type = 'ev_event';
+      $node->type = 'pocam_extract';
       $this->nodeCreate($node);
     }
   }
@@ -204,5 +199,69 @@ class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext
     }
 
     $element->click();
+  }
+
+  /**
+   * @Given I am viewing a :arg1 content with the alias :arg2:
+   */
+  public function iAmViewingAContentWithTheAlias($type, $alias, TableNode $fields) {
+    $node = (object) array(
+      'type' => $type,
+    );
+
+    foreach ($fields->getRowsHash() as $field => $value) {
+      $node->{$field} = $value;
+    }
+
+    $saved = $this->nodeCreate($node);
+
+    // Save path.
+    $path = array(
+      'source' => 'node/' . $saved->nid,
+      'alias' => $alias,
+    );
+    path_save($path);
+
+    // Set internal browser on the node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
+  }
+
+  /**
+   * @Given I am viewing a :arg1 content with the alias :arg2 and menu :menu:
+   */
+  public function iAmViewingAContentWithTheAliasAndMenu($type, $alias, $menu, TableNode $fields) {
+    $node = (object) array(
+      'type' => $type,
+    );
+
+    foreach ($fields->getRowsHash() as $field => $value) {
+      $node->{$field} = $value;
+    }
+
+    $saved = $this->nodeCreate($node);
+
+    // Save path.
+    $path = array(
+      'source' => 'node/' . $saved->nid,
+      'alias' => $alias,
+    );
+    path_save($path);
+
+    // Save menu.
+    if (!empty($menu)) {
+      list($menu_name, $link_title) = explode(':', $menu);
+      $item = array(
+        'menu_name' => $menu_name,
+        'link_path' => drupal_get_normal_path($alias),
+        'link_title' => $link_title,
+        'weight' => 0,
+        'customized' => 1,
+      );
+      menu_link_save($item);
+      menu_cache_clear_all();
+    }
+
+    // Set internal browser on the node.
+    $this->getSession()->visit($this->locatePath('/node/' . $saved->nid));
   }
 }

@@ -1,0 +1,128 @@
+.chosen-container {
+  width: 100% !important; //over ride chosen's inline style
+  @include font-size($cd-font-size-base);
+  background: white;
+
+  .chosen-drop {
+    box-shadow: none;
+    border-radius: 0;
+    border: 1px solid #ddd;
+    border-top: none;
+    @include font-size($cd-font-size-base);
+  }
+
+  .chosen-results {
+    max-height: 240px;
+
+    li {
+      padding: $cd-base-unit;
+    }
+
+    li.active-result {
+      &.highlighted {
+        background: $cd-ocha-blue;
+      }
+    }
+
+  }
+
+  &.error {
+    background-image: none;
+  }
+}
+
+.chosen-container-single.chosen-container-active {
+
+  .chosen-single {
+    border-color: $highlight-border-color;
+  }
+
+}
+
+.chosen-container-single .chosen-search {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "";
+    width: 24px;
+    height: 36px;
+    right: 6px;
+    margin-top: 2px;
+    background-image: url(../img/icons/chosen-search.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 20px auto;
+  }
+
+  input[type="text"] {
+    @include font-size($cd-font-size-medium);
+    font-weight: 300;
+    color: $body-text-color;
+    padding: $cd-base-unit $cd-base-unit*4 $cd-base-unit $cd-base-unit;
+    background: none !important;
+  }
+
+}
+
+.chosen-container-active.chosen-with-drop {
+
+  .chosen-single {
+    border-color: #ddd;
+    background: none;
+
+    div b {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.chosen-container {
+  .chosen-single, .chosen-choices {
+    background: none;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    height: auto;
+    padding: $cd-base-unit/2 $cd-base-unit;
+    line-height: $cd-base-unit*3;
+  }
+
+  .chosen-single {
+    div {
+      width: $cd-base-unit*3;
+
+      b {
+        background-image: url(../img/icons/arrow-down.svg);
+        background-repeat: no-repeat;
+        background-position: 50%;
+        background-size: 14px 14px;
+        text-align: center;
+        line-height: 32px;
+      }
+    }
+  }
+  
+  &.chosen-container-active.chosen-with-drop .chosen-single {
+    b {
+      background-image: url(../img/icons/arrow-up.svg);
+      background-position: 50%;
+      transform: none;
+    }
+  }
+}
+
+.chosen-legend {
+  display: inline-block;
+  width: $cd-base-unit*1.5;
+  height: $cd-base-unit*1.5;
+  margin-right: $cd-base-unit;
+}
+
+@include tablet {
+
+  .chosen-legend {
+    width: $cd-base-unit;
+    height: $cd-base-unit;
+  }
+}

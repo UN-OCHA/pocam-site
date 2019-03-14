@@ -105,7 +105,23 @@ function pocam_extract_theme_full_tree($node, $view_mode, $langcode) {
     return;
   }
 
-  return field_view_field('taxonomy_term', $theme, 'field_long_name', $view_mode, $langcode);
+  // Get all parents and revers.
+  $themes = taxonomy_get_parents_all($node->field_theme[LANGUAGE_NONE][0]['tid']);
+  $themes = array_reverse($themes);
+
+  $items = array();
+  foreach ($themes as $term) {
+    $items[] = $term->name;
+  }
+
+  return array(
+    '#title' => t('Theme'),
+    '#label_display' => 'above',
+    '#theme' => 'item_list',
+    '#items' => $items,
+    '#prefix' => '<div class="theme-list">',
+    '#suffix' => '</div>',
+  );
 }
 
 /**
@@ -232,5 +248,23 @@ function pocam_extract_field_widget_form_alter(&$element, &$form_state, $context
       }
     }
     cache_set($cache_key, $element['#options']);
+  }
+}
+
+/**
+ * Implements hook_search_api_service_info_alter().
+ */
+function pocam_extract_search_api_service_info_alter(&$service_info) {
+  if (!empty($service_info['search_api_db_service'])) {
+    $service_info['search_api_db_service']['class'] = 'PocamExtractSearchApiDbService';
+  }
+}
+
+/**
+ * Implements hook_search_api_processor_info_alter().
+ */
+function pocam_extract_search_api_processor_info_alter(&$processors) {
+  if (!empty($processors['search_api_highlighting'])) {
+    $processors['search_api_highlighting']['class'] = 'PocamExtractSearchApiHighlight';
   }
 }
