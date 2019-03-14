@@ -77,10 +77,10 @@
                 },
                 "drupal": {
                     "version": "7.x-3.0-rc5",
-                    "datestamp": "1419029280",
+                    "datestamp": "1543859280",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -92,6 +92,10 @@
                 {
                     "name": "Dave Reid",
                     "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "RenatoG",
+                    "homepage": "https://www.drupal.org/user/3326031"
                 },
                 {
                     "name": "fubhy",
@@ -108,6 +112,10 @@
                 {
                     "name": "sun",
                     "homepage": "https://www.drupal.org/user/54136"
+                },
+                {
+                    "name": "truls1502",
+                    "homepage": "https://www.drupal.org/user/325866"
                 }
             ],
             "description": "Provides a dropdown menu to most administrative tasks and other common destinations (to users with the proper permissions).",
@@ -167,6 +175,10 @@
                 {
                     "name": "karlos007",
                     "homepage": "https://www.drupal.org/user/122194"
+                },
+                {
+                    "name": "spheresh",
+                    "homepage": "https://www.drupal.org/user/624860"
                 }
             ],
             "description": "Provides a framework with swappable storage for logging entity audit events.",
@@ -331,7 +343,7 @@
                 },
                 "drupal": {
                     "version": "7.x-3.7",
-                    "datestamp": "1463605519",
+                    "datestamp": "1551291108",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -392,6 +404,10 @@
                     "homepage": "https://www.drupal.org/user/31731"
                 },
                 {
+                    "name": "nedjo",
+                    "homepage": "https://www.drupal.org/user/4481"
+                },
+                {
                     "name": "tekante",
                     "homepage": "https://www.drupal.org/user/640024"
                 },
@@ -436,7 +452,7 @@
                 },
                 "drupal": {
                     "version": "7.x-1.14",
-                    "datestamp": "1519455784",
+                    "datestamp": "1549603684",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -562,16 +578,16 @@
                     "homepage": "https://www.drupal.org/user/242659"
                 },
                 {
-                    "name": "cafuego",
-                    "homepage": "https://www.drupal.org/user/218525"
-                },
-                {
                     "name": "developer-x",
                     "homepage": "https://www.drupal.org/user/399625"
                 },
                 {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
                 },
                 {
                     "name": "podarok",
@@ -639,16 +655,16 @@
                     "homepage": "https://www.drupal.org/user/242659"
                 },
                 {
-                    "name": "cafuego",
-                    "homepage": "https://www.drupal.org/user/218525"
-                },
-                {
                     "name": "developer-x",
                     "homepage": "https://www.drupal.org/user/399625"
                 },
                 {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
                 },
                 {
                     "name": "podarok",
@@ -742,7 +758,7 @@
                 },
                 "drupal": {
                     "version": "7.59",
-                    "datestamp": "1524674011",
+                    "datestamp": "1539816864",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -754,10 +770,6 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
-                {
-                    "name": "Cottser",
-                    "homepage": "https://www.drupal.org/user/1167326"
-                },
                 {
                     "name": "David_Rothstein",
                     "homepage": "https://www.drupal.org/user/124982"
@@ -860,7 +872,7 @@
                 },
                 "drupal": {
                     "version": "7.x-2.15",
-                    "datestamp": "1524077723",
+                    "datestamp": "1530614320",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1180,6 +1192,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Can't display all parent and child terms in the selection box": "https://www.drupal.org/files/issues/2897764-solve-multi-level-select-list-issue.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/7/downloads",
@@ -1234,7 +1249,7 @@
                 },
                 "drupal": {
                     "version": "7.x-2.10",
-                    "datestamp": "1461011639",
+                    "datestamp": "1541050680",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1261,6 +1276,10 @@
                 {
                     "name": "jmiccolis",
                     "homepage": "https://www.drupal.org/user/31731"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
                 },
                 {
                     "name": "mpotter",
@@ -1502,7 +1521,7 @@
                 },
                 "drupal": {
                     "version": "7.x-1.0",
-                    "datestamp": "1447729441",
+                    "datestamp": "1534351087",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1517,6 +1536,14 @@
                 {
                     "name": "Deciphered",
                     "homepage": "https://www.drupal.org/user/103796"
+                },
+                {
+                    "name": "dpagini",
+                    "homepage": "https://www.drupal.org/user/1802126"
+                },
+                {
+                    "name": "voleger",
+                    "homepage": "https://www.drupal.org/user/3260314"
                 }
             ],
             "description": "Adds improved Token based file sorting and renaming functionalities.",
@@ -1550,7 +1577,7 @@
                 },
                 "drupal": {
                     "version": "7.x-2.15",
-                    "datestamp": "1459972507",
+                    "datestamp": "1531318398",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1680,7 +1707,7 @@
                 },
                 "drupal": {
                     "version": "7.x-2.3",
-                    "datestamp": "1463077439",
+                    "datestamp": "1536581580",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1695,6 +1722,10 @@
                 {
                     "name": "Pol",
                     "homepage": "https://www.drupal.org/user/47194"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
                 },
                 {
                     "name": "rjacobs",
@@ -1739,7 +1770,7 @@
                 },
                 "drupal": {
                     "version": "7.x-1.5",
-                    "datestamp": "1526190484",
+                    "datestamp": "1550692505",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1941,7 +1972,7 @@
                 },
                 "drupal": {
                     "version": "7.x-1.24",
-                    "datestamp": "1522915549",
+                    "datestamp": "1537171084",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1993,7 +2024,7 @@
                 },
                 "drupal": {
                     "version": "7.x-1.6",
-                    "datestamp": "1491404485",
+                    "datestamp": "1537173480",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2279,17 +2310,17 @@
         },
         {
             "name": "drupal/views",
-            "version": "3.20.0",
+            "version": "3.21.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/views",
-                "reference": "7.x-3.20"
+                "reference": "7.x-3.21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views-7.x-3.20.zip",
-                "reference": "7.x-3.20",
-                "shasum": "9f4006a2b88e95529e75b73fd9459e9c0fce18c0"
+                "url": "https://ftp.drupal.org/files/projects/views-7.x-3.21.zip",
+                "reference": "7.x-3.21",
+                "shasum": "417b8b68e0d4d5f955176943f270d3458fd73b11"
             },
             "require": {
                 "drupal/ctools": "*",
@@ -2301,8 +2332,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-3.20",
-                    "datestamp": "1523668085",
+                    "version": "7.x-3.21",
+                    "datestamp": "1552498659",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -4220,7 +4251,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
