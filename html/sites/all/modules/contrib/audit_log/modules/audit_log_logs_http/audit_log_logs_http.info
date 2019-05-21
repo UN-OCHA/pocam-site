@@ -1,0 +1,7 @@
+name = Audit logging using logs http module
+description = Audit logging using logs http module.
+package = Audit log
+core = 7.x
+
+dependencies[] = audit_log
+dependencies[] = logs_http

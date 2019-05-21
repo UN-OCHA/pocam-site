@@ -1,0 +1,7 @@
+name = Audit log openid_connect
+description = Provides openid_connect actions
+package = Audit log
+core = 7.x
+
+dependencies[] = audit_log
+dependencies[] = openid_connect
