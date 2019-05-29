@@ -101,7 +101,7 @@ function sassLintTask() {
 //——————————————————————————————————————————————————————————————————————————————
 // Sass
 //——————————————————————————————————————————————————————————————————————————————
-const sassTask = gulp.series(sassLintTask, sassCompileTask);
+const sassTask = gulp.series(/*sassLintTask, */sassCompileTask);
 exports.sass = sassTask;
 
 
