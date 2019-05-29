@@ -6,8 +6,8 @@
  */
 
 /**
-  * Returns HTML for the facet title, usually the title of the block.
-  */
+ * Returns HTML for the facet title, usually the title of the block.
+ */
 function ocha_basic_facetapi_title($variables) {
   return t('Filter by @title', array('@title' => drupal_strtolower($variables['title'])));
 }
