@@ -42,9 +42,10 @@ jobs:
         test ! -d ./html/sites/all/themes/custom || ./bin/phpcpd ./html/sites/all/themes/custom --names=*.php,*.inc,*.module,*.install
     - name: Install an X server for behat
       run: |
-        sudo apt-get install xvfb xfonts-100dpi xfonts-75dpi xfonts-cyrillic xorg dbus-x11
+        sudo apt-get update
+        sudo apt-get install -y xvfb xfonts-100dpi xfonts-75dpi xfonts-cyrillic xorg dbus-x11
         Xvfb :99 -ac &
-    - name: Prepare an test environment
+    - name: Prepare a test environment for behat
       run: |
         cd ~/behat
         ./scripts/setup.sh
