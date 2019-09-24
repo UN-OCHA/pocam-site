@@ -46,6 +46,8 @@ jobs:
         sudo apt-get install -y xvfb xfonts-100dpi xfonts-75dpi xfonts-cyrillic xorg dbus-x11
         Xvfb :99 -ac &
     - name: Prepare a test environment for behat
+      env:
+        TRAVIS_BUILD_DIR=~/work/pocam-site/pocam-site
       run: |
         pushd behat
         ./scripts/setup.sh
@@ -59,4 +61,4 @@ jobs:
         cd html/sites/8888.127.0.0.1/
         ../../../behat/bin/drush runserver 8888 > /dev/null 2>&1 &
     - name: Check code functionality with behat
-      run: cd ~/behat && bin/behat --config behat.travis.yml
+      run: cd behat && bin/behat --config behat.travis.yml
