@@ -19,22 +19,22 @@ jobs:
       run: composer install
     - name: Check code syntax with php.
       run: |
-        test ! -d ./html/profiles/pocam || find -L ./html/profiles/pocam -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l && \
-        test ! -d ./html/sites/all/modules/custom || find -L ./html/sites/all/modules/custom -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l && \
-        test ! -d ./html/sites/all/modules/features || find -L ./html/sites/all/modules/features -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l && \
+        test ! -d ./html/profiles/pocam || find -L ./html/profiles/pocam -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
+        test ! -d ./html/sites/all/modules/custom || find -L ./html/sites/all/modules/custom -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
+        test ! -d ./html/sites/all/modules/features || find -L ./html/sites/all/modules/features -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l 
         test ! -d ./html/sites/all/themes/custom || find -L ./html/sites/all/themes/custom -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l 
     - name: Check code quality with phpcs.
       run: |
-        ./bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer && \
-        test ! -d ./html/profiles/pocam || ./bin/phpcs -p --report=full ./html/profiles/pocam && \
-        test ! -d ./html/sites/all/modules/custom || ./bin/phpcs -p --report=full ./html/sites/all/modules/custom && \
-        test ! -d ./html/sites/all/modules/features || ./bin/phpcs -p --report=full ./html/sites/all/modules/features && \
+        ./bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer
+        test ! -d ./html/profiles/pocam || ./bin/phpcs -p --report=full ./html/profiles/pocam 
+        test ! -d ./html/sites/all/modules/custom || ./bin/phpcs -p --report=full ./html/sites/all/modules/custom
+        test ! -d ./html/sites/all/modules/features || ./bin/phpcs -p --report=full ./html/sites/all/modules/features
         test ! -d ./html/sites/all/themes/custom || ./bin/phpcs -p --report=full ./html/sites/all/themes/custom
     - name: Check code quality with phpmd.
       run: |
-        test ! -d ./html/profiles/pocam || ./bin/phpmd ./html/profiles/pocam text .phpmd.xml --suffixes=php,inc,module,install && \
-        test ! -d ./html/sites/all/modules/custom || ./bin/phpmd ./html/sites/all/modules/custom text .phpmd.xml --suffixes=php,inc,module,install && \
-        test ! -d ./html/sites/all/modules/features || ./bin/phpmd ./html/sites/all/modules/features text .phpmd.xml --suffixes=php,inc,module,install && \
+        test ! -d ./html/profiles/pocam || ./bin/phpmd ./html/profiles/pocam text .phpmd.xml --suffixes=php,inc,module,install
+        test ! -d ./html/sites/all/modules/custom || ./bin/phpmd ./html/sites/all/modules/custom text .phpmd.xml --suffixes=php,inc,module,install
+        test ! -d ./html/sites/all/modules/features || ./bin/phpmd ./html/sites/all/modules/features text .phpmd.xml --suffixes=php,inc,module,install
         test ! -d ./html/sites/all/themes/custom || ./bin/phpmd ./html/sites/all/themes/custom text .phpmd.xml --suffixes=php,inc,module,install
     - name: Check code quality with phpcpd.
       run: |
