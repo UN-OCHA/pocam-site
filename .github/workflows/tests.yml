@@ -14,7 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Composerify
-      run: COMPOSER=composer.travis.json composer install
+      env:
+        COMPOSER=composer.travis.json
+      run: composer install
     - name: Check code synax
       run: |
         test ! -d ./html/profiles/pocam || find -L ./html/profiles/pocam -iregex '.*\.\(php\|module\|inc\|install\)$' -print0 | xargs -0 -n 1 -P 4 php -l
