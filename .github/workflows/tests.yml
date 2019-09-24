@@ -47,13 +47,16 @@ jobs:
         Xvfb :99 -ac &
     - name: Prepare a test environment for behat
       run: |
-        cd ~/behat
+        pushd behat
         ./scripts/setup.sh
-        cd ~/behat
+        popd
+        pushd behat
         ./scripts/install.sh
-        cd ~/behat
+        popd
+        pushd behat
         ../behat/chromedriver &
-        cd ~/html/sites/8888.127.0.0.1/
+        popd
+        cd html/sites/8888.127.0.0.1/
         ../../../behat/bin/drush runserver 8888 > /dev/null 2>&1 &
     - name: Check code functionality with behat
       run: cd ~/behat && bin/behat --config behat.travis.yml
