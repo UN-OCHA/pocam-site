@@ -7,7 +7,7 @@ RUN npm install && \
 
 FROM unocha/php7-k8s:7.2.18-r0-201905-11-NR
 ENV NGINX_SERVERNAME=poc-aide-memoire.unocha.org
-env PHP_ENVIRONMENT=production
+ENV PHP_ENVIRONMENT=production
 ENV PHP_MEMORY_LIMIT=256M
 ENV PHP_MAX_CHILDREN=16
 COPY --from=builder /srv/www/html /srv/www/html
