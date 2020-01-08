@@ -1,0 +1,7 @@
+name = Audit log HybridAuth
+description = Provides HybridAuth actions
+package = Audit log
+core = 7.x
+
+dependencies[] = audit_log
+dependencies[] = hybridauth

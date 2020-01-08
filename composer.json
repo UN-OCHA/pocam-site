@@ -38,7 +38,7 @@
         "drupal/context": "^3.10",
         "drupal/date": "^2.10",
         "drupal/dragdropfile": "^1.7",
-        "drupal/drupal": "~7.0",
+        "drupal/drupal": "^7.69",
         "drupal/ds": "^2.14",
         "drupal/environment_indicator": "^2.9",
         "drupal/facetapi": "^1.5",
