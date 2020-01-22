@@ -1,11 +1,11 @@
-FROM unocha/unified-builder:7.2.18-r0-201905-11 as builder
+FROM unocha/unified-builder:7.2.26-r0-202001-02 as builder
 COPY ./html /srv/www/html
 WORKDIR /srv/www/html/sites/all/themes/custom/ocha_basic
 RUN npm install && \
       npm run gulp build && \
       rm -rf ./node_modules
 
-FROM unocha/php7-k8s:7.2.18-r0-201911-01-NR
+FROM unocha/php7-k8s:7.2.26-r0-202001-02-NR
 
 ARG VCS_REF
 ARG VCS_URL
@@ -28,5 +28,4 @@ LABEL info.humanitarianresponse.build.date=$BUILD_DATE \
       info.humanitarianresponse.build.vcs-ref=$VCS_REF
 
 COPY ./html /srv/www/html
-COPY ./composer.json /srv/www/composer.json
-COPY ./composer.lock /srv/www/composer.lock
+COPY ./composer.* /srv/www/
