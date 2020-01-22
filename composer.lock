@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f269655a2adfa070bc09fb260ffe990",
+    "content-hash": "d974aab82c058f85e93b72f9bceb4a20",
     "packages": [
         {
             "name": "composer/installers",
@@ -2815,17 +2815,17 @@
         },
         {
             "name": "drupal/redis",
-            "version": "3.17.0",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/redis.git",
-                "reference": "7.x-3.17"
+                "reference": "7.x-3.18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/redis-7.x-3.17.zip",
-                "reference": "7.x-3.17",
-                "shasum": "e8ce391d7bae34c0cf1df1b9c808be9d18fa1c61"
+                "url": "https://ftp.drupal.org/files/projects/redis-7.x-3.18.zip",
+                "reference": "7.x-3.18",
+                "shasum": "a88f8bb788ab7640de3b8a0a85e4e7a9b179cf7d"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -2836,8 +2836,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-3.17",
-                    "datestamp": "1513939085",
+                    "version": "7.x-3.18",
+                    "datestamp": "1572430084",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2861,7 +2861,7 @@
             "description": "Provide a module placeholder, for using as dependency for module that needs Redis.",
             "homepage": "https://www.drupal.org/project/redis",
             "support": {
-                "source": "http://cgit.drupalcode.org/redis"
+                "source": "https://git.drupalcode.org/project/redis"
             }
         },
         {
