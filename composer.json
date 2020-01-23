@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-json": "*",
@@ -29,7 +29,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/preserve-paths": "^0.1",
         "drupal/admin_denied": "^1.0",
-        "drupal/admin_menu": "3.0-rc5",
+        "drupal/admin_menu": "^3.0-rc6",
         "drupal/advagg": "^2.33",
         "drupal/audit_log": "1.x-dev",
         "drupal/chosen": "^2.1",
@@ -88,7 +88,8 @@
         "optimize-autoloader": true
     },
     "extra": {
-		"enable-patching": true,
+        "enable-patching": true,
+        "patches-file": "composer.patches.json",
         "composer-exit-on-patch-failure": true,
         "drupal-composer-helper": {
             "web-prefix": "html",
@@ -102,14 +103,6 @@
             "html/sites/all/libraries/{$name}/": ["type:drupal-library"],
             "html/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
             "html/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"]
-        },
-        "patches": {
-            "cweagans/composer-patches": {
-                "Call the preserve paths hooks" : "https://github.com/SebCorbin/composer-patches/commit/1cb9bacba51f8bba0c5f3f322c3bb61e4ceae974.patch"
-            },
-			"drupal/facetapi_select": {
-				"Can't display all parent and child terms in the selection box": "https://www.drupal.org/files/issues/2897764-solve-multi-level-select-list-issue.patch"
-			}
         },
         "preserve-paths": [
             "html/sites/all/drush",
