@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d974aab82c058f85e93b72f9bceb4a20",
+    "content-hash": "e7feb23800c6d41da386b486a3ea1ddb",
     "packages": [
         {
             "name": "composer/installers",
@@ -2842,6 +2842,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Php-redis 5 compatibility": "https://www.drupal.org/files/issues/2019-11-27/redis-n3074189-23.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/7/downloads",
