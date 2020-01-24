@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f269655a2adfa070bc09fb260ffe990",
+    "content-hash": "1383fcffcadf8b897235001c086232db",
     "packages": [
         {
             "name": "composer/installers",
@@ -671,17 +671,17 @@
         },
         {
             "name": "drupal/admin_menu",
-            "version": "3.0.0-rc5",
+            "version": "3.0.0-rc6",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/admin_menu.git",
-                "reference": "7.x-3.0-rc5"
+                "reference": "7.x-3.0-rc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/admin_menu-7.x-3.0-rc5.zip",
-                "reference": "7.x-3.0-rc5",
-                "shasum": "64de77d5b1ed7158549a4fc6f2fd657aaacdaead"
+                "url": "https://ftp.drupal.org/files/projects/admin_menu-7.x-3.0-rc6.zip",
+                "reference": "7.x-3.0-rc6",
+                "shasum": "c2c554aed8c8db494831ef3edf900d53f03d83a7"
             },
             "require": {
                 "drupal/drupal": "^7.11"
@@ -692,11 +692,11 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-3.0-rc5",
-                    "datestamp": "1419029280",
+                    "version": "7.x-3.0-rc6",
+                    "datestamp": "1543859280",
                     "security-coverage": {
                         "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
+                        "message": "RC releases are not covered by Drupal security advisories."
                     }
                 }
             },
@@ -710,26 +710,30 @@
                     "homepage": "https://www.drupal.org/user/53892"
                 },
                 {
-                    "name": "fubhy",
-                    "homepage": "https://www.drupal.org/user/761344"
+                    "name": "HongPong",
+                    "homepage": "https://www.drupal.org/user/60005"
                 },
                 {
-                    "name": "pwolanin",
-                    "homepage": "https://www.drupal.org/user/49851"
-                },
-                {
-                    "name": "smk-ka",
-                    "homepage": "https://www.drupal.org/user/48898"
+                    "name": "RenatoG",
+                    "homepage": "https://www.drupal.org/user/3326031"
                 },
                 {
                     "name": "sun",
                     "homepage": "https://www.drupal.org/user/54136"
+                },
+                {
+                    "name": "thalles",
+                    "homepage": "https://www.drupal.org/user/3589086"
+                },
+                {
+                    "name": "truls1502",
+                    "homepage": "https://www.drupal.org/user/325866"
                 }
             ],
             "description": "Provides a dropdown menu to most administrative tasks and other common destinations (to users with the proper permissions).",
             "homepage": "https://www.drupal.org/project/admin_menu",
             "support": {
-                "source": "http://cgit.drupalcode.org/admin_menu"
+                "source": "https://git.drupalcode.org/project/admin_menu"
             }
         },
         {
@@ -2815,17 +2819,17 @@
         },
         {
             "name": "drupal/redis",
-            "version": "3.17.0",
+            "version": "3.18.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/redis.git",
-                "reference": "7.x-3.17"
+                "reference": "7.x-3.18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/redis-7.x-3.17.zip",
-                "reference": "7.x-3.17",
-                "shasum": "e8ce391d7bae34c0cf1df1b9c808be9d18fa1c61"
+                "url": "https://ftp.drupal.org/files/projects/redis-7.x-3.18.zip",
+                "reference": "7.x-3.18",
+                "shasum": "a88f8bb788ab7640de3b8a0a85e4e7a9b179cf7d"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -2836,12 +2840,15 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-3.17",
-                    "datestamp": "1513939085",
+                    "version": "7.x-3.18",
+                    "datestamp": "1572430084",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Php-redis 5 compatibility": "https://www.drupal.org/files/issues/2019-11-27/redis-n3074189-23.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/7/downloads",
@@ -2861,7 +2868,7 @@
             "description": "Provide a module placeholder, for using as dependency for module that needs Redis.",
             "homepage": "https://www.drupal.org/project/redis",
             "support": {
-                "source": "http://cgit.drupalcode.org/redis"
+                "source": "https://git.drupalcode.org/project/redis"
             }
         },
         {
