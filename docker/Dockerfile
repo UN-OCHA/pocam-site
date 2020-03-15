@@ -1,11 +1,11 @@
-FROM unocha/unified-builder:7.2.26-r0-202001-02 as builder
+FROM unocha/unified-builder:7.2.27-r0-202003-02 as builder
 COPY ./html /srv/www/html
 WORKDIR /srv/www/html/sites/all/themes/custom/ocha_basic
 RUN npm install && \
       npm run gulp build && \
       rm -rf ./node_modules
 
-FROM unocha/php7-k8s:7.2.26-r0-202001-02-NR
+FROM unocha/php7-k8s:7.2.27-r0-202003-03-NR
 
 ARG VCS_REF
 ARG VCS_URL
