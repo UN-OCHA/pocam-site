@@ -33,7 +33,7 @@
         "drupal/advagg": "^2.33",
         "drupal/audit_log": "1.x-dev",
         "drupal/chosen": "^2.1",
-        "drupal/ckeditor": "^1.18",
+        "drupal/ckeditor": "1.19",
         "drupal/composer_autoloader": "^1.0",
         "drupal/context": "^3.10",
         "drupal/date": "^2.10",
