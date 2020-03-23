@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83347507a804dbb45f0e061d74fb889a",
+    "content-hash": "4d3d6f599cce287b9eda557d83114721",
     "packages": [
         {
             "name": "composer/installers",
@@ -803,6 +803,10 @@
                 {
                     "name": "rupl",
                     "homepage": "https://www.drupal.org/user/411999"
+                },
+                {
+                    "name": "thalles",
+                    "homepage": "https://www.drupal.org/user/3589086"
                 }
             ],
             "description": "Improved aggregation of CSS/JS files to speed up page load times and prevent 404s.",
@@ -864,6 +868,10 @@
                 {
                     "name": "karlos007",
                     "homepage": "https://www.drupal.org/user/122194"
+                },
+                {
+                    "name": "spheresh",
+                    "homepage": "https://www.drupal.org/user/624860"
                 }
             ],
             "description": "Provides a framework with swappable storage for logging entity audit events.",
@@ -1037,6 +1045,43 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/ckeditor"
             }
+        },
+        {
+            "name": "drupal/coder",
+            "version": "8.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/coder.git",
+                "reference": "c11c2957653bdbfd68adc851692d094b43d39221"
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.5.9",
+                "squizlabs/php_codesniffer": "^3.4.1",
+                "symfony/yaml": ">=2.0.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-0": {
+                    "Drupal\\": "coder_sniffer/Drupal/",
+                    "DrupalPractice\\": "coder_sniffer/DrupalPractice/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "Coder is a library to review Drupal code.",
+            "homepage": "https://www.drupal.org/project/coder",
+            "keywords": [
+                "code review",
+                "phpcs",
+                "standards"
+            ],
+            "time": "2019-12-07T16:00:28+00:00"
         },
         {
             "name": "drupal/composer_autoloader",
@@ -1350,16 +1395,16 @@
                     "homepage": "https://www.drupal.org/user/242659"
                 },
                 {
-                    "name": "cafuego",
-                    "homepage": "https://www.drupal.org/user/218525"
-                },
-                {
                     "name": "developer-x",
                     "homepage": "https://www.drupal.org/user/399625"
                 },
                 {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
                 },
                 {
                     "name": "podarok",
@@ -1427,16 +1472,16 @@
                     "homepage": "https://www.drupal.org/user/242659"
                 },
                 {
-                    "name": "cafuego",
-                    "homepage": "https://www.drupal.org/user/218525"
-                },
-                {
                     "name": "developer-x",
                     "homepage": "https://www.drupal.org/user/399625"
                 },
                 {
                     "name": "dww",
                     "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
                 },
                 {
                     "name": "podarok",
@@ -1530,7 +1575,7 @@
                 },
                 "drupal": {
                     "version": "7.69",
-                    "datestamp": "1576698867",
+                    "datestamp": "1576698943",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1796,17 +1841,17 @@
         },
         {
             "name": "drupal/facetapi",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/facetapi.git",
-                "reference": "7.x-1.5"
+                "reference": "7.x-1.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/facetapi-7.x-1.5.zip",
-                "reference": "7.x-1.5",
-                "shasum": "0783e705d01d7275c7480dd5008a157124afe51d"
+                "url": "https://ftp.drupal.org/files/projects/facetapi-7.x-1.6.zip",
+                "reference": "7.x-1.6",
+                "shasum": "23314e7a8e5ebb5c54c1b7d856a95c1a0d304b0b"
             },
             "require": {
                 "drupal/ctools": "*",
@@ -1818,8 +1863,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.5",
-                    "datestamp": "1405685327",
+                    "version": "7.x-1.6",
+                    "datestamp": "1568909888",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -1856,6 +1901,14 @@
                     "homepage": "https://www.drupal.org/user/1767626"
                 },
                 {
+                    "name": "gisle",
+                    "homepage": "https://www.drupal.org/user/409554"
+                },
+                {
+                    "name": "joseph.olstad",
+                    "homepage": "https://www.drupal.org/user/1321830"
+                },
+                {
                     "name": "jurcello",
                     "homepage": "https://www.drupal.org/user/774070"
                 },
@@ -1871,7 +1924,7 @@
             "description": "An abstracted facet API that can be used by various search backends.",
             "homepage": "https://www.drupal.org/project/facetapi",
             "support": {
-                "source": "http://cgit.drupalcode.org/facetapi"
+                "source": "https://git.drupalcode.org/project/facetapi"
             }
         },
         {
@@ -2516,17 +2569,17 @@
         },
         {
             "name": "drupal/link",
-            "version": "1.6.0",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/link.git",
-                "reference": "7.x-1.6"
+                "reference": "7.x-1.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/link-7.x-1.6.zip",
-                "reference": "7.x-1.6",
-                "shasum": "21b822ab66cc9bd512c17cad4662a33ccd8d0135"
+                "url": "https://ftp.drupal.org/files/projects/link-7.x-1.7.zip",
+                "reference": "7.x-1.7",
+                "shasum": "b18da8e72f499ad738f971026cbd90bcfef95ff4"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -2537,8 +2590,8 @@
                     "dev-1.x": "1.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-1.6",
-                    "datestamp": "1550692505",
+                    "version": "7.x-1.7",
+                    "datestamp": "1573731186",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -2550,6 +2603,10 @@
                 "GPL-2.0-or-later"
             ],
             "authors": [
+                {
+                    "name": "DamienMcKenna",
+                    "homepage": "https://www.drupal.org/user/108450"
+                },
                 {
                     "name": "RenatoG",
                     "homepage": "https://www.drupal.org/user/3326031"
@@ -2598,7 +2655,7 @@
             "description": "Defines simple link field types.",
             "homepage": "https://www.drupal.org/project/link",
             "support": {
-                "source": "http://cgit.drupalcode.org/link"
+                "source": "https://git.drupalcode.org/project/link"
             }
         },
         {
@@ -2917,10 +2974,6 @@
                     "homepage": "https://www.drupal.org/user/122682"
                 },
                 {
-                    "name": "borisson_",
-                    "homepage": "https://www.drupal.org/user/2393360"
-                },
-                {
                     "name": "drunken monkey",
                     "homepage": "https://www.drupal.org/user/205582"
                 }
@@ -2928,7 +2981,7 @@
             "description": "Provides a generic API for modules offering search capabilities.",
             "homepage": "https://www.drupal.org/project/search_api",
             "support": {
-                "source": "https://git.drupalcode.org/project/search_api"
+                "source": "http://cgit.drupalcode.org/search_api"
             }
         },
         {
@@ -3310,17 +3363,17 @@
         },
         {
             "name": "drupal/views",
-            "version": "3.22.0",
+            "version": "3.24.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/views.git",
-                "reference": "7.x-3.22"
+                "reference": "7.x-3.24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/views-7.x-3.22.zip",
-                "reference": "7.x-3.22",
-                "shasum": "70fe96de0a3b47ba6c8f82d69fd7e475dda43a5e"
+                "url": "https://ftp.drupal.org/files/projects/views-7.x-3.24.zip",
+                "reference": "7.x-3.24",
+                "shasum": "2169872cbdfabdf6595aa77b48230314c3fcb97c"
             },
             "require": {
                 "drupal/ctools": "*",
@@ -3332,8 +3385,8 @@
                     "dev-3.x": "3.x-dev"
                 },
                 "drupal": {
-                    "version": "7.x-3.22",
-                    "datestamp": "1557505381",
+                    "version": "7.x-3.24",
+                    "datestamp": "1583615729",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -3885,6 +3938,57 @@
                 "shell"
             ],
             "time": "2018-10-13T15:16:03+00:00"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
+            },
+            "bin": [
+                "bin/phpcs",
+                "bin/phpcbf"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards"
+            ],
+            "time": "2019-04-10T23:49:02+00:00"
         },
         {
             "name": "symfony/console",
@@ -4558,43 +4662,6 @@
     ],
     "packages-dev": [
         {
-            "name": "drupal/coder",
-            "version": "8.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/coder.git",
-                "reference": "a33d3388fb2e1d94bd2aee36a8ff79186e9d8f43"
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "php": ">=5.5.9",
-                "squizlabs/php_codesniffer": "^3.4.1",
-                "symfony/yaml": ">=2.0.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": ">=3.7 <6"
-            },
-            "type": "phpcodesniffer-standard",
-            "autoload": {
-                "psr-0": {
-                    "Drupal\\": "coder_sniffer/Drupal/",
-                    "DrupalPractice\\": "coder_sniffer/DrupalPractice/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "description": "Coder is a library to review Drupal code.",
-            "homepage": "https://www.drupal.org/project/coder",
-            "keywords": [
-                "code review",
-                "phpcs",
-                "standards"
-            ],
-            "time": "2019-04-16T18:56:06+00:00"
-        },
-        {
             "name": "pdepend/pdepend",
             "version": "2.5.2",
             "source": {
@@ -4932,57 +4999,6 @@
             "time": "2016-10-03T07:35:21+00:00"
         },
         {
-            "name": "squizlabs/php_codesniffer",
-            "version": "3.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "reference": "b8a7362af1cc1aadb5bd36c3defc4dda2cf5f0a8",
-                "shasum": ""
-            },
-            "require": {
-                "ext-simplexml": "*",
-                "ext-tokenizer": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0"
-            },
-            "bin": [
-                "bin/phpcs",
-                "bin/phpcbf"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Sherwood",
-                    "role": "lead"
-                }
-            ],
-            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "https://github.com/squizlabs/PHP_CodeSniffer",
-            "keywords": [
-                "phpcs",
-                "standards"
-            ],
-            "time": "2019-04-10T23:49:02+00:00"
-        },
-        {
             "name": "symfony/config",
             "version": "v4.2.8",
             "source": {
@@ -5233,6 +5249,7 @@
     "aliases": [],
     "minimum-stability": "alpha",
     "stability-flags": {
+        "drupal/admin_menu": 5,
         "drupal/audit_log": 20
     },
     "prefer-stable": true,
