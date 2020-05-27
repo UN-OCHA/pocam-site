@@ -1,4 +1,4 @@
-dist: trusty
+dist: xenial
 language: php
 
 addons:
@@ -49,7 +49,6 @@ script:
   - test ! -d ./html/sites/all/modules/features || ./bin/phpcpd ./html/sites/all/modules/features --names=*.php,*.inc,*.module,*.install --names-exclude=*.features.*,*.panelizer.inc,*.views_default.inc,*.pages_default.inc,*.field_group.inc,*.strongarm.inc,*.facetapi_defaults.inc,*.ds.inc,*..inc,*.default_environment_indicator_environments.inc
   - test ! -d ./html/sites/all/themes/custom || ./bin/phpcpd ./html/sites/all/themes/custom --names=*.php,*.inc,*.module,*.install
 
-  - "sh -e /etc/init.d/xvfb start"
   - sleep 3
   - cd $TRAVIS_BUILD_DIR/behat
   - ./scripts/setup.sh
