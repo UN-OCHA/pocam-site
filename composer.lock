@@ -738,17 +738,17 @@
         },
         {
             "name": "drupal/advagg",
-            "version": "2.33.0",
+            "version": "2.34.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/advagg.git",
-                "reference": "7.x-2.33"
+                "reference": "7.x-2.34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/advagg-7.x-2.33.zip",
-                "reference": "7.x-2.33",
-                "shasum": "7ab8c80904b0f348ecdb363350dd0a90a48f98f9"
+                "url": "https://ftp.drupal.org/files/projects/advagg-7.x-2.34.zip",
+                "reference": "7.x-2.34",
+                "shasum": "03bb8c9d447cfcdced92ef4247e9e1869de2df7a"
             },
             "require": {
                 "drupal/drupal": "~7.0"
@@ -758,12 +758,9 @@
             },
             "type": "drupal-module",
             "extra": {
-                "branch-alias": {
-                    "dev-2.x": "2.x-dev"
-                },
                 "drupal": {
-                    "version": "7.x-2.33",
-                    "datestamp": "1521515584",
+                    "version": "7.x-2.34",
+                    "datestamp": "1589838744",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
